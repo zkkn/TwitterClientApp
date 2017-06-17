@@ -12,8 +12,6 @@
 		C7C879A61EF4EC8700E69DCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C879A41EF4EC8700E69DCD /* LaunchScreen.storyboard */; };
 		C7C879B61EF4F69300E69DCD /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879AD1EF4F69300E69DCD /* APIKit.framework */; };
 		C7C879B71EF4F69300E69DCD /* APIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879AD1EF4F69300E69DCD /* APIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C7C879B81EF4F69300E69DCD /* Himotoki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879AE1EF4F69300E69DCD /* Himotoki.framework */; };
-		C7C879B91EF4F69300E69DCD /* Himotoki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879AE1EF4F69300E69DCD /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7C879BA1EF4F69300E69DCD /* Mapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879AF1EF4F69300E69DCD /* Mapper.framework */; };
 		C7C879BB1EF4F69300E69DCD /* Mapper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879AF1EF4F69300E69DCD /* Mapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7C879BC1EF4F69300E69DCD /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879B11EF4F69300E69DCD /* RealmSwift.framework */; };
@@ -28,6 +26,7 @@
 		C7C879C51EF4F69300E69DCD /* SnapKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879B51EF4F69300E69DCD /* SnapKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7C879C91EF4F7B300E69DCD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879C81EF4F7B300E69DCD /* Realm.framework */; };
 		C7C879CA1EF4F7B300E69DCD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879C81EF4F7B300E69DCD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,7 +40,6 @@
 				C7C879C11EF4F69300E69DCD /* RxCocoa.framework in Embed Frameworks */,
 				C7C879BB1EF4F69300E69DCD /* Mapper.framework in Embed Frameworks */,
 				C7C879C31EF4F69300E69DCD /* RxSwift.framework in Embed Frameworks */,
-				C7C879B91EF4F69300E69DCD /* Himotoki.framework in Embed Frameworks */,
 				C7C879BF1EF4F69300E69DCD /* Result.framework in Embed Frameworks */,
 				C7C879BD1EF4F69300E69DCD /* RealmSwift.framework in Embed Frameworks */,
 				C7C879B71EF4F69300E69DCD /* APIKit.framework in Embed Frameworks */,
@@ -59,7 +57,6 @@
 		C7C879A51EF4EC8700E69DCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C7C879A71EF4EC8700E69DCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C7C879AD1EF4F69300E69DCD /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
-		C7C879AE1EF4F69300E69DCD /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/iOS/Himotoki.framework; sourceTree = "<group>"; };
 		C7C879AF1EF4F69300E69DCD /* Mapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapper.framework; path = Carthage/Build/iOS/Mapper.framework; sourceTree = "<group>"; };
 		C7C879B11EF4F69300E69DCD /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		C7C879B21EF4F69300E69DCD /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
@@ -67,6 +64,7 @@
 		C7C879B41EF4F69300E69DCD /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		C7C879B51EF4F69300E69DCD /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		C7C879C81EF4F7B300E69DCD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTimelineViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +76,6 @@
 				C7C879C01EF4F69300E69DCD /* RxCocoa.framework in Frameworks */,
 				C7C879BA1EF4F69300E69DCD /* Mapper.framework in Frameworks */,
 				C7C879C21EF4F69300E69DCD /* RxSwift.framework in Frameworks */,
-				C7C879B81EF4F69300E69DCD /* Himotoki.framework in Frameworks */,
 				C7C879BE1EF4F69300E69DCD /* Result.framework in Frameworks */,
 				C7C879BC1EF4F69300E69DCD /* RealmSwift.framework in Frameworks */,
 				C7C879B61EF4F69300E69DCD /* APIKit.framework in Frameworks */,
@@ -112,6 +109,7 @@
 				C7C879A21EF4EC8700E69DCD /* Assets.xcassets */,
 				C7C879A41EF4EC8700E69DCD /* LaunchScreen.storyboard */,
 				C7C879A71EF4EC8700E69DCD /* Info.plist */,
+				C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */,
 				C7C879CB1EF4F7D300E69DCD /* Frameworks */,
 			);
 			path = TwitterClientApp;
@@ -122,7 +120,6 @@
 			children = (
 				C7C879C81EF4F7B300E69DCD /* Realm.framework */,
 				C7C879AD1EF4F69300E69DCD /* APIKit.framework */,
-				C7C879AE1EF4F69300E69DCD /* Himotoki.framework */,
 				C7C879AF1EF4F69300E69DCD /* Mapper.framework */,
 				C7C879B11EF4F69300E69DCD /* RealmSwift.framework */,
 				C7C879B21EF4F69300E69DCD /* Result.framework */,
@@ -216,7 +213,6 @@
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mapper.framework",
 			);
@@ -234,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
+				C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +392,7 @@
 				C7C879AC1EF4EC8700E69DCD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
