@@ -27,6 +27,7 @@
 		C7C879C91EF4F7B300E69DCD /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879C81EF4F7B300E69DCD /* Realm.framework */; };
 		C7C879CA1EF4F7B300E69DCD /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7C879C81EF4F7B300E69DCD /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */; };
+		C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879D01EF517FD00E69DCD /* TweetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,6 +66,7 @@
 		C7C879B51EF4F69300E69DCD /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		C7C879C81EF4F7B300E69DCD /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTimelineViewController.swift; sourceTree = "<group>"; };
+		C7C879D01EF517FD00E69DCD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				C7C879A21EF4EC8700E69DCD /* Assets.xcassets */,
 				C7C879A41EF4EC8700E69DCD /* LaunchScreen.storyboard */,
 				C7C879A71EF4EC8700E69DCD /* Info.plist */,
+				C7C879D01EF517FD00E69DCD /* TweetCell.swift */,
 				C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */,
 				C7C879CB1EF4F7D300E69DCD /* Frameworks */,
 			);
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */,
 			);
