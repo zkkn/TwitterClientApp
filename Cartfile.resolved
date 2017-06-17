@@ -1,0 +1,6 @@
+github "ReactiveX/RxSwift" "3.5.0"
+github "SnapKit/SnapKit" "3.2.0"
+github "antitypical/Result" "3.2.3"
+github "ishkawa/APIKit" "3.1.2"
+github "lyft/mapper" "6.0.0"
+github "realm/realm-cocoa" "v2.8.2"
