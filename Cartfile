@@ -1,7 +1,7 @@
-
 # Networking
 github "ishkawa/APIKit" ~> 3.1.2
 github "ikesyo/Himotoki" ~> 3.0
+github "lyft/mapper" ~> 6.0.0
 
 # auto layout
 github "SnapKit/SnapKit" ~> 3.2.0
