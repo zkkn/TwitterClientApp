@@ -1,0 +1,13 @@
+
+# Networking
+github "ishkawa/APIKit" ~> 3.1.2
+github "ikesyo/Himotoki" ~> 3.0
+
+# auto layout
+github "SnapKit/SnapKit" ~> 3.2.0
+
+# database
+github "realm/realm-cocoa" ~> 2.5.1
+
+# utility
+github "ReactiveX/RxSwift" ~> 3.4.0
