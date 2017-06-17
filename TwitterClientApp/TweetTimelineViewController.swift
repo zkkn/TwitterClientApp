@@ -13,7 +13,7 @@ class TweetTimelineViewController: UIViewController {
 }
 
 
-// - Life Cycles -
+// MARK: - Life Cycle Events -
 
 extension TweetTimelineViewController {
     
