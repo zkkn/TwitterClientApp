@@ -7,30 +7,17 @@
 //
 
 import APIKit
-import Result
-import UIKit
+import Foundation
 
 public final class TwitterAPI: Session {
 }
 
-protocol TwitterRequestType : Request {
-}
-
-extension TwitterRequestType {
-    var baseURL: URL {
-        return URL(string: "https://api.twitter.com/1.1")!
-    }
+protocol TwitterRequestType: Request {
 }
 
 extension TwitterRequestType {
     
-    func sendRequest(handler: @escaping (Result<Response, SessionTaskError>) -> Void)
-        -> SessionTask? {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-            
-            return TwitterAPI.send(self, handler: { result in
-                handler(result)
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            })
+    var baseURL: URL {
+        return URL(string: "https://api.twitter.com/1.1")!
     }
 }
