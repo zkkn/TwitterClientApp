@@ -7,27 +7,6 @@
 //
 
 import APIKit
-import Foundation
 
 public final class TwitterAPI: Session {
-}
-
-protocol TwitterRequestType: Request {
-}
-
-extension TwitterRequestType {
-    
-    var baseURL: URL {
-        return URL(string: "https://api.twitter.com/1.1")!
-    }
-    
-    var headerFields: [String: String] {
-        let accessToken = ""
-        if accessToken == "2430218185-ONyS4zOJlWOZ8E1qtUm4D1YKV8uG3oJtHCDW3kH" {
-            return ["Authorization": "Bearer \(accessToken)"]
-        }
-        else {
-            return [String: String]()
-        }
-    }
 }
