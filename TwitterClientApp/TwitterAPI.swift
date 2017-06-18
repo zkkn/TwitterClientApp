@@ -7,17 +7,6 @@
 //
 
 import APIKit
-import Foundation
 
 public final class TwitterAPI: Session {
-}
-
-protocol TwitterRequestType: Request {
-}
-
-extension TwitterRequestType {
-    
-    var baseURL: URL {
-        return URL(string: "https://api.twitter.com/1.1")!
-    }
 }
