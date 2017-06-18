@@ -42,7 +42,7 @@ extension TweetTimelineViewController {
 extension TweetTimelineViewController {
     
     fileprivate func configure() {
-        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        view.backgroundColor = .white
     }
     
     fileprivate func setViews() {

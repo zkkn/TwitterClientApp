@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         let initialViewController = TweetTimelineViewController()
-        initialViewController.view.backgroundColor = .white
         window?.rootViewController = initialViewController
         
         return true
