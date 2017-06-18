@@ -18,7 +18,7 @@ protocol TwitterRequestType : Request {
 
 extension TwitterRequestType {
     var baseURL: URL {
-        return URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")!
+        return URL(string: "https://api.twitter.com/1.1")!
     }
 }
 
