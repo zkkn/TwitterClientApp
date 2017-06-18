@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
+		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
 		C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */; };
 		C7C879A31EF4EC8700E69DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C879A21EF4EC8700E69DCD /* Assets.xcassets */; };
 		C7C879A61EF4EC8700E69DCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C879A41EF4EC8700E69DCD /* LaunchScreen.storyboard */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
+		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		C7C879981EF4EC8700E69DCD /* TwitterClientApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7C879A21EF4EC8700E69DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				C7C879D01EF517FD00E69DCD /* TweetCell.swift */,
 				C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */,
 				C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */,
+				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
 				C7C879CB1EF4F7D300E69DCD /* Frameworks */,
 			);
 			path = TwitterClientApp;
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */,
+				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */,
