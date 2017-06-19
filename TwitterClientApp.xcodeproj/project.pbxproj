@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
+		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
+		C784EE901EF77B3F008657A8 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */; };
 		C7C879A31EF4EC8700E69DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C879A21EF4EC8700E69DCD /* Assets.xcassets */; };
 		C7C879A61EF4EC8700E69DCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C879A41EF4EC8700E69DCD /* LaunchScreen.storyboard */; };
@@ -41,6 +43,7 @@
 			files = (
 				C7C879CA1EF4F7B300E69DCD /* Realm.framework in Embed Frameworks */,
 				C7C879C11EF4F69300E69DCD /* RxCocoa.framework in Embed Frameworks */,
+				C784EE901EF77B3F008657A8 /* OAuthSwift.framework in Embed Frameworks */,
 				C7C879BB1EF4F69300E69DCD /* Mapper.framework in Embed Frameworks */,
 				C7C879C31EF4F69300E69DCD /* RxSwift.framework in Embed Frameworks */,
 				C7C879BF1EF4F69300E69DCD /* Result.framework in Embed Frameworks */,
@@ -56,6 +59,7 @@
 /* Begin PBXFileReference section */
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
+		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		C7C879981EF4EC8700E69DCD /* TwitterClientApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7C879A21EF4EC8700E69DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			files = (
 				C7C879C91EF4F7B300E69DCD /* Realm.framework in Frameworks */,
 				C7C879C01EF4F69300E69DCD /* RxCocoa.framework in Frameworks */,
+				C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */,
 				C7C879BA1EF4F69300E69DCD /* Mapper.framework in Frameworks */,
 				C7C879C21EF4F69300E69DCD /* RxSwift.framework in Frameworks */,
 				C7C879BE1EF4F69300E69DCD /* Result.framework in Frameworks */,
@@ -127,6 +132,7 @@
 		C7C879CB1EF4F7D300E69DCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */,
 				C7C879C81EF4F7B300E69DCD /* Realm.framework */,
 				C7C879AD1EF4F69300E69DCD /* APIKit.framework */,
 				C7C879AF1EF4F69300E69DCD /* Mapper.framework */,
@@ -224,6 +230,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OAuthSwift.framework",
 			);
 			outputPaths = (
 			);
