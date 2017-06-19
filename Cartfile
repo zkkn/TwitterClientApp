@@ -1,6 +1,7 @@
 # Networking
 github "ishkawa/APIKit" ~> 3.1.2
 github "lyft/mapper" ~> 6.0.0
+github "OAuthSwift/OAuthSwift" ~> 1.1.0
 
 # auto layout
 github "SnapKit/SnapKit" ~> 3.2.0
