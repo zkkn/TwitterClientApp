@@ -7,6 +7,7 @@
 //
 
 import APIKit
+import OAuthSwift
 
-public final class TwitterAPI: Session {
+class TwitterAPI: Session {
 }
