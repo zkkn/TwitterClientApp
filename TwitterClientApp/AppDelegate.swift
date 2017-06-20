@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let initialViewController = TweetTimelineViewController()
+        let initialViewController = LoginViewController()
         window?.rootViewController = initialViewController
         
         return true
@@ -54,12 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     
-    func applicationHandle(url: URL) {
-        if (url.host == "oauth-callback") {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.host == "oauth-callback" {
             OAuthSwift.handle(url: url)
-        } else {
-            // Google provider is the only one wuth your.bundle.id url schema.
-            OAuthSwift.handle(url: url)
+            return true
+        }
+        else {
+            return false
         }
     }
 }
