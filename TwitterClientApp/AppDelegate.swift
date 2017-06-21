@@ -6,6 +6,7 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
+import OAuthSwift
 import UIKit
 
 @UIApplicationMain
@@ -46,7 +47,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 
+
+// MARK: handle callback url
+
+extension AppDelegate {
+    
+    func applicationHandle(url: URL) {
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handle(url: url)
+        } else {
+            // Google provider is the only one wuth your.bundle.id url schema.
+            OAuthSwift.handle(url: url)
+        }
+    }
+}
