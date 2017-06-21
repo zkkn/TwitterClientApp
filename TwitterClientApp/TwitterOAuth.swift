@@ -39,7 +39,6 @@ extension TwitterOAuth {
         
         // urlエンコード
         let encodedParameterString = urlEncodedStringWithEncoding(str: parameterString)
-        
         let encodedURL = urlEncodedStringWithEncoding(str: url.absoluteString)
         
         // signature用ベース文字列作成
@@ -64,14 +63,6 @@ extension TwitterOAuth {
     
     // URLエンコード
     func urlEncodedStringWithEncoding(str: String) -> String {
-        //        let charactersToBeEscaped = ":/?&=;+!@#$()',*" as CFString
-        //        let charactersToLeaveUnescaped = "[]." as CFString
-        //
-        //        var raw: NSString = str as NSString
-        //
-        //        let result = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, raw, charactersToLeaveUnescaped, charactersToBeEscaped, CFStringConvertNSStringEncodingToEncoding(dataEncoding.rawValue)) as NSString
-        //
-        //        return result as String
         return str.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
     }
     
@@ -84,7 +75,6 @@ extension TwitterOAuth {
         let keyStr = key.cString(using: String.Encoding.utf8)
         let keyLen = UInt(key.lengthOfBytes(using: String.Encoding.utf8))
         CCHmac(CCHmacAlgorithm(kCCHmacAlgSHA1), keyStr!, Int(keyLen), str!, Int(strLen), result)
-        
         return NSData(bytes: result, length: digestLen)
     }
     
@@ -92,15 +82,10 @@ extension TwitterOAuth {
         var param = Dictionary<String, String>()
         param["oauth_version"] = "1.0"
         param["oauth_signature_method"] = "HMAC-SHA1"
-        // ConsumerKey
         param["oauth_consumer_key"] = oauth_token
-        // Unixタイムスタンプ
         param["oauth_timestamp"] = String(Int64(NSDate().timeIntervalSince1970))
-        // ランダムな文字列
         param["oauth_nonce"] = (NSUUID().uuidString as NSString).substring(to: 8)
-        // コールバック
         param["oauth_callback"] = "oauth-swift://"
-        // 証明書
         param["oauth_signature"] = oauthSignatureForMethod(method: "POST", url: URL(string: "https://api.twitter.com/oauth/request_token")!, parameters: param)
         
         // アルファベット順に並べ替える
@@ -115,7 +100,6 @@ extension TwitterOAuth {
                 headerComponents.append("\(subcomponent[0])=\"\(subcomponent[1])\"")
             }
         }
-        
         return "OAuth" + headerComponents.joined(separator: ",")
     }
 }
