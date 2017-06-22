@@ -6,6 +6,7 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
+import OAuthSwift
 import RxCocoa
 import RxSwift
 import SnapKit
@@ -29,6 +30,7 @@ class LoginViewController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let viewModel: LoginViewModelType
+    fileprivate let oauthswift = TwitterOAuth().oauthswift
     
     init(viewModel: LoginViewModelType) {
         self.viewModel = viewModel
@@ -78,8 +80,9 @@ extension LoginViewController {
     
     fileprivate func subscribeView() {
         loginButton.rx.tap
-            .subscribe(onNext: {
-                LoginViewModel().switchOAuthView.onNext()
+            .subscribe(onNext: { [weak self] in
+                guard let urlHandler = self?.getURLHandler() else { return }
+                self?.viewModel.inputs.transitToOAuthView.onNext(urlHandler)
             })
             .disposed(by: disposeBag)
     }
@@ -89,12 +92,7 @@ extension LoginViewController {
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
                 case .success:
-                    let defaults = UserDefaults.standard
-                    let oauthToken = defaults.string(forKey: "oauth_token")
-                    guard let oauthTokenSecret = defaults.string(forKey: "oauth_token_secret") else { return }
-                    var message = "oauth_token:\(oauthToken))"
-                    message += "\n\noauth_token_secret:\(oauthTokenSecret)"
-                    self?.showAlertView(message: message)
+                    self?.showAlertView()
                     
                 case .failed:
                     break
@@ -109,9 +107,18 @@ extension LoginViewController {
 
 extension LoginViewController {
     
-    func showAlertView(message: String) {
+    func showAlertView() {
+        let message = "Login Success"
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    func getURLHandler() -> OAuthSwiftURLHandlerType {
+        if #available(iOS 10.0, *) {
+            let handler = SafariURLHandler(viewController: self, oauthSwift: oauthswift)
+            return handler
+        }
+        return OAuthSwiftOpenURLExternally.sharedInstance
     }
 }

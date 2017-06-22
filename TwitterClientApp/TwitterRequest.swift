@@ -20,6 +20,7 @@ extension TwitterRequestType {
     }
     
     var headerFields: [String: String] {
-        return  TwitterOAuth().oauthswift.client.credential.makeHeaders(baseURL, method: OAuthSwiftHTTPRequest.Method(rawValue: "POST")!, parameters: [:])
+        let defaults = UserDefaults.standard
+        return defaults.dictionary(forKey: "oauthHeaderFieldString") as! [String : String]
     }
 }
