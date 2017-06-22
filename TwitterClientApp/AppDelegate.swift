@@ -20,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let initialViewController = LoginViewController()
-        window?.rootViewController = initialViewController
+        let loginViewController = LoginViewController(viewModel: LoginViewModel())
+        let navigationController = UINavigationController(rootViewController: loginViewController)
+        window?.rootViewController = navigationController
         
         return true
     }
@@ -49,18 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-
-// MARK: handle callback url
-
 extension AppDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.host == "oauth-callback" {
             OAuthSwift.handle(url: url)
-            return true
         }
-        else {
-            return false
-        }
+        return true
     }
 }
