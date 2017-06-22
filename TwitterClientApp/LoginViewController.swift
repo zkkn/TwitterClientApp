@@ -6,7 +6,8 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
-import OAuthSwift
+import RxCocoa
+import RxSwift
 import SnapKit
 import UIKit
 
@@ -26,11 +27,18 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties -
     
-    var oauthswift: OAuthSwift?
-   
-    fileprivate lazy var consumerData: [String: String] = {
-        return TwitterOAuth().consumerData
-    }()
+    fileprivate let disposeBag = DisposeBag()
+    fileprivate let viewModel: LoginViewModelType
+    
+    init(viewModel: LoginViewModelType) {
+        self.viewModel = viewModel
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 
@@ -41,12 +49,11 @@ extension LoginViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configure()
         setViews()
         setConstraints()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        loginButton.addTarget(self, action: #selector(doOAuthTwitter), for: .touchUpInside)
+        subscribeView()
+        subscribeViewModel()
     }
 }
 
@@ -55,52 +62,45 @@ extension LoginViewController {
 
 extension LoginViewController {
     
-    func setViews() {
+    fileprivate func configure() {
         view.backgroundColor = .white
+    }
+    
+    fileprivate func setViews() {
         view.addSubview(loginButton)
     }
     
-    func setConstraints() {
+    fileprivate func setConstraints() {
         loginButton.snp.makeConstraints { make in
             make.center.equalTo(view)
         }
     }
-}
-
-
-// MARK: - OAuth -
-
-extension LoginViewController {
     
-    func doOAuthTwitter() {
-        let oauthswift = OAuth1Swift(
-            consumerKey:    consumerData["consumerKey"]!,
-            consumerSecret: consumerData["consumerSecret"]!,
-            requestTokenUrl: "https://api.twitter.com/oauth/request_token",
-            authorizeUrl:    "https://api.twitter.com/oauth/authorize",
-            accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
-        )
-        self.oauthswift = oauthswift
-        oauthswift.authorizeURLHandler = getURLHandler()
-        let _ = oauthswift.authorize(
-            withCallbackURL: URL(string: "TwitterClientApp://oauth-callback")!,
-            success: { [weak self] credential, response, parameters in
-                self?.showTokenAlert(credential: credential)
-                let defaults = UserDefaults.standard
-                defaults.setValue(credential.oauthToken, forKey: "oauth_token")
-            },
-            failure: { error in
-                print(error.description)
-        }
-        )
+    fileprivate func subscribeView() {
+        loginButton.rx.tap
+            .subscribe(onNext: {
+                LoginViewModel().switchOAuthView.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
-    func getURLHandler() -> OAuthSwiftURLHandlerType {
-        if #available(iOS 10.0, *) {
-            let handler = SafariURLHandler(viewController: self, oauthSwift: oauthswift!)
-            return handler
-        }
-        return OAuthSwiftOpenURLExternally.sharedInstance
+    fileprivate func subscribeViewModel() {
+        viewModel.outputs.oauthResult
+            .subscribe(onNext: { [weak self] (result) in
+                switch result {
+                case .success:
+                    let defaults = UserDefaults.standard
+                    let oauthToken = defaults.string(forKey: "oauth_token")
+                    guard let oauthTokenSecret = defaults.string(forKey: "oauth_token_secret") else { return }
+                    var message = "oauth_token:\(oauthToken))"
+                    message += "\n\noauth_token_secret:\(oauthTokenSecret)"
+                    self?.showAlertView(message: message)
+                    
+                case .failed:
+                    break
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -108,14 +108,6 @@ extension LoginViewController {
 // MARK: - Show Alert View -
 
 extension LoginViewController {
-    
-    func showTokenAlert(credential: OAuthSwiftCredential) {
-        var message = "oauth_token:\(credential.oauthToken)"
-        if !credential.oauthTokenSecret.isEmpty {
-            message += "\n\noauth_token_secret:\(credential.oauthTokenSecret)"
-        }
-        showAlertView(message: message)
-    }
     
     func showAlertView(message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
