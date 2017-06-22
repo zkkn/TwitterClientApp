@@ -78,8 +78,8 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     
     fileprivate func getURLHandler() -> OAuthSwiftURLHandlerType {
         if #available(iOS 10.0, *) {
-            let loginViewController = LoginViewController(viewModel: self)
-            let navVC = UINavigationController(rootViewController: loginViewController)
+            let loginViewController = LoginViewController(viewModel: self).navigationController
+            let navVC = UINavigationController(rootViewController: loginViewController!)
             let handler = SafariURLHandler(viewController: navVC, oauthSwift: oauthswift)
             return handler
         }
