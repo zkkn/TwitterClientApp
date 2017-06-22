@@ -6,7 +6,6 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
-import Foundation
 import OAuthSwift
 
 class TwitterOAuth {
