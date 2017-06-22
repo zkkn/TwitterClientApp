@@ -6,9 +6,9 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
+import Foundation
 import OAuthSwift
 import RxSwift
-import UIKit
 
 enum OAuthResult {
     case success
@@ -16,7 +16,7 @@ enum OAuthResult {
 }
 
 protocol LoginViewModelInputs {
-    var switchOAuthView: PublishSubject<Void> { get }
+    var transitToOAuthView: PublishSubject<OAuthSwiftURLHandlerType> { get }
 }
 
 protocol LoginViewModelOutputs {
@@ -40,7 +40,7 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     
     // MARK: - Inputs -
     
-    let switchOAuthView = PublishSubject<Void>()
+    let transitToOAuthView = PublishSubject<OAuthSwiftURLHandlerType>()
     
     // MARK: - Outputs -
     
@@ -57,16 +57,13 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     // MARK: - Binds -
     
     fileprivate func setBindings() {
-        switchOAuthView
-            .subscribe(onNext: { [weak self] in
-                guard let urlHandler = self?.getURLHandler() else { return }
+        transitToOAuthView
+            .subscribe(onNext: { [weak self] (urlHandler) in
                 self?.oauthswift.authorizeURLHandler = urlHandler
                 let _ = self?.oauthswift.authorize(
                     withCallbackURL: URL(string: "TwitterClientApp://oauth-callback")!,
                     success: { [weak self] credential, response, parameters in
-                        let defaults = UserDefaults.standard
-                        defaults.set(credential.oauthToken, forKey: "oauth_token")
-                        defaults.set(credential.oauthTokenSecret, forKey: "oauth_token_secret")
+                        self?.saveCredentials(credential)
                         self?.oauthResult.onNext(.success)
                     },
                     failure: { error in
@@ -76,13 +73,12 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
             .disposed(by: disposeBag)
     }
     
-    fileprivate func getURLHandler() -> OAuthSwiftURLHandlerType {
-        if #available(iOS 10.0, *) {
-            let loginViewController = LoginViewController(viewModel: self).navigationController
-            let navVC = UINavigationController(rootViewController: loginViewController!)
-            let handler = SafariURLHandler(viewController: navVC, oauthSwift: oauthswift)
-            return handler
-        }
-        return OAuthSwiftOpenURLExternally.sharedInstance
+    
+    // MARK: - Save Credentials -
+    
+    fileprivate func saveCredentials(_ credential: OAuthSwiftCredential) {
+        let defaults = UserDefaults.standard
+        defaults.set(credential.oauthToken, forKey: "oauth_token")
+        defaults.set(credential.makeHeaders(URL(string: "https://api.twitter.com/1.1")!, method: OAuthSwiftHTTPRequest.Method(rawValue: "POST")!, parameters: [:]), forKey: "oauthHeaderFieldString")
     }
 }
