@@ -12,7 +12,7 @@
 		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
 		C784EE901EF77B3F008657A8 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE911EF77F3B008657A8 /* LoginViewController.swift */; };
-		C78EC7661EF920450051C408 /* BuildAuthorizationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78EC7651EF920450051C408 /* BuildAuthorizationService.swift */; };
+		C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */; };
 		C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */; };
 		C7C879A31EF4EC8700E69DCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C7C879A21EF4EC8700E69DCD /* Assets.xcassets */; };
 		C7C879A61EF4EC8700E69DCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7C879A41EF4EC8700E69DCD /* LaunchScreen.storyboard */; };
@@ -64,7 +64,7 @@
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		C784EE911EF77F3B008657A8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		C78EC7651EF920450051C408 /* BuildAuthorizationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildAuthorizationService.swift; sourceTree = "<group>"; };
+		C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOAuth1SwiftService.swift; sourceTree = "<group>"; };
 		C7C879981EF4EC8700E69DCD /* TwitterClientApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C7C879A21EF4EC8700E69DCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				C7C879A71EF4EC8700E69DCD /* Info.plist */,
 				C7DF94221EFBF3700058DF1B /* View */,
 				C7DF94211EFBF3680058DF1B /* ViewModel */,
-				C7DF941F1EFBF3460058DF1B /*  DataStore */,
+				C7DF941F1EFBF3460058DF1B /* DataStore */,
 				C7DF94201EFBF35C0058DF1B /* Service */,
 				C7C879CB1EF4F7D300E69DCD /* Frameworks */,
 			);
@@ -152,19 +152,19 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		C7DF941F1EFBF3460058DF1B /*  DataStore */ = {
+		C7DF941F1EFBF3460058DF1B /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
 				C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */,
 				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
 			);
-			name = " DataStore";
+			name = DataStore;
 			sourceTree = "<group>";
 		};
 		C7DF94201EFBF35C0058DF1B /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C78EC7651EF920450051C408 /* BuildAuthorizationService.swift */,
+				C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -288,7 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
-				C78EC7661EF920450051C408 /* BuildAuthorizationService.swift in Sources */,
+				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
 				C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */,
 				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
