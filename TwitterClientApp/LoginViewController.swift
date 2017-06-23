@@ -83,9 +83,10 @@ extension LoginViewController {
     fileprivate func subscribeView() {
         loginButton.rx.tap
             .subscribe(onNext: { [weak self] in
+                guard let _ = self else { return }
                 let urlHandler = { [weak self] Void -> OAuthSwiftURLHandlerType in
                     if #available(iOS 9.0, *) {
-                        let handler = SafariURLHandler(viewController: self!, oauthSwift: BuildAuthorizationService().oauthswift)
+                        let handler = SafariURLHandler(viewController: self!, oauthSwift: BuildOAuth1SwiftService.oauthswift)
                         return handler
                     }
                     return OAuthSwiftOpenURLExternally.sharedInstance

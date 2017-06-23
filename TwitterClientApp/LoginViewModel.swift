@@ -35,7 +35,7 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     var inputs: LoginViewModelInputs { return self }
     var outputs: LoginViewModelOutputs { return self }
     fileprivate let disposeBag = DisposeBag()
-    fileprivate let oauthswift = BuildAuthorizationService().oauthswift
+    fileprivate let oauthswift = BuildOAuth1SwiftService.oauthswift
     
     
     // MARK: - Inputs -

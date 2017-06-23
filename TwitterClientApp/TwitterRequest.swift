@@ -8,7 +8,6 @@
 
 import APIKit
 import Foundation
-import OAuthSwift
 
 protocol TwitterRequestType: Request {
 }
