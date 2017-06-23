@@ -83,14 +83,13 @@ extension LoginViewController {
         loginButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let _ = self else { return }
-                let urlHandler = { [weak self] Void -> OAuthSwiftURLHandlerType in
-                    if #available(iOS 9.0, *) {
-                        let handler = SafariURLHandler(viewController: self!, oauthSwift: BuildOAuth1SwiftService.oauthswift)
-                        return handler
-                    }
-                    return OAuthSwiftOpenURLExternally.sharedInstance
-                    }()
-                self?.viewModel.inputs.authorizeByTwitter.onNext(urlHandler)
+                let URLHandler: OAuthSwiftURLHandlerType
+                if #available(iOS 9.0, *) {
+                    URLHandler = SafariURLHandler(viewController: self!, oauthSwift: BuildOAuth1SwiftService.oauthswift)
+                } else {
+                    URLHandler = OAuthSwiftOpenURLExternally.sharedInstance
+                }
+                self?.viewModel.inputs.authorizeByTwitter.onNext(URLHandler)
             })
             .disposed(by: disposeBag)
     }
