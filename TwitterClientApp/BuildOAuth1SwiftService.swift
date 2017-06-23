@@ -8,7 +8,7 @@
 
 import OAuthSwift
 
-class BuildOAuth1SwiftService {
+struct BuildOAuth1SwiftService {
     
     static var oauthswift = OAuth1Swift(
         consumerKey: "Q8Zwi892fPBvAWLIxYP1YtlTQ",
