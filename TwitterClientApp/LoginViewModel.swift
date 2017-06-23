@@ -16,7 +16,7 @@ enum OAuthResult {
 }
 
 protocol LoginViewModelInputs {
-    var authorizeUser: PublishSubject<OAuthSwiftURLHandlerType> { get }
+    var authorizeByTwitter: PublishSubject<OAuthSwiftURLHandlerType> { get }
 }
 
 protocol LoginViewModelOutputs {
@@ -40,7 +40,7 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     
     // MARK: - Inputs -
     
-    let authorizeUser = PublishSubject<OAuthSwiftURLHandlerType>()
+    let authorizeByTwitter = PublishSubject<OAuthSwiftURLHandlerType>()
     
     
     // MARK: - Outputs -
@@ -58,7 +58,7 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     // MARK: - Binds -
     
     fileprivate func setBindings() {
-        authorizeUser
+        authorizeByTwitter
             .subscribe(onNext: { [weak self] (urlHandler) in
                 self?.oauthswift.authorizeURLHandler = urlHandler
                 _ = self?.oauthswift.authorize(
