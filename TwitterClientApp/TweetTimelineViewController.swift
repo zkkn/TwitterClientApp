@@ -9,7 +9,7 @@
 import SnapKit
 import UIKit
 
-class TweetTimelineViewController: UIViewController {
+final class TweetTimelineViewController: UIViewController {
     
     // MARK: - Views -
     

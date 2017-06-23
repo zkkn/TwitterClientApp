@@ -12,7 +12,7 @@ import RxSwift
 import SnapKit
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     // MARK: - Views -
     
