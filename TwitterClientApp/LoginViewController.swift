@@ -30,7 +30,9 @@ class LoginViewController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let viewModel: LoginViewModelType
-    fileprivate let oauthswift = TwitterOAuth().oauthswift
+    
+    
+    // MARK: - Initializaer -
     
     init(viewModel: LoginViewModelType) {
         self.viewModel = viewModel
@@ -81,8 +83,14 @@ extension LoginViewController {
     fileprivate func subscribeView() {
         loginButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                guard let urlHandler = self?.getURLHandler() else { return }
-                self?.viewModel.inputs.transitToOAuthView.onNext(urlHandler)
+                let urlHandler = { [weak self] Void -> OAuthSwiftURLHandlerType in
+                    if #available(iOS 9.0, *) {
+                        let handler = SafariURLHandler(viewController: self!, oauthSwift: BuildAuthorizationService().oauthswift)
+                        return handler
+                    }
+                    return OAuthSwiftOpenURLExternally.sharedInstance
+                    }()
+                self?.viewModel.inputs.authorizeUser.onNext(urlHandler)
             })
             .disposed(by: disposeBag)
     }
@@ -92,33 +100,16 @@ extension LoginViewController {
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
                 case .success:
-                    self?.showAlertView()
+                    let alert = UIAlertController(title: "Login Result", message: "Login Success", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                     
                 case .failed:
-                    break
+                    let alert = UIAlertController(title: "Login Result", message: "Login Failed", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
+                    self?.present(alert, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)
-    }
-}
-
-
-// MARK: - Show Alert View -
-
-extension LoginViewController {
-    
-    func showAlertView() {
-        let message = "Login Success"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-    func getURLHandler() -> OAuthSwiftURLHandlerType {
-        if #available(iOS 10.0, *) {
-            let handler = SafariURLHandler(viewController: self, oauthSwift: oauthswift)
-            return handler
-        }
-        return OAuthSwiftOpenURLExternally.sharedInstance
     }
 }

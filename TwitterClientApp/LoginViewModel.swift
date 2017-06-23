@@ -16,7 +16,7 @@ enum OAuthResult {
 }
 
 protocol LoginViewModelInputs {
-    var transitToOAuthView: PublishSubject<OAuthSwiftURLHandlerType> { get }
+    var authorizeUser: PublishSubject<OAuthSwiftURLHandlerType> { get }
 }
 
 protocol LoginViewModelOutputs {
@@ -35,12 +35,13 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     var inputs: LoginViewModelInputs { return self }
     var outputs: LoginViewModelOutputs { return self }
     fileprivate let disposeBag = DisposeBag()
-    fileprivate let oauthswift = TwitterOAuth().oauthswift
+    fileprivate let oauthswift = BuildAuthorizationService().oauthswift
     
     
     // MARK: - Inputs -
     
-    let transitToOAuthView = PublishSubject<OAuthSwiftURLHandlerType>()
+    let authorizeUser = PublishSubject<OAuthSwiftURLHandlerType>()
+    
     
     // MARK: - Outputs -
     
@@ -57,10 +58,10 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     // MARK: - Binds -
     
     fileprivate func setBindings() {
-        transitToOAuthView
+        authorizeUser
             .subscribe(onNext: { [weak self] (urlHandler) in
                 self?.oauthswift.authorizeURLHandler = urlHandler
-                let _ = self?.oauthswift.authorize(
+                _ = self?.oauthswift.authorize(
                     withCallbackURL: URL(string: "TwitterClientApp://oauth-callback")!,
                     success: { [weak self] credential, response, parameters in
                         self?.saveCredentials(credential)
