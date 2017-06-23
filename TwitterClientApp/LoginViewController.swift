@@ -21,7 +21,6 @@ class LoginViewController: UIViewController {
         button.setTitle("Twitter OAuth", for: .normal)
         button.setTitleColor(UIColor.blue, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        
         return button
     }()
     

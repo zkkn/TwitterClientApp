@@ -42,7 +42,6 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
     
     let authorizeByTwitter = PublishSubject<OAuthSwiftURLHandlerType>()
     
-    
     // MARK: - Outputs -
     
     let oauthResult = PublishSubject<OAuthResult>()
