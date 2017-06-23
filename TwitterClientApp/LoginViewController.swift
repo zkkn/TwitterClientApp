@@ -91,7 +91,7 @@ extension LoginViewController {
                     }
                     return OAuthSwiftOpenURLExternally.sharedInstance
                     }()
-                self?.viewModel.inputs.authorizeUser.onNext(urlHandler)
+                self?.viewModel.inputs.authorizeByTwitter.onNext(urlHandler)
             })
             .disposed(by: disposeBag)
     }
