@@ -111,6 +111,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7036CD41EFE73AC00DBC7A1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */,
+				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
+				C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */,
+				C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
 		C737A6041EFE40CD004CF23B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,10 +185,7 @@
 		C7DF941F1EFBF3460058DF1B /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
-				C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */,
-				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
-				C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */,
-				C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */,
+				C7036CD41EFE73AC00DBC7A1 /* API */,
 			);
 			name = DataStore;
 			sourceTree = "<group>";
