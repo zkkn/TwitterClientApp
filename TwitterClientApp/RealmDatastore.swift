@@ -18,7 +18,6 @@ enum DatastoreError: Error {
 protocol RealmDatastore {
     associatedtype TargetObject
     func map(json: NSDictionary, to object: TargetObject, resetRelations: Bool) throws -> TargetObject
-    
     func createOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool) -> TargetObject?
 }
 
