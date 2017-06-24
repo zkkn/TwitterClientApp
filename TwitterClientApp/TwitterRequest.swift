@@ -8,7 +8,6 @@
 
 import APIKit
 import Foundation
-import RxSwift
 
 protocol TwitterRequestType: Request {
 }
