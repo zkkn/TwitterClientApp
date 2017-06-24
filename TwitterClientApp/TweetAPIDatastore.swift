@@ -11,7 +11,7 @@ import Foundation
 import RxSwift
 
 protocol TweetAPIDatastoreType {
-    func getTweets(requestTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
+    func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
         -> Observable<[String: Any]>
 }
 
@@ -19,19 +19,23 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     
     init() {}
     
-    func getTweets(requestTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
+    func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
         -> Observable<[String : Any]> {
-        return TweetRequest
-            .GetTweets(requestTweets: requestTweets, sinceID: sinceID, maxID: maxID)
+            return TweetRequest
+                .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID)
+                .send()
     }
 }
 
 fileprivate struct TweetRequest {
     
     fileprivate struct GetTweets: TwitterRequestType {
-        typealias Response = [String:Any]
         
-        let requestTweets: Int
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [String:Any] {
+            return object as! [String : Any]
+        }
+        
+        let requestNumberOfTweets: Int
         let sinceID: Int?
         let maxID: Int?
         let trimUser = false
@@ -43,7 +47,7 @@ fileprivate struct TweetRequest {
         
         var parameters: Any? {
             var params: [String: Any] = [
-                "count": requestTweets,
+                "count": requestNumberOfTweets,
                 "trim_user": trimUser,
                 "exclude_replies": excludeReplies,
                 "include_entities": includeEntities
@@ -54,7 +58,7 @@ fileprivate struct TweetRequest {
             if let maxID = maxID {
                 params["max_id"] = maxID
             }
-            return params as Any?
+            return params
         }
     }
 }

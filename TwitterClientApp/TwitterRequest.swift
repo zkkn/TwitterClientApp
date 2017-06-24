@@ -8,6 +8,9 @@
 
 import APIKit
 import Foundation
+import Result
+import RxSwift
+import UIKit
 
 protocol TwitterRequestType: Request {
 }
@@ -26,11 +29,17 @@ extension TwitterRequestType {
 
 extension TwitterRequestType {
     
-    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
-        guard let response = object as? Self.Response else {
-            throw ResponseError.unexpectedObject(object)
-        }
+
+    
+    func send() -> Observable<Self.Response> {
+        return Session.rx.sendRequest(request: self)
+    }
+    
+    func sendRequest(handler: @escaping (Result<Response, SessionTaskError>) -> Void) -> SessionTask? {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        return response
+        return Session.send(self, handler: { result in
+            handler(result)
+        })
     }
 }
