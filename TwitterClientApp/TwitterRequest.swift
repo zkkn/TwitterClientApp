@@ -8,6 +8,7 @@
 
 import APIKit
 import Foundation
+import RxSwift
 
 protocol TwitterRequestType: Request {
 }
@@ -21,5 +22,16 @@ extension TwitterRequestType {
     var headerFields: [String: String] {
         let defaults = UserDefaults.standard
         return defaults.dictionary(forKey: "oauthHeaderFieldString") as! [String : String]
+    }
+}
+
+extension TwitterRequestType {
+    
+    func response(from object: Any, urlResponse: HTTPURLResponse) throws -> Self.Response {
+        guard let response = object as? Self.Response else {
+            throw ResponseError.unexpectedObject(object)
+        }
+        
+        return response
     }
 }
