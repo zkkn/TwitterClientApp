@@ -12,7 +12,6 @@ import RxSwift
 
 protocol TweetAPIDatastoreType {
     func getTweets(requestTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool) -> Observable<[String: Any]>
-    
 }
 
 struct TweetAPIDatastore: TweetAPIDatastoreType {
