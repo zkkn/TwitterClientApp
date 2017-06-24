@@ -11,7 +11,7 @@ import Foundation
 import RxSwift
 
 protocol TweetAPIDatastoreType {
-    func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
+    static func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
         -> Observable<[String: Any]>
 }
 
@@ -19,7 +19,7 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     
     init() {}
     
-    func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
+    static func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
         -> Observable<[String: Any]> {
             return TweetRequest
                 .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID)
@@ -30,10 +30,6 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
 fileprivate struct TweetRequest {
     
     fileprivate struct GetTweets: TwitterRequestType {
-        
-        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [String: Any] {
-            return object as! [String: Any]
-        }
         
         let requestNumberOfTweets: Int
         let sinceID: Int?
@@ -59,6 +55,10 @@ fileprivate struct TweetRequest {
                 params["max_id"] = maxID
             }
             return params
+        }
+        
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [String: Any] {
+            return object as! [String: Any]
         }
     }
 }

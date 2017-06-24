@@ -13,7 +13,7 @@ extension Session: ReactiveCompatible {}
 
 extension Reactive where Base: Session {
     
-    public func sendRequest<T: Request>(request: T) -> Observable<T.Response> {
+    func sendRequest<T: Request>(request: T) -> Observable<T.Response> {
         return Observable.create { observer in
             let task = self.base.send(request) { result in
                 switch result {
@@ -31,7 +31,7 @@ extension Reactive where Base: Session {
         }
     }
     
-    public static func sendRequest<T: Request>(request: T) -> Observable<T.Response> {
+    static func sendRequest<T: Request>(request: T) -> Observable<T.Response> {
         return Session.shared.rx.sendRequest(request: request)
     }
 }
