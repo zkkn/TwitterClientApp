@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6001EFDFA91004CF23B /* Tweet.swift */; };
+		C737A6031EFE1F47004CF23B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6021EFE1F47004CF23B /* User.swift */; };
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
 		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
@@ -60,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C737A6001EFDFA91004CF23B /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
+		C737A6021EFE1F47004CF23B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 		C7C8798F1EF4EC8700E69DCD = {
 			isa = PBXGroup;
 			children = (
+				C737A6001EFDFA91004CF23B /* Tweet.swift */,
+				C737A6021EFE1F47004CF23B /* User.swift */,
 				C7C8799A1EF4EC8700E69DCD /* TwitterClientApp */,
 				C7C879991EF4EC8700E69DCD /* Products */,
 			);
@@ -290,10 +296,12 @@
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
 				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
 				C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */,
+				C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */,
 				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
+				C737A6031EFE1F47004CF23B /* User.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
