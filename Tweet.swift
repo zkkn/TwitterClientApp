@@ -9,23 +9,23 @@
 import Foundation
 import RealmSwift
 
-public final class Tweet : Object {
+final class Tweet: Object {
     
     // MARK: - Properties -
     
-    public dynamic var id = 0
-    public dynamic var createdAt = ""
-    public dynamic var twitterTweetID = 0
-    public dynamic var twitterTweetIDStr = ""
-    public dynamic var text = ""
-    public dynamic var source = ""
-    public dynamic var favoriteCount = 0
-    public dynamic var favorited = false
-    public dynamic var lang = ""
-    public let user = List<User>()
+    dynamic var id = 0
+    dynamic var createdAt = ""
+    dynamic var twitterTweetID = 0
+    dynamic var twitterTweetIDStr = ""
+    dynamic var text = ""
+    dynamic var source = ""
+    dynamic var favoriteCount = 0
+    dynamic var favorited = false
+    dynamic var lang = ""
+    let user = List<User>()
     
     
     // MARK - Configuration -
     
-    public override static func primaryKey() -> String? { return "id" }
+    override static func primaryKey() -> String? { return "id" }
 }
