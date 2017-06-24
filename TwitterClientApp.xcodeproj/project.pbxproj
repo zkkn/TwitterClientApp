@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7036CD31EFE725700DBC7A1 /* Session+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */; };
 		C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6001EFDFA91004CF23B /* Tweet.swift */; };
 		C737A6031EFE1F47004CF23B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6021EFE1F47004CF23B /* User.swift */; };
+		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
 		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
@@ -62,8 +64,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Rx.swift"; sourceTree = "<group>"; };
 		C737A6001EFDFA91004CF23B /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C737A6021EFE1F47004CF23B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
@@ -107,11 +111,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C7C8798F1EF4EC8700E69DCD = {
+		C7036CD41EFE73AC00DBC7A1 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */,
+				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
+				C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */,
+				C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		C737A6041EFE40CD004CF23B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				C737A6001EFDFA91004CF23B /* Tweet.swift */,
 				C737A6021EFE1F47004CF23B /* User.swift */,
+			);
+			name = Entities;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		C7C8798F1EF4EC8700E69DCD = {
+			isa = PBXGroup;
+			children = (
 				C7C8799A1EF4EC8700E69DCD /* TwitterClientApp */,
 				C7C879991EF4EC8700E69DCD /* Products */,
 			);
@@ -136,6 +159,7 @@
 				C7DF94211EFBF3680058DF1B /* ViewModel */,
 				C7DF941F1EFBF3460058DF1B /* DataStore */,
 				C7DF94201EFBF35C0058DF1B /* Service */,
+				C737A6041EFE40CD004CF23B /* Entities */,
 				C7C879CB1EF4F7D300E69DCD /* Frameworks */,
 			);
 			path = TwitterClientApp;
@@ -161,8 +185,7 @@
 		C7DF941F1EFBF3460058DF1B /* DataStore */ = {
 			isa = PBXGroup;
 			children = (
-				C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */,
-				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
+				C7036CD41EFE73AC00DBC7A1 /* API */,
 			);
 			name = DataStore;
 			sourceTree = "<group>";
@@ -293,12 +316,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7036CD31EFE725700DBC7A1 /* Session+Rx.swift in Sources */,
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
 				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
 				C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */,
 				C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */,
 				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
+				C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */,
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
 				C737A6031EFE1F47004CF23B /* User.swift in Sources */,
