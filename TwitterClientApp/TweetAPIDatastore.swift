@@ -20,7 +20,7 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     init() {}
     
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
-        -> Observable<[String : Any]> {
+        -> Observable<[String: Any]> {
             return TweetRequest
                 .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID)
                 .send()
@@ -31,8 +31,8 @@ fileprivate struct TweetRequest {
     
     fileprivate struct GetTweets: TwitterRequestType {
         
-        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [String:Any] {
-            return object as! [String : Any]
+        func response(from object: Any, urlResponse: HTTPURLResponse) throws -> [String: Any] {
+            return object as! [String: Any]
         }
         
         let requestNumberOfTweets: Int
