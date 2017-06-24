@@ -29,8 +29,6 @@ extension TwitterRequestType {
 
 extension TwitterRequestType {
     
-
-    
     func send() -> Observable<Self.Response> {
         return Session.rx.sendRequest(request: self)
     }
