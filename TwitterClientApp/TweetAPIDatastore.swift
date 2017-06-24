@@ -17,8 +17,6 @@ protocol TweetAPIDatastoreType {
 
 struct TweetAPIDatastore: TweetAPIDatastoreType {
     
-    init() {}
-    
     static func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
         -> Observable<[String: Any]> {
             return TweetRequest
