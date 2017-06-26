@@ -9,7 +9,11 @@
 import Foundation
 import Mapper
 
-struct UserRealmDatastore: RealmDatastore {
+protocol UserDatabaseDatastoreType {
+    func createOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool) -> User?
+}
+
+struct UserRealmDatastore: RealmDatastore, UserDatabaseDatastoreType {
     
     typealias TargetObject = User
     
