@@ -8,6 +8,7 @@
 
 import Foundation
 import Mapper
+import RealmSwift
 
 protocol TweetDatabaseDatastoreType {
     func createOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool)
@@ -23,11 +24,17 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         try object.createdAt = map.from("created_at")
         try object.favoriteCount = map.from("favorite_count")
         try object.favorited = map.from("favorited")
-        try object.lang = map.from("lang")
         try object.source = map.from("source")
         try object.text = map.from("text")
         try object.twitterTweetID = map.from("id")
-        try object.twitterTweetIDStr = map.from("id_str")
+        
+        if let userID = (json["user"] as? NSDictionary)?["id"] as? Int {
+            let realm = try! Realm()
+            object.user = realm.objects(User.self).filter("id = \(userID)").first
+        }
+        else {
+            object.user = nil
+        }
         
         return object
     }
