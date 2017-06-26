@@ -16,13 +16,22 @@ final class Tweet: Object {
     dynamic var id = 0
     dynamic var createdAt = ""
     dynamic var twitterTweetID = 0
-    dynamic var twitterTweetIDStr = ""
     dynamic var text = ""
     dynamic var source = ""
     dynamic var favoriteCount = 0
     dynamic var favorited = false
-    dynamic var lang = ""
-    let user = List<User>()
+    dynamic var user: User?
+    
+    convenience init?(userID: Int) {
+        self.init()
+       
+        let realm = try! Realm()
+        
+        if
+            let user = realm.object(ofType: User.self, forPrimaryKey: userID) {
+            self.user = user
+        }
+    }
     
     
     // MARK - Configuration -
