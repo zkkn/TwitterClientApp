@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C7036CD31EFE725700DBC7A1 /* Session+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */; };
+		C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */; };
 		C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6001EFDFA91004CF23B /* Tweet.swift */; };
 		C737A6031EFE1F47004CF23B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6021EFE1F47004CF23B /* User.swift */; };
 		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Rx.swift"; sourceTree = "<group>"; };
+		C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDatastore.swift; sourceTree = "<group>"; };
 		C737A6001EFDFA91004CF23B /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C737A6021EFE1F47004CF23B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 				C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		C7036CDE1EFE9D4600DBC7A1 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 		C737A6041EFE40CD004CF23B /* Entities */ = {
@@ -186,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				C7036CD41EFE73AC00DBC7A1 /* API */,
+				C7036CDE1EFE9D4600DBC7A1 /* Database */,
 			);
 			name = DataStore;
 			sourceTree = "<group>";
@@ -325,6 +336,7 @@
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
 				C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */,
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
+				C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
 				C737A6031EFE1F47004CF23B /* User.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */,
