@@ -8,7 +8,6 @@
 
 import Foundation
 import Mapper
-import RealmSwift
 
 struct UserRealmDatastore: RealmDatastore {
     
