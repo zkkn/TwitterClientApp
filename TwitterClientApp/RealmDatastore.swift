@@ -95,3 +95,13 @@ extension RealmDatastore where TargetObject: Object {
         return object
     }
 }
+
+
+import RealmSwift
+
+extension Object {
+    
+    class var primaryJsonKey: String? {
+        return self.primaryKey()
+    }
+}
