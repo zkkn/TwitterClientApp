@@ -9,7 +9,10 @@
 import Foundation
 import Mapper
 
-struct UserRealmDatastore: RealmDatastore {
+protocol UserDatabaseDatastoreType {
+}
+
+struct UserRealmDatastore: RealmDatastore, UserDatabaseDatastoreType {
     
     typealias TargetObject = User
     
@@ -21,7 +24,6 @@ struct UserRealmDatastore: RealmDatastore {
         try object.screenName = map.from("screen_name")
         try object.profileImageURL = map.from("profile_image_url")
         try object.profileImageURLHTTPS = map.from("profile_image_url_https")
-        
         return object
     }
 }

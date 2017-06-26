@@ -42,6 +42,7 @@
 		C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */; };
 		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
 		C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */; };
+		C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35C1F01058E00F105AD /* UserRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -95,6 +96,7 @@
 		C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
 		C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealmDatastore.swift; sourceTree = "<group>"; };
+		C7E6D35C1F01058E00F105AD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				C7DF94201EFBF35C0058DF1B /* Service */,
 				C737A6041EFE40CD004CF23B /* Entities */,
 				C7C879CB1EF4F7D300E69DCD /* Frameworks */,
+				C7E6D35E1F0105CB00F105AD /* Repository */,
 			);
 			path = TwitterClientApp;
 			sourceTree = "<group>";
@@ -231,6 +234,14 @@
 				C784EE911EF77F3B008657A8 /* LoginViewController.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		C7E6D35E1F0105CB00F105AD /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C7E6D35C1F01058E00F105AD /* UserRepository.swift */,
+			);
+			name = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +358,7 @@
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
 				C737A6031EFE1F47004CF23B /* User.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */,
+				C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */,
 				C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
