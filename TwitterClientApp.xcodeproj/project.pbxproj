@@ -41,6 +41,7 @@
 		C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879D01EF517FD00E69DCD /* TweetCell.swift */; };
 		C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */; };
 		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
+		C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +94,7 @@
 		C7C879D01EF517FD00E69DCD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
+		C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealmDatastore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */,
+				C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */,
 				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
+				C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */,
 				C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */,
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */,
