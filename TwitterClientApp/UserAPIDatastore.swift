@@ -11,8 +11,7 @@ import Foundation
 import RxSwift
 
 protocol UserAPIDatastoreType {
-    static func getUsers(userID: Int, screenName: Int, includeEntities: Bool)
-        -> Observable<[String: Any]>
+    static func getUsers(userID: Int, screenName: Int, includeEntities: Bool) -> Observable<[String: Any]>
 }
 
 struct UserAPIDatastore: UserAPIDatastoreType {
