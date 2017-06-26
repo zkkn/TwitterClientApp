@@ -40,6 +40,7 @@
 		C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */; };
 		C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879D01EF517FD00E69DCD /* TweetCell.swift */; };
 		C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */; };
+		C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,6 +92,7 @@
 		C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTimelineViewController.swift; sourceTree = "<group>"; };
 		C7C879D01EF517FD00E69DCD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */,
+				C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7036CD31EFE725700DBC7A1 /* Session+Rx.swift in Sources */,
+				C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */,
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
 				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
 				C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */,
