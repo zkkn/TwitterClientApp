@@ -14,8 +14,8 @@ protocol TweetDatabaseDatastoreType {
         -> Tweet?
     
     func bulkCreateOrUpdate(json: Any?,
-    resetRelations: Bool,
-    inTransaction: Bool) -> Array<Tweet>?
+                            resetRelations: Bool,
+                            inTransaction: Bool) -> Array<Tweet>?
 }
 
 struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
@@ -32,7 +32,9 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         try object.twitterTweetID = map.from("id")
         
         object.user = UserRealmDatastore()
-        .createOrUpdate(json: json["user"], resetRelations: resetRelations, inTransaction: true)
+            .createOrUpdate(
+                json: json["user"], resetRelations: resetRelations, inTransaction: true 
+        )
         return object
     }
 }
