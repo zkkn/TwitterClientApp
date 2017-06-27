@@ -28,13 +28,8 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         try object.text = map.from("text")
         try object.twitterTweetID = map.from("id")
         
-        if let userID = (json["user"] as? NSDictionary)?["id"] as? Int {
-            let realm = try! Realm()
-            object.user = realm.objects(User.self).filter("id = \(userID)").first
-        }
-        else {
-            object.user = nil
-        }
+        object.user = UserRealmDatastore()
+        .createOrUpdate(json: json["user"], resetRelations: resetRelations, inTransaction: true)
         
         return object
     }
