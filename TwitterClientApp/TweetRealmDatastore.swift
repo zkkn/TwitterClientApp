@@ -8,7 +8,6 @@
 
 import Foundation
 import Mapper
-import RealmSwift
 
 protocol TweetDatabaseDatastoreType {
     func createOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool)
@@ -30,7 +29,6 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         
         object.user = UserRealmDatastore()
         .createOrUpdate(json: json["user"], resetRelations: resetRelations, inTransaction: true)
-        
         return object
     }
 }
