@@ -12,6 +12,10 @@ import Mapper
 protocol TweetDatabaseDatastoreType {
     func createOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool)
         -> Tweet?
+    
+    func bulkCreateOrUpdate(json: Any?,
+    resetRelations: Bool,
+    inTransaction: Bool) -> Array<Tweet>?
 }
 
 struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
