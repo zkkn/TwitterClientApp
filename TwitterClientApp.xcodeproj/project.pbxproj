@@ -12,6 +12,7 @@
 		C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6001EFDFA91004CF23B /* Tweet.swift */; };
 		C737A6031EFE1F47004CF23B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6021EFE1F47004CF23B /* User.swift */; };
 		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
+		C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */; };
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
 		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
@@ -73,6 +74,7 @@
 		C737A6001EFDFA91004CF23B /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C737A6021EFE1F47004CF23B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
+		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */,
+				C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */,
 				C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */,
 			);
 			name = Database;
@@ -352,6 +355,7 @@
 				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
 				C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */,
+				C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */,
 				C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */,
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */,
