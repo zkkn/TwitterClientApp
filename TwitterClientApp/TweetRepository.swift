@@ -12,7 +12,7 @@ import RxSwift
 
 protocol TweetRepositoryType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
-        -> Observable<Array<Tweet>>
+        -> Observable<[Tweet]>
 }
 
 struct TweetRepository: TweetRepositoryType {
@@ -26,7 +26,7 @@ struct TweetRepository: TweetRepositoryType {
     }
     
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
-        -> Observable<Array<Tweet>> {
+        -> Observable<[Tweet]> {
             return apiDatastore
                 .getTweets(
                     requestNumberOfTweets: requestNumberOfTweets,
@@ -36,16 +36,16 @@ struct TweetRepository: TweetRepositoryType {
                     excludeReplies: excludeReplies,
                     includeEntities: includeEntities
                 )
-                .map({ (json) in Array<Tweet>()
-                    guard let tweets = self.databaseDatastore
+                .map({ (json) in
+                    let tweets = self.databaseDatastore
                         .bulkCreateOrUpdate(json: json, resetRelations: true,
                                             inTransaction: false
-                        ) else { return }
+                        ) 
                     
                     try! Realm().write {
                         // ここでとってきたtweetとselfinfoのtimelineを紐づける処理をかけば良いのだろうか
                     }
-                    return tweets
+                    return tweets!
                 })
     }
     

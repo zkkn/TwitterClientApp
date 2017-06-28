@@ -23,8 +23,8 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
     
     typealias TargetObject = Tweet
     
-    func map(json: NSDictionary, to object: TargetObject, resetRelations: Bool) throws -> TargetObject {
-        let map = Mapper(JSON: json)
+    func map(json: [String: Any], to object: TargetObject, resetRelations: Bool) throws -> TargetObject {
+        let map = Mapper(JSON: json as NSDictionary)
         try object.createdAt = map.from("created_at")
         try object.favoriteCount = map.from("favorite_count")
         try object.favorited = map.from("favorited")
