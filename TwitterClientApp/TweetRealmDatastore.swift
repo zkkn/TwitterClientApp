@@ -15,7 +15,7 @@ protocol TweetDatabaseDatastoreType {
     
     func bulkCreateOrUpdate(json: Any?,
                             resetRelations: Bool,
-                            inTransaction: Bool) -> Array<Tweet>?
+                            inTransaction: Bool) -> [Tweet]?
 }
 
 struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
