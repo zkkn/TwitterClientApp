@@ -13,6 +13,7 @@
 		C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B38FC1F048D8100E2313C /* RepositoryError.swift */; };
 		C73B38FF1F04918900E2313C /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B38FE1F04918900E2313C /* Tweet.swift */; };
 		C73B39011F04919E00E2313C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39001F04919E00E2313C /* User.swift */; };
+		C73B39031F04DF2500E2313C /* SelfInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39021F04DF2500E2313C /* SelfInfo.swift */; };
 		C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */; };
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
@@ -77,6 +78,7 @@
 		C73B38FC1F048D8100E2313C /* RepositoryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		C73B38FE1F04918900E2313C /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = TwitterClientApp/Tweet.swift; sourceTree = "<group>"; };
 		C73B39001F04919E00E2313C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = TwitterClientApp/User.swift; sourceTree = "<group>"; };
+		C73B39021F04DF2500E2313C /* SelfInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfInfo.swift; sourceTree = "<group>"; };
 		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 		C7C8798F1EF4EC8700E69DCD = {
 			isa = PBXGroup;
 			children = (
+				C73B39021F04DF2500E2313C /* SelfInfo.swift */,
 				C7C8799A1EF4EC8700E69DCD /* TwitterClientApp */,
 				C7C879991EF4EC8700E69DCD /* Products */,
 			);
@@ -364,6 +367,7 @@
 				C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */,
 				C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */,
 				C73B38FF1F04918900E2313C /* Tweet.swift in Sources */,
+				C73B39031F04DF2500E2313C /* SelfInfo.swift in Sources */,
 				C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */,
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */,
