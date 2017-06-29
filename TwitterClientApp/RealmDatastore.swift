@@ -17,8 +17,9 @@ enum DatastoreError: Error {
 
 protocol RealmDatastore {
     associatedtype TargetObject
-    func map(json: NSDictionary, to object: TargetObject, resetRelations: Bool) throws -> TargetObject
+    func map(json: [String: Any], to object: TargetObject, resetRelations: Bool) throws -> TargetObject
     func createOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool) -> TargetObject?
+    func bulkCreateOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool) -> [TargetObject]?
 }
 
 extension RealmDatastore where TargetObject: Object {
@@ -28,7 +29,7 @@ extension RealmDatastore where TargetObject: Object {
     func createOrUpdate(json: Any?,
                         resetRelations: Bool = false,
                         inTransaction: Bool = false) -> TargetObject? {
-        guard let json = json as? NSDictionary else {
+        guard let json = json as? [String: Any] else {
             return nil
         }
         
@@ -38,7 +39,37 @@ extension RealmDatastore where TargetObject: Object {
             inTransaction: inTransaction)
     }
     
-    func findOrCreate(from json: NSDictionary) -> TargetObject? {
+    func bulkCreateOrUpdate(json: Any?,
+                            resetRelations: Bool = false,
+                            inTransaction: Bool = false) -> Array<TargetObject>? {
+        guard let objectsJson = json as? [[String: Any]] else {
+            return nil
+        }
+        
+        if inTransaction {
+            return objectsJson.flatMap { objectJson -> TargetObject? in
+                return deserialize(
+                    json: objectJson,
+                    resetRelations: resetRelations,
+                    inTransaction: true)
+            }
+        }
+        else {
+            var objects = [TargetObject]()
+            try! Realm().write { (_) in
+                objects = objectsJson.flatMap { objectJson -> TargetObject? in
+                    return deserialize(
+                        json: objectJson,
+                        resetRelations: resetRelations,
+                        inTransaction: true)
+                }
+            }
+            
+            return objects
+        }
+    }
+    
+    func findOrCreate(from json: [String: Any]) -> TargetObject? {
         let realm = try! Realm()
         guard
             let primaryKey = TargetObject.primaryKey(),
@@ -65,7 +96,7 @@ extension RealmDatastore where TargetObject: Object {
     
     // MARK: - Deserialize -
     
-    private func deserialize(json: NSDictionary,
+    private func deserialize(json: [String: Any],
                              resetRelations: Bool,
                              inTransaction: Bool) -> TargetObject? {
         

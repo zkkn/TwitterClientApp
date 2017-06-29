@@ -16,13 +16,11 @@ final class Tweet: Object {
     dynamic var id = 0
     dynamic var createdAt = ""
     dynamic var twitterTweetID = 0
-    dynamic var twitterTweetIDStr = ""
     dynamic var text = ""
     dynamic var source = ""
     dynamic var favoriteCount = 0
     dynamic var favorited = false
-    dynamic var lang = ""
-    let user = List<User>()
+    dynamic var user: User?
     
     
     // MARK - Configuration -
