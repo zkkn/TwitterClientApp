@@ -7,6 +7,21 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct SelfInfoRepository {
+protocol SelfInfoRepositoryType {
+    static func set()
+}
+
+struct SelfInfoRepository: SelfInfoRepositoryType {
+    
+    static func set() {
+        let realm = try! Realm()
+        try! realm.write {
+            let defaults = UserDefaults.standard
+            let selfInfo = SelfInfo()
+            realm.add(selfInfo)
+            defaults.set(selfInfo.userID, forKey: "userID")
+        }
+    }
 }
