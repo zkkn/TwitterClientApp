@@ -15,6 +15,7 @@
 		C73B39011F04919E00E2313C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39001F04919E00E2313C /* User.swift */; };
 		C73B39051F04E1D700E2313C /* SelfInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39041F04E1D700E2313C /* SelfInfo.swift */; };
 		C73B39071F04E2F400E2313C /* SelfInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39061F04E2F400E2313C /* SelfInfoRepository.swift */; };
+		C73B39091F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */; };
 		C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */; };
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
@@ -99,6 +100,7 @@
 		C73B39001F04919E00E2313C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = TwitterClientApp/User.swift; sourceTree = "<group>"; };
 		C73B39041F04E1D700E2313C /* SelfInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelfInfo.swift; path = TwitterClientApp/SelfInfo.swift; sourceTree = "<group>"; };
 		C73B39061F04E2F400E2313C /* SelfInfoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfInfoRepository.swift; sourceTree = "<group>"; };
+		C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfInfoDatabaseDatastore.swift; sourceTree = "<group>"; };
 		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 >>>>>>> created UserRealmDatabase and updated User
 =======
 >>>>>>> added xcode project
+				C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
 				C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */,
 				C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */,
+				C73B39091F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift in Sources */,
 				C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */,
 				C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */,
 				C73B38FF1F04918900E2313C /* Tweet.swift in Sources */,

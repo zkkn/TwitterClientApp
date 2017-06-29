@@ -43,7 +43,7 @@ struct TweetRepository: TweetRepositoryType {
                     }
                     
                     try! Realm().write {
-                        // ここでとってきたtweetとselfinfoのtimelineを紐づける処理をかけば良いのだろうか
+                        SelfInfoDatabaseDatastore.set(tweets: tweets)
                     }
                     return tweets
                 }

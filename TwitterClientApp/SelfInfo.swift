@@ -14,9 +14,8 @@ final class SelfInfo: Object {
     // MARK: - Properties -
     
     dynamic var userID = 0
-    dynamic var authHeaderFields: [String: String]?
-    dynamic var isInitialLaunch = false
-    let tweet = List<Tweet>()
+    dynamic var authHeaderString: String?
+    var tweets = List<Tweet>()
     
     
     // MARK - Configuration -
