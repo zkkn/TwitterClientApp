@@ -33,8 +33,8 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         
         object.user = UserRealmDatastore()
             .createOrUpdate(
-                json: json["user"], resetRelations: resetRelations, inTransaction: true 
-        )
+                json: json["user"], resetRelations: resetRelations, inTransaction: true
+            )   
         return object
     }
 }
