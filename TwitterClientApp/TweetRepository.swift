@@ -36,17 +36,17 @@ struct TweetRepository: TweetRepositoryType {
                     excludeReplies: excludeReplies,
                     includeEntities: includeEntities
                 )
-                .map({ (json) in
-                    let tweets = self.databaseDatastore
-                        .bulkCreateOrUpdate(json: json, resetRelations: true,
-                                            inTransaction: false
-                        ) 
+                .map({
+                    (json) in
+                    guard let tweets = self.databaseDatastore
+                        .bulkCreateOrUpdate(json: json, resetRelations: true, inTransaction: false) else {
+                           throw RepositoryError.unknownError
+                    }
                     
                     try! Realm().write {
                         // ここでとってきたtweetとselfinfoのtimelineを紐づける処理をかけば良いのだろうか
                     }
-                    return tweets!
+                    return tweets
                 })
     }
-    
 }
