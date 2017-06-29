@@ -201,6 +201,7 @@
 		C737A6041EFE40CD004CF23B /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				C73B39021F04DF2500E2313C /* SelfInfo.swift */,
 				C73B38FE1F04918900E2313C /* Tweet.swift */,
 				C73B39001F04919E00E2313C /* User.swift */,
 			);
@@ -211,7 +212,6 @@
 		C7C8798F1EF4EC8700E69DCD = {
 			isa = PBXGroup;
 			children = (
-				C73B39021F04DF2500E2313C /* SelfInfo.swift */,
 				C7C8799A1EF4EC8700E69DCD /* TwitterClientApp */,
 				C7C879991EF4EC8700E69DCD /* Products */,
 			);
