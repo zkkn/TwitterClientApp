@@ -22,17 +22,6 @@ final class Tweet: Object {
     dynamic var favorited = false
     dynamic var user: User?
     
-    convenience init?(userID: Int) {
-        self.init()
-       
-        let realm = try! Realm()
-        
-        if
-            let user = realm.object(ofType: User.self, forPrimaryKey: userID) {
-            self.user = user
-        }
-    }
-    
     
     // MARK - Configuration -
     
