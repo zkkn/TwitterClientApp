@@ -12,6 +12,7 @@
 		C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6001EFDFA91004CF23B /* Tweet.swift */; };
 		C737A6031EFE1F47004CF23B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6021EFE1F47004CF23B /* User.swift */; };
 		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
+		C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B38FC1F048D8100E2313C /* RepositoryError.swift */; };
 		C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */; };
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
@@ -42,7 +43,6 @@
 		C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */; };
 		C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879D01EF517FD00E69DCD /* TweetCell.swift */; };
 		C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */; };
-		C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */; };
 		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
 		C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */; };
 		C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35C1F01058E00F105AD /* UserRepository.swift */; };
@@ -76,6 +76,7 @@
 		C737A6001EFDFA91004CF23B /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		C737A6021EFE1F47004CF23B /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
+		C73B38FC1F048D8100E2313C /* RepositoryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
@@ -99,7 +100,6 @@
 		C7C879CE1EF5104600E69DCD /* TweetTimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetTimelineViewController.swift; sourceTree = "<group>"; };
 		C7C879D01EF517FD00E69DCD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
 		C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealmDatastore.swift; sourceTree = "<group>"; };
 		C7E6D35C1F01058E00F105AD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
@@ -248,6 +248,7 @@
 			children = (
 				C7E6D35C1F01058E00F105AD /* UserRepository.swift */,
 				C797694C1F022D1700030B22 /* TweetRepository.swift */,
+				C73B38FC1F048D8100E2313C /* RepositoryError.swift */,
 			);
 			name = Repository;
 			sourceTree = "<group>";
@@ -353,13 +354,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7036CD31EFE725700DBC7A1 /* Session+Rx.swift in Sources */,
-				C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */,
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
 				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
 				C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */,
 				C737A6011EFDFA91004CF23B /* Tweet.swift in Sources */,
 				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
+				C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */,
 				C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */,
 				C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */,
 				C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */,
@@ -514,8 +515,10 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mycompany.TwitterClientApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
