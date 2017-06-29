@@ -13,11 +13,13 @@ final class SelfInfo: Object {
     
     // MARK: - Properties -
     
-    dynamic var id = 0
+    dynamic var userID = 0
+    dynamic var authHeaderFields: [String: String]?
+    dynamic var isInitialLaunch = false
     let tweet = List<Tweet>()
     
     
     // MARK - Configuration -
     
-    override static func primaryKey() -> String? { return "id" }
+    override static func primaryKey() -> String? { return "userID" }
 }
