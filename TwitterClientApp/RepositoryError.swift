@@ -9,5 +9,5 @@
 import Foundation
 
 enum RepositoryError: Error {
-    case jsonError
+    case failedToDeserialize
 }
