@@ -44,7 +44,6 @@ struct TweetRepository: TweetRepositoryType {
                     
                     try! Realm().write {
                         // ここでとってきたtweetとselfinfoのtimelineを紐づける処理をかけば良いのだろうか
-                        
                     }
                     return tweets
                 }
