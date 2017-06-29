@@ -38,9 +38,14 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         
 =======
             .createOrUpdate(
+<<<<<<< HEAD
                 json: json["user"], resetRelations: resetRelations, inTransaction: true 
         )
 >>>>>>> self reviewed
+=======
+                json: json["user"], resetRelations: resetRelations, inTransaction: true
+            )   
+>>>>>>> revised after pull request
         return object
     }
 }

@@ -9,5 +9,5 @@
 import Foundation
 
 enum RepositoryError: Error {
-    case unknownError
+    case jsonError
 }
