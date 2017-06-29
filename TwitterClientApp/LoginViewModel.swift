@@ -80,5 +80,6 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
         let defaults = UserDefaults.standard
         defaults.set(credential.oauthToken, forKey: "oauth_token")
         defaults.set(credential.makeHeaders(URL(string: "https://api.twitter.com/1.1")!, method: OAuthSwiftHTTPRequest.Method(rawValue: "POST")!, parameters: [:]), forKey: "oauthHeaderFieldString")
+        SelfInfoRepository.set()
     }
 }
