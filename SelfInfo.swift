@@ -14,7 +14,7 @@ final class SelfInfo: Object {
     // MARK: - Properties -
     
     dynamic var id = 0
-    dynamic var tweet: Tweet?
+    dynamic var tweet = List<Tweet>()
     
     
     // MARK - Configuration -
