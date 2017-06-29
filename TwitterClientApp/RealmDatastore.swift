@@ -40,29 +40,29 @@ extension RealmDatastore where TargetObject: Object {
     }
     
     func bulkCreateOrUpdate(json: Any?,
-                                   resetRelations: Bool = false,
-                                   inTransaction: Bool = false) -> Array<TargetObject>? {
+                            resetRelations: Bool = false,
+                            inTransaction: Bool = false) -> Array<TargetObject>? {
         guard let objectsJson = json as? [[String: Any]] else {
             return nil
         }
         
         if inTransaction {
-            return objectsJson.flatMap({ (objectJson) -> TargetObject? in
+            return objectsJson.flatMap { objectJson -> TargetObject? in
                 return deserialize(
                     json: objectJson,
                     resetRelations: resetRelations,
                     inTransaction: true)
-            })
+            }
         }
         else {
             var objects = [TargetObject]()
             try! Realm().write { (_) in
-                objects = objectsJson.flatMap({ (objectJson) -> TargetObject? in
+                objects = objectsJson.flatMap { objectJson -> TargetObject? in
                     return deserialize(
                         json: objectJson,
                         resetRelations: resetRelations,
                         inTransaction: true)
-                })
+                }
             }
             
             return objects

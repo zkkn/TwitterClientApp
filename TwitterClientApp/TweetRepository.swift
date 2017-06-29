@@ -36,11 +36,10 @@ struct TweetRepository: TweetRepositoryType {
                     excludeReplies: excludeReplies,
                     includeEntities: includeEntities
                 )
-                .map{
-                    (json) in
+                .map { json in
                     guard let tweets = self.databaseDatastore
                         .bulkCreateOrUpdate(json: json, resetRelations: true, inTransaction: false) else {
-                           throw RepositoryError.jsonError
+                            throw RepositoryError.failedToDeserialize
                     }
                     
                     try! Realm().write {
