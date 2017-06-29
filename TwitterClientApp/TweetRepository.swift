@@ -18,11 +18,13 @@ protocol TweetRepositoryType {
 struct TweetRepository: TweetRepositoryType {
     
     fileprivate let apiDatastore: TweetAPIDatastoreType
-    fileprivate let databaseDatastore: TweetDatabaseDatastoreType
+    fileprivate let tweetDBDatastore: TweetDatabaseDatastoreType
+    fileprivate let selfInfoDBDatastore: SelfInfoDatabaseDatastoreType
     
-    init(apiDatastore: TweetAPIDatastoreType, databaseDatastore: TweetDatabaseDatastoreType) {
+    init(apiDatastore: TweetAPIDatastoreType, tweetDBDatastore: TweetDatabaseDatastoreType, selfInfoDBDatastore: SelfInfoDatabaseDatastoreType) {
         self.apiDatastore = apiDatastore
-        self.databaseDatastore = databaseDatastore
+        self.tweetDBDatastore = tweetDBDatastore
+        self.selfInfoDBDatastore = selfInfoDBDatastore
     }
     
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
@@ -37,14 +39,12 @@ struct TweetRepository: TweetRepositoryType {
                     includeEntities: includeEntities
                 )
                 .map { json in
-                    guard let tweets = self.databaseDatastore
+                    guard let tweets = self.tweetDBDatastore
                         .bulkCreateOrUpdate(json: json, resetRelations: true, inTransaction: false) else {
                             throw RepositoryError.failedToDeserialize
                     }
+                    self.selfInfoDBDatastore.set(tweets: tweets)
                     
-                    try! Realm().write {
-                        SelfInfoDatabaseDatastore.set(tweets: tweets)
-                    }
                     return tweets
                 }
     }

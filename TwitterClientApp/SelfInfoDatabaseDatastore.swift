@@ -10,16 +10,19 @@ import Foundation
 import RealmSwift
 
 protocol SelfInfoDatabaseDatastoreType {
-    static func set(tweets: [Tweet])
+    func set(tweets: [Tweet])
 }
 
 struct SelfInfoDatabaseDatastore: SelfInfoDatabaseDatastoreType {
     
-    static func set(tweets: [Tweet]) {
-        let defaults = UserDefaults.standard
-        guard let selfInfo = try! Realm().object(ofType: SelfInfo.self, forPrimaryKey: defaults.dictionary(forKey: "userID")) else { return }
-        selfInfo.tweets = List(tweets)
-        
-        try! Realm().add(selfInfo, update: true)
+    func set(tweets: [Tweet]) {
+        let realm = try! Realm()
+        try! realm.write {
+            let defaults = UserDefaults.standard
+            guard let selfInfo = try! Realm().object(ofType: SelfInfo.self, forPrimaryKey: defaults.dictionary(forKey: "userID")) else { return }
+            selfInfo.tweets = List(tweets)
+            
+            realm.add(selfInfo, update: true)
+        }
     }
 }
