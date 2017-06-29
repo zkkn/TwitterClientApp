@@ -9,8 +9,4 @@
 import Foundation
 
 struct SelfInfoRepository {
-    
-    // MARK: - Create -
-    
-    static func create(userID)
 }
