@@ -44,7 +44,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     
     // MARK: - Ouputs -
     
-    let tweets = Variable<[Tweet]>([Tweet]())
+    let tweets = Variable<[Tweet]>([])
     let getTweetResult = PublishSubject<GetTweetResult>()
     
     
