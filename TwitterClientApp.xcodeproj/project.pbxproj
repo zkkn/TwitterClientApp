@@ -17,6 +17,8 @@
 		C73B39071F04E2F400E2313C /* SelfInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39061F04E2F400E2313C /* SelfInfoRepository.swift */; };
 		C73B39091F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */; };
 		C73B390B1F06452500E2313C /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B390A1F06452500E2313C /* TimelineViewModel.swift */; };
+		C73B390D1F068B8D00E2313C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B390C1F068B8D00E2313C /* HeaderView.swift */; };
+		C73B390F1F06975500E2313C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B390E1F06975500E2313C /* UIFont+Extension.swift */; };
 		C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */; };
 		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
 		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
@@ -103,6 +105,8 @@
 		C73B39061F04E2F400E2313C /* SelfInfoRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfInfoRepository.swift; sourceTree = "<group>"; };
 		C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfInfoDatabaseDatastore.swift; sourceTree = "<group>"; };
 		C73B390A1F06452500E2313C /* TimelineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
+		C73B390C1F068B8D00E2313C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C73B390E1F06975500E2313C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
@@ -216,6 +220,14 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		C73B39101F06976000E2313C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C73B390E1F06975500E2313C /* UIFont+Extension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
 		C7C8798F1EF4EC8700E69DCD = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +258,7 @@
 				C7DF94201EFBF35C0058DF1B /* Service */,
 				C737A6041EFE40CD004CF23B /* Entities */,
 				C7C879CB1EF4F7D300E69DCD /* Frameworks */,
+				C73B39101F06976000E2313C /* Extension */,
 			);
 			path = TwitterClientApp;
 			sourceTree = "<group>";
@@ -299,6 +312,7 @@
 				C7C879D01EF517FD00E69DCD /* TweetCell.swift */,
 				C7C879CE1EF5104600E69DCD /* TimelineViewController.swift */,
 				C784EE911EF77F3B008657A8 /* LoginViewController.swift */,
+				C73B390C1F068B8D00E2313C /* HeaderView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -421,6 +435,7 @@
 				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
 				C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */,
+				C73B390D1F068B8D00E2313C /* HeaderView.swift in Sources */,
 				C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */,
 				C73B39091F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift in Sources */,
 				C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */,
@@ -431,6 +446,7 @@
 				C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */,
 				C73B39071F04E2F400E2313C /* SelfInfoRepository.swift in Sources */,
 				C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */,
+				C73B390F1F06975500E2313C /* UIFont+Extension.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TimelineViewController.swift in Sources */,
 				C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */,
