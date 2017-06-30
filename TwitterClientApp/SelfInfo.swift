@@ -13,7 +13,7 @@ final class SelfInfo: Object {
     
     // MARK: - Properties -
     
-    dynamic var userID: Int
+    dynamic var userID = 2
     dynamic var authHeaderString: String?
     var tweets = List<Tweet>()
     
