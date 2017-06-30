@@ -10,5 +10,4 @@ import Foundation
 
 enum RepositoryError: Error {
     case failedToDeserialize
-    case notFound
 }

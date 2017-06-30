@@ -19,7 +19,7 @@ protocol TimelineViewModelInputs {
 }
 
 protocol TimelineViewModelOutputs {
-    var getTweet: PublishSubject<[Tweet]> { get }
+    var tweets: Variable<[Tweet]> { get }
     var getTweetResult: PublishSubject<GetTweetResult> { get }
 }
 
@@ -44,7 +44,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     
     // MARK: - Ouputs -
     
-    let getTweet = PublishSubject<[Tweet]>()
+    let tweets = Variable<[Tweet]>([Tweet]())
     let getTweetResult = PublishSubject<GetTweetResult>()
     
     
@@ -69,19 +69,14 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                         requestNumberOfTweets: 100
                     )
                     .subscribe(
-                        onNext: { [weak self] (tweets) in
-                            self?.getTweet.onNext(tweets)
+                        onNext: { [weak self] tweets in
+                            guard let _ = self else { return }
+                            self?.tweets.value = tweets
                             self?.getTweetResult.onNext(.success)
                         },
-                        onError: { error in
-                            if let repositoryError = error as? RepositoryError {
-                                switch repositoryError {
-                                case .notFound:
-                                    break
-                                default:
-                                    self?.getTweetResult.onNext(.failed)
-                                }
-                            }
+                        onError: { [weak self] (_) in
+                            guard let _ = self else { return }
+                            self?.getTweetResult.onNext(.failed)
                     })
                     .disposed(by: self!.disposeBag)
             })
