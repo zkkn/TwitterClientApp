@@ -69,7 +69,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                         requestNumberOfTweets: 100
                     )
                     .subscribe(
-                        onNext: { [weak self](tweets) in
+                        onNext: { [weak self] (tweets) in
                             self?.getTweet.onNext(tweets)
                             self?.getTweetResult.onNext(.success)
                         },
