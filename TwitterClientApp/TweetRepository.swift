@@ -27,7 +27,7 @@ struct TweetRepository: TweetRepositoryType {
         self.selfInfoDBDatastore = selfInfoDBDatastore
     }
     
-    func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
+    func getTweets(requestNumberOfTweets: Int, sinceID: Int? = nil, maxID:Int? = nil, trimUser:Bool = false, excludeReplies:Bool = true, includeEntities:Bool = false)
         -> Observable<[Tweet]> {
             return apiDatastore
                 .getTweets(
