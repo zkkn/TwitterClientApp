@@ -20,7 +20,7 @@ struct SelfInfoRepository: SelfInfoRepositoryType {
         try! realm.write {
             let defaults = UserDefaults.standard
             let selfInfo = SelfInfo()
-            realm.add(selfInfo)
+            realm.add(selfInfo, update: true)
             defaults.set(selfInfo.userID, forKey: "userID")
         }
     }
