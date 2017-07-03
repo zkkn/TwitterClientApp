@@ -23,7 +23,8 @@ extension TwitterRequestType {
     
     var headerFields: [String: String] {
         let defaults = UserDefaults.standard
-        return defaults.dictionary(forKey: "oauthHeaderFieldString") as! [String : String]
+        print(defaults.dictionary(forKey: "oauthHeaderFieldString")! as! [String : String])
+        return defaults.dictionary(forKey: "oauthHeaderFieldString")!  as! [String : String]
     }
 }
 

@@ -101,15 +101,9 @@ extension LoginViewController {
                 case .success:
                     let timelineViewController = TimelineViewController(viewModel: TimelineViewModel())
                     self?.present(timelineViewController, animated: true, completion: nil)
-//                    let alert = UIAlertController(title: "Login Result", message: "Login Success", preferredStyle: UIAlertControllerStyle.alert)
-//                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
-//                    self?.present(alert, animated: true, completion: nil)
                     
                 case .failed:
                     break
-//                    let alert = UIAlertController(title: "Login Result", message: "Login Failed", preferredStyle: UIAlertControllerStyle.alert)
-//                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
-//                    self?.present(alert, animated: true, completion: nil)
                 }
             })
             .disposed(by: disposeBag)

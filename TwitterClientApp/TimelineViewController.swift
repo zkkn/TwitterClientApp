@@ -6,6 +6,7 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
+import RxCocoa
 import RxSwift
 import SnapKit
 import UIKit
@@ -14,9 +15,7 @@ final class TimelineViewController: UIViewController {
     
     // MARK: - Views -
     
-    fileprivate lazy var headerView: UIView = HeaderView()
-    
-    fileprivate lazy var refreshButton: UIButton = HeaderView().refreshButton
+    fileprivate lazy var headerView = HeaderView()
     
     fileprivate lazy var tweetTableView: UITableView  = {
         let tableView = UITableView()
@@ -97,7 +96,7 @@ extension TimelineViewController {
     }
     
     fileprivate func subscribeView() {
-        refreshButton.rx.tap
+        headerView.refreshButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 self?.viewModel.inputs.refreshRequest.onNext()
             })
