@@ -15,7 +15,7 @@ final class TimelineViewController: UIViewController {
     // MARK: - Views -
     
     fileprivate lazy var headerView: UIView = HeaderView()
-    fileprivate lazy var refreshButton: UIButton = HeaderView().refreshButton
+//    fileprivate lazy var refreshButton: UIButton = HeaderView().refreshButton
     fileprivate lazy var tweetTableView: UITableView  = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -63,6 +63,12 @@ extension TimelineViewController {
         subscribeView()
         subscribeViewModel()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tweetTableView.reloadData()
+    }
 }
 
 
@@ -98,19 +104,19 @@ extension TimelineViewController {
     }
     
     fileprivate func subscribeView() {
-        refreshButton.rx.tap
-            .subscribe(onNext: { [weak self] (_) in
-                self?.viewModel.inputs.refreshRequest.onNext()
-            })
-            .disposed(by: disposeBag)
+//        refreshButton.rx.tap
+//            .subscribe(onNext: { [weak self] (_) in
+//                self?.viewModel.inputs.refreshRequest.onNext()
+//            })
+//            .disposed(by: disposeBag)
     }
     
     fileprivate func subscribeViewModel() {
-       viewModel.outputs.tweets.asDriver()
-        .drive(onNext: { [weak self] (_) in
-            self?.tweetTableView.reloadData()
-        })
-        .disposed(by: disposeBag)
+//       viewModel.outputs.tweets.asDriver()
+//        .drive(onNext: { [weak self] (_) in
+//            self?.tweetTableView.reloadData()
+//        })
+//        .disposed(by: disposeBag)
         
         viewModel.outputs.getTweetResult
             .subscribe(onNext: { [weak self] (result) in
