@@ -15,7 +15,9 @@ final class TimelineViewController: UIViewController {
     // MARK: - Views -
     
     fileprivate lazy var headerView: UIView = HeaderView()
-//    fileprivate lazy var refreshButton: UIButton = HeaderView().refreshButton
+    
+    fileprivate lazy var refreshButton: UIButton = HeaderView().refreshButton
+    
     fileprivate lazy var tweetTableView: UITableView  = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -25,9 +27,6 @@ final class TimelineViewController: UIViewController {
         return tableView
     }()
     
-    fileprivate let scrollView: UIScrollView = {
-        return UIScrollView()
-    }()
     
     
     // MARK - Properties -
@@ -82,8 +81,7 @@ extension TimelineViewController {
     
     fileprivate func setViews() {
         view.addSubview(headerView)
-        view.addSubview(scrollView)
-        scrollView.addSubview(tweetTableView)
+        view.addSubview(tweetTableView)
     }
     
     fileprivate func setConstraints() {
@@ -92,31 +90,26 @@ extension TimelineViewController {
             make.height.equalTo(64)
         }
         
-        scrollView.snp.makeConstraints { make in
+        tweetTableView.snp.makeConstraints { make in
             make.left.right.bottom.equalTo(view)
             make.top.equalTo(headerView.snp.bottom)
-        }
-        
-        tweetTableView.snp.makeConstraints { make in
-            make.left.right.equalTo(view)
-            make.top.bottom.equalTo(scrollView)
         }
     }
     
     fileprivate func subscribeView() {
-//        refreshButton.rx.tap
-//            .subscribe(onNext: { [weak self] (_) in
-//                self?.viewModel.inputs.refreshRequest.onNext()
-//            })
-//            .disposed(by: disposeBag)
+        refreshButton.rx.tap
+            .subscribe(onNext: { [weak self] (_) in
+                self?.viewModel.inputs.refreshRequest.onNext()
+            })
+            .disposed(by: disposeBag)
     }
     
     fileprivate func subscribeViewModel() {
-//       viewModel.outputs.tweets.asDriver()
-//        .drive(onNext: { [weak self] (_) in
-//            self?.tweetTableView.reloadData()
-//        })
-//        .disposed(by: disposeBag)
+        viewModel.outputs.tweets.asDriver()
+            .drive(onNext: { [weak self] (_) in
+                self?.tweetTableView.reloadData()
+            })
+        .disposed(by: disposeBag)
         
         viewModel.outputs.getTweetResult
             .subscribe(onNext: { [weak self] (result) in
