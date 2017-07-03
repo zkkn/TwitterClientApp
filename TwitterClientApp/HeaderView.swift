@@ -19,10 +19,11 @@ class HeaderView: UIView {
         return button
     }()
     
+    
     // MARK - Initializer -
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         
         configure()
         setViews()

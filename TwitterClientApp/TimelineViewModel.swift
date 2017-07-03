@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RxCocoa
 import RxSwift
 
 enum GetTweetResult {
@@ -74,7 +75,8 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                             self?.tweets.value = tweets
                             self?.getTweetResult.onNext(.success)
                         },
-                        onError: { [weak self] (_) in
+                        onError: { [weak self] (error) in
+                            print(error)
                             self?.getTweetResult.onNext(.failed)
                     })
                     .disposed(by: self!.disposeBag)
