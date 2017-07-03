@@ -38,7 +38,7 @@ fileprivate struct TweetRequest {
         let includeEntities = false
         
         let method = HTTPMethod.get
-        let path = "statuses/home_timeline.json"
+        let path = "/statuses/home_timeline.json"
         
         var parameters: Any? {
             var params: [String: Any] = [

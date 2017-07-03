@@ -100,8 +100,7 @@ extension LoginViewController {
                 switch result {
                 case .success:
                     let timelineViewController = TimelineViewController(viewModel: TimelineViewModel())
-                    let navVC = UINavigationController(rootViewController: timelineViewController)
-                    self?.present(navVC, animated: true, completion: nil)
+                    self?.present(timelineViewController, animated: true, completion: nil)
 //                    let alert = UIAlertController(title: "Login Result", message: "Login Success", preferredStyle: UIAlertControllerStyle.alert)
 //                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
 //                    self?.present(alert, animated: true, completion: nil)
