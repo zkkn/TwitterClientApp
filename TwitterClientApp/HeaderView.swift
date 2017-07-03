@@ -24,6 +24,7 @@ class HeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        configure()
         setViews()
         setConstraints()
         
@@ -38,6 +39,10 @@ class HeaderView: UIView {
 // MARK: - Setup -
 
 extension HeaderView {
+    
+    func configure() {
+        backgroundColor = .red
+    }
     
     func setViews() {
         addSubview(refreshButton)
