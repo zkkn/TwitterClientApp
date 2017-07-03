@@ -22,6 +22,7 @@ class TweetCell: UITableViewCell {
         return contentLabel
     }()
     
+    
     // MARK: - Initializer -
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

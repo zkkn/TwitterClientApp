@@ -19,12 +19,12 @@ class HeaderView: UIView {
         return button
     }()
     
-    // MARK - Life Cycle Events -
+    // MARK - Initializer -
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setView()
+        setViews()
         setConstraints()
         
     }
@@ -39,7 +39,7 @@ class HeaderView: UIView {
 
 extension HeaderView {
     
-    func setView() {
+    func setViews() {
         addSubview(refreshButton)
     }
     
