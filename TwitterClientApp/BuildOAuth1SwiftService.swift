@@ -11,8 +11,8 @@ import OAuthSwift
 struct BuildOAuth1SwiftService {
     
     static var oauthswift = OAuth1Swift(
-        consumerKey: "Q8Zwi892fPBvAWLIxYP1YtlTQ",
-        consumerSecret: "uoUD6JLzxnvJG20vncmbZ13jYfgt4CQ50HZIVMENqCFYfQDGyc",
+        consumerKey: "eNpgZb5aZ6brATIqgHSaxMiOL",
+        consumerSecret: "OwDceiTjcS7teEg90Vhd0WT1B1ohcMCWD39gPDUWzcnPx8qW4c",
         requestTokenUrl: "https://api.twitter.com/oauth/request_token",
         authorizeUrl:    "https://api.twitter.com/oauth/authorize",
         accessTokenUrl:  "https://api.twitter.com/oauth/access_token"
