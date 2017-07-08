@@ -66,11 +66,8 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
                         self?.oauthswift.client.get(
                             "https://api.twitter.com/1.1/statuses/home_timeline.json",
                             success: { response in
-                                let transform = "Any-Hex/Java"
-                                let responseString = response.string! as NSString
-                                let convertedString = responseString.mutableCopy() as! NSMutableString
-                                CFStringTransform(convertedString, nil, transform as NSString, true)
-                                print(convertedString)
+                                let jsonDict = try! response.jsonObject() as? [[String: Any]]
+                                print(jsonDict!)
                         },
                             failure: { error in
                                 print(error)
