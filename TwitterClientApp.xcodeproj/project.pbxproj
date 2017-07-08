@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C7036CD31EFE725700DBC7A1 /* Session+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */; };
 		C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */; };
 		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
 		C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B38FC1F048D8100E2313C /* RepositoryError.swift */; };
@@ -20,8 +19,6 @@
 		C73B390D1F068B8D00E2313C /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B390C1F068B8D00E2313C /* HeaderView.swift */; };
 		C73B390F1F06975500E2313C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B390E1F06975500E2313C /* UIFont+Extension.swift */; };
 		C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */; };
-		C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */; };
-		C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */; };
 		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
 		C784EE901EF77B3F008657A8 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE911EF77F3B008657A8 /* LoginViewController.swift */; };
@@ -77,7 +74,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Session+Rx.swift"; sourceTree = "<group>"; };
 		C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDatastore.swift; sourceTree = "<group>"; };
 		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
 		C73B38FC1F048D8100E2313C /* RepositoryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
@@ -90,8 +86,6 @@
 		C73B390C1F068B8D00E2313C /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		C73B390E1F06975500E2313C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
-		C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
-		C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterRequest.swift; sourceTree = "<group>"; };
 		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		C784EE911EF77F3B008657A8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOAuth1SwiftService.swift; sourceTree = "<group>"; };
@@ -140,10 +134,7 @@
 		C7036CD41EFE73AC00DBC7A1 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				C784EE8A1EF67E22008657A8 /* TwitterAPI.swift */,
-				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
 				C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */,
-				C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */,
 				C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */,
 			);
 			name = API;
@@ -379,11 +370,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7036CD31EFE725700DBC7A1 /* Session+Rx.swift in Sources */,
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
 				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
-				C784EE8B1EF67E22008657A8 /* TwitterAPI.swift in Sources */,
-				C784EE8D1EF68BA0008657A8 /* TwitterRequest.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
 				C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */,
 				C73B390D1F068B8D00E2313C /* HeaderView.swift in Sources */,
