@@ -6,6 +6,7 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
+import Kingfisher
 import UIKit
 
 class TweetCell: UITableViewCell {
@@ -105,18 +106,8 @@ extension TweetCell {
 extension TweetCell {
     
     func update(tweet: Tweet) {
-        let downloadTask = URLSession.shared.dataTask(with: URL(string: (tweet.user?.profileImageURLHTTPS)!)!) {
-            [weak self] (data, response, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            DispatchQueue.main.async {
-                self?.profileImageView.image = UIImage(data: data!)
-            }
-        }
-        downloadTask.resume()
-        
+        guard let profileImageString = tweet.user?.profileImageURLHTTPS else { return }
+        self.profileImageView.kf.setImage(with: URL(string: profileImageString)!)
         self.screenNameLabel.text = "@" + (tweet.user?.screenName)!
         self.nameLabel.text = tweet.user?.name
         self.contentLabel.text = tweet.text
