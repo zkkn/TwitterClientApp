@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RxCocoa
 import RxSwift
 
 enum GetTweetResult {
@@ -59,29 +58,27 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     // MARK - Binds -
     
     fileprivate func setBindings() {
-                refreshRequest
-                    .subscribe(onNext: { [weak self] in
-                        guard let _ = self else { return }
-                        TweetRepository(
-                            apiDatastore: TweetAPIDatastore(),
-                            tweetDBDatastore: TweetRealmDatastore(),
-                            selfInfoDBDatastore: SelfInfoDatabaseDatastore()
-                            )
-                            .getTweets(
-                                requestNumberOfTweets: 100
-                            )
-                            .subscribe(
-                                onNext: { [weak self] tweets in
-                                    self?.tweets.value = tweets
-                                    self?.getTweetResult.onNext(.success)
-                                },
-                                onError: { [weak self] (error) in
-                                    print(error)
-                                    self?.getTweetResult.onNext(.failed)
-                            })
-                            .disposed(by: self!.disposeBag)
+        refreshRequest
+            .subscribe(onNext: { [weak self] in
+                guard let _ = self else { return }
+                TweetRepository(
+                    apiDatastore: TweetAPIDatastore(),
+                    tweetDBDatastore: TweetRealmDatastore(),
+                    selfInfoDBDatastore: SelfInfoDatabaseDatastore()
+                    )
+                    .getTweets(
+                        requestNumberOfTweets: 100
+                    )
+                    .subscribe(
+                        onNext: { [weak self] tweets in
+                            self?.tweets.value = tweets
+                            self?.getTweetResult.onNext(.success)
+                        },
+                        onError: { [weak self] (error) in
+                            self?.getTweetResult.onNext(.failed)
                     })
-                    .disposed(by: disposeBag)
-            }
-
+                    .disposed(by: self!.disposeBag)
+            })
+            .disposed(by: disposeBag)
+    }
 }
