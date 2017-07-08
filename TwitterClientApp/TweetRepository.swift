@@ -44,7 +44,6 @@ struct TweetRepository: TweetRepositoryType {
                             throw RepositoryError.failedToDeserialize
                     }
                     self.selfInfoDBDatastore.set(tweets: tweets)
-                    
                     return tweets
                 }
     }

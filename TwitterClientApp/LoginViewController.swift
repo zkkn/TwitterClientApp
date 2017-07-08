@@ -99,9 +99,8 @@ extension LoginViewController {
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
                 case .success:
-                    let alert = UIAlertController(title: "Login Result", message: "Login Success", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.default, handler: nil))
-                    self?.present(alert, animated: true, completion: nil)
+                    let timelineViewController = TimelineViewController(viewModel: TimelineViewModel())
+                    self?.present(timelineViewController, animated: true, completion: nil)
                     
                 case .failed:
                     let alert = UIAlertController(title: "Login Result", message: "Login Failed", preferredStyle: UIAlertControllerStyle.alert)

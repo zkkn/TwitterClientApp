@@ -6,7 +6,6 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
-import APIKit
 import Foundation
 import RxSwift
 

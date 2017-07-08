@@ -74,7 +74,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                             self?.tweets.value = tweets
                             self?.getTweetResult.onNext(.success)
                         },
-                        onError: { [weak self] (_) in
+                        onError: { [weak self] (error) in
                             self?.getTweetResult.onNext(.failed)
                     })
                     .disposed(by: self!.disposeBag)
