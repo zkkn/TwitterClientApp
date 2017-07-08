@@ -18,10 +18,9 @@ protocol TweetAPIDatastoreType {
 struct TweetAPIDatastore: TweetAPIDatastoreType {
     
     func getTweets(requestNumberOfTweets: Int, sinceID: Int? = nil, maxID:Int? = nil, trimUser:Bool = false, excludeReplies:Bool = true, includeEntities:Bool = false)
-        -> Observable<[[String: Any]]>
-    { return TweetRequest
-        .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID, trimUser: trimUser, excludeReplies: excludeReplies, includeEntities: includeEntities)
-        .sendRequest()
+        -> Observable<[[String: Any]]> { return TweetRequest
+            .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID, trimUser: trimUser, excludeReplies: excludeReplies, includeEntities: includeEntities)
+            .sendRequest()
     }
 }
 

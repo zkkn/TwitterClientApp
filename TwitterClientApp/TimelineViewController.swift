@@ -102,21 +102,26 @@ extension TimelineViewController {
             .subscribe(onNext: { [weak self] (_) in
                 self?.viewModel.inputs.refreshRequest.onNext()
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
-
+    
     fileprivate func subscribeViewModel() {
+        viewModel.outputs.tweets.asDriver()
+            .drive(onNext: { [weak self] (_) in
+                self?.tweetTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.getTweetResult
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
                 case .success:
-                    self?.tweetTableView.reloadData()
                     self?.refreshControl.endRefreshing()
                 case .failed:
-                    break
+                    self?.refreshControl.endRefreshing()
                 }
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 }
 
