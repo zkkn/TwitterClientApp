@@ -12,7 +12,7 @@ import RxSwift
 
 protocol TweetAPIDatastoreType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
-    -> Observable<[[String: Any]]>
+        -> Observable<[[String: Any]]>
 }
 
 struct TweetAPIDatastore: TweetAPIDatastoreType {
@@ -31,14 +31,16 @@ fileprivate struct TweetRequest {
     
     fileprivate struct GetTweets {
         
-        let requestNumberOfTweets: Int
-        let sinceID: Int?
-        let maxID: Int?
-        let trimUser = false
-        let excludeReplies = true
-        let includeEntities = false
+        fileprivate let requestNumberOfTweets: Int
+        fileprivate let sinceID: Int?
+        fileprivate let maxID: Int?
+        fileprivate let trimUser = false
+        fileprivate let excludeReplies = true
+        fileprivate let includeEntities = false
         
-        var parameters: OAuthSwift.Parameters {
+        fileprivate let oauthswift = BuildOAuth1SwiftService.oauthswift
+        
+        fileprivate var parameters: OAuthSwift.Parameters {
             var params: [String: Any] = [
                 "count": requestNumberOfTweets,
                 "trim_user": trimUser,
@@ -54,9 +56,7 @@ fileprivate struct TweetRequest {
             return params
         }
         
-        fileprivate let oauthswift = BuildOAuth1SwiftService.oauthswift
-        
-        func sendRequest() -> Observable<[[String: Any]]> {
+        fileprivate func sendRequest() -> Observable<[[String: Any]]> {
             return Observable.create { observer in
                 self.oauthswift.client.request(
                     "https://api.twitter.com/1.1/statuses/home_timeline.json",
@@ -66,10 +66,9 @@ fileprivate struct TweetRequest {
                         observer.onNext(jsonDict!)
                 },
                     failure: { error in
-                        print(error)
+                        observer.onError(error)
                 })
                 return Disposables.create {
-                    print("Disposed")
                 }
             }
         }

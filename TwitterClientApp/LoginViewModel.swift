@@ -63,15 +63,6 @@ final class LoginViewModel: LoginViewModelType, LoginViewModelInputs, LoginViewM
                 _ = self?.oauthswift.authorize(
                     withCallbackURL: URL(string: "TwitterClientApp://oauth-callback")!,
                     success: { [weak self] credential, response, parameters in
-                        self?.oauthswift.client.get(
-                            "https://api.twitter.com/1.1/statuses/home_timeline.json",
-                            success: { response in
-                                let jsonDict = try! response.jsonObject() as? [[String: Any]]
-                                print(jsonDict!)
-                        },
-                            failure: { error in
-                                print(error)
-                        })
                         self?.saveCredentials(credential)
                         self?.oauthResult.onNext(.success)
                     },
