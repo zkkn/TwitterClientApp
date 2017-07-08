@@ -21,7 +21,7 @@ class TweetCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.hirakakuProNW6(size: 15)
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = .black
         return label
@@ -31,7 +31,7 @@ class TweetCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.hirakakuProNW3(size: 10)
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
+        label.numberOfLines = 1
         label.textAlignment = .left
         label.textColor = .lightGray
         return label
