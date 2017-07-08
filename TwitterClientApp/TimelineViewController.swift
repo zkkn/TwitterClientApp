@@ -15,6 +15,12 @@ final class TimelineViewController: UIViewController {
     
     // MARK: - Views -
     
+    fileprivate lazy var headerView: UIView = {
+        let headerView = UIView()
+        headerView.backgroundColor = .red
+        return headerView
+    }()
+    
     fileprivate lazy var refreshControl = UIRefreshControl()
     
     fileprivate lazy var tweetTableView: UITableView = {
@@ -78,13 +84,20 @@ extension TimelineViewController {
     }
     
     fileprivate func setViews() {
+        view.addSubview(headerView)
         view.addSubview(tweetTableView)
         tweetTableView.addSubview(refreshControl)
     }
     
     fileprivate func setConstraints() {
+        headerView.snp.makeConstraints { make in
+            make.left.right.top.equalTo(view)
+            make.height.equalTo(64)
+        }
+        
         tweetTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view)
+            make.left.right.bottom.equalTo(view)
+            make.top.equalTo(headerView.snp.bottom)
         }
     }
     
