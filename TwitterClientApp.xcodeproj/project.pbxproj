@@ -17,12 +17,12 @@
 		C73B39091F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */; };
 		C73B390B1F06452500E2313C /* TimelineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B390A1F06452500E2313C /* TimelineViewModel.swift */; };
 		C73B390F1F06975500E2313C /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B390E1F06975500E2313C /* UIFont+Extension.swift */; };
-		C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */; };
 		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
 		C784EE901EF77B3F008657A8 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE911EF77F3B008657A8 /* LoginViewController.swift */; };
 		C7859CA11F10DDA100F5E80B /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7859CA01F10DDA100F5E80B /* Kingfisher.framework */; };
 		C7859CA21F10DDA100F5E80B /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7859CA01F10DDA100F5E80B /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7859CA81F10EFE900F5E80B /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CA71F10EFE900F5E80B /* TweetRealmDatastore.swift */; };
 		C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */; };
 		C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797694C1F022D1700030B22 /* TweetRepository.swift */; };
 		C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */; };
@@ -47,27 +47,9 @@
 		C7C879CF1EF5104600E69DCD /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879CE1EF5104600E69DCD /* TimelineViewController.swift */; };
 		C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879D01EF517FD00E69DCD /* TweetCell.swift */; };
 		C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */; };
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */; };
-=======
->>>>>>> moved Tweet and User entity
 		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
 		C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */; };
 		C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35C1F01058E00F105AD /* UserRepository.swift */; };
-=======
-		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
-		C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */; };
-		C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35C1F01058E00F105AD /* UserRepository.swift */; };
-		C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */; };
->>>>>>> added xcode project
-=======
-		C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */; };
-		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
-		C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */; };
-		C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35C1F01058E00F105AD /* UserRepository.swift */; };
->>>>>>> created TweetRepository and updated TweetAPIDatastore
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -104,10 +86,10 @@
 		C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfInfoDatabaseDatastore.swift; sourceTree = "<group>"; };
 		C73B390A1F06452500E2313C /* TimelineViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewModel.swift; sourceTree = "<group>"; };
 		C73B390E1F06975500E2313C /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
-		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		C784EE911EF77F3B008657A8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C7859CA01F10DDA100F5E80B /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		C7859CA71F10EFE900F5E80B /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOAuth1SwiftService.swift; sourceTree = "<group>"; };
 		C797694C1F022D1700030B22 /* TweetRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRepository.swift; sourceTree = "<group>"; };
 		C7C879981EF4EC8700E69DCD /* TwitterClientApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,27 +108,9 @@
 		C7C879CE1EF5104600E69DCD /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		C7C879D01EF517FD00E69DCD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
 		C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealmDatastore.swift; sourceTree = "<group>"; };
 		C7E6D35C1F01058E00F105AD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-=======
-		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
-		C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealmDatastore.swift; sourceTree = "<group>"; };
-		C7E6D35C1F01058E00F105AD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
-		C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
->>>>>>> added xcode project
-=======
-		C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
-=======
->>>>>>> moved Tweet and User entity
-		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
-		C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealmDatastore.swift; sourceTree = "<group>"; };
-		C7E6D35C1F01058E00F105AD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
->>>>>>> created TweetRepository and updated TweetAPIDatastore
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,21 +147,8 @@
 			isa = PBXGroup;
 			children = (
 				C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-				C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */,
-=======
-=======
-=======
->>>>>>> added xcode project
-				C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */,
->>>>>>> added xcodeproject file
+				C7859CA71F10EFE900F5E80B /* TweetRealmDatastore.swift */,
 				C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */,
-<<<<<<< HEAD
->>>>>>> created UserRealmDatabase and updated User
-=======
->>>>>>> added xcode project
 				C73B39081F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift */,
 			);
 			name = Database;
@@ -225,7 +176,6 @@
 		C7C8798F1EF4EC8700E69DCD = {
 			isa = PBXGroup;
 			children = (
-				C7859CA01F10DDA100F5E80B /* Kingfisher.framework */,
 				C7C8799A1EF4EC8700E69DCD /* TwitterClientApp */,
 				C7C879991EF4EC8700E69DCD /* Products */,
 			);
@@ -261,6 +211,7 @@
 		C7C879CB1EF4F7D300E69DCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7859CA01F10DDA100F5E80B /* Kingfisher.framework */,
 				C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */,
 				C7C879C81EF4F7B300E69DCD /* Realm.framework */,
 				C7C879AD1EF4F69300E69DCD /* APIKit.framework */,
@@ -430,7 +381,6 @@
 				C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */,
 				C73B39091F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift in Sources */,
 				C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */,
-				C77C18291F014FAB007FE847 /* TweetRealmDatastore.swift in Sources */,
 				C73B38FF1F04918900E2313C /* Tweet.swift in Sources */,
 				C73B39051F04E1D700E2313C /* SelfInfo.swift in Sources */,
 				C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */,
@@ -439,6 +389,7 @@
 				C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */,
 				C73B390F1F06975500E2313C /* UIFont+Extension.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
+				C7859CA81F10EFE900F5E80B /* TweetRealmDatastore.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TimelineViewController.swift in Sources */,
 				C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */,
 				C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */,

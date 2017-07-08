@@ -33,19 +33,7 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         try object.twitterTweetID = map.from("id")
         
         object.user = UserRealmDatastore()
-<<<<<<< HEAD
         .createOrUpdate(json: json["user"], resetRelations: resetRelations, inTransaction: true)
-        
-=======
-            .createOrUpdate(
-<<<<<<< HEAD
-                json: json["user"], resetRelations: resetRelations, inTransaction: true 
-        )
->>>>>>> self reviewed
-=======
-                json: json["user"], resetRelations: resetRelations, inTransaction: true
-            )   
->>>>>>> revised after pull request
         return object
     }
 }
