@@ -16,7 +16,7 @@ struct UserRealmDatastore: RealmDatastore, UserDatabaseDatastoreType {
     
     typealias TargetObject = User
     
-    func map(json:[String : Any], to object: TargetObject, resetRelations: Bool) throws -> TargetObject {
+    func map(json: [String : Any], to object: TargetObject, resetRelations: Bool) throws -> TargetObject {
         let map = Mapper(JSON: json as NSDictionary)
         
         try object.twitterUserID = map.from("id")
