@@ -41,6 +41,7 @@
 		C7C879D11EF517FD00E69DCD /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C879D01EF517FD00E69DCD /* TweetCell.swift */; };
 		C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */; };
 		C7E6D3571F00CCF100F105AD /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */; };
+		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -93,6 +94,7 @@
 		C7C879D01EF517FD00E69DCD /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C7E6D3561F00CCF100F105AD /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
+		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 				C784EE8C1EF68BA0008657A8 /* TwitterRequest.swift */,
 				C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */,
 				C7036CD21EFE725700DBC7A1 /* Session+Rx.swift */,
+				C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
 				C737A6031EFE1F47004CF23B /* User.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TweetTimelineViewController.swift in Sources */,
+				C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
