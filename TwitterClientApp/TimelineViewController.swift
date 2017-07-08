@@ -29,7 +29,6 @@ final class TimelineViewController: UIViewController {
     }()
     
     
-    
     // MARK - Properties -
     
     fileprivate let disposeBag = DisposeBag()
