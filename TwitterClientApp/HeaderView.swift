@@ -10,25 +10,12 @@ import UIKit
 
 class HeaderView: UIView {
     
-    // MARK - Views -
-    
-    lazy var refreshButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("refresh", for: .normal)
-        button.showsTouchWhenHighlighted = true
-        return button
-    }()
-    
-    
     // MARK - Initializer -
     
     init() {
         super.init(frame: .zero)
         
         configure()
-        setViews()
-        setConstraints()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -43,17 +30,5 @@ extension HeaderView {
     
     func configure() {
         backgroundColor = .red
-    }
-    
-    func setViews() {
-        addSubview(refreshButton)
-    }
-    
-     func setConstraints() {
-        refreshButton.snp.makeConstraints { make in
-            make.right.equalTo(self).inset(4)
-            make.top.equalTo(self).inset(24)
-            make.width.height.equalTo(50)
-        }
     }
 }

@@ -16,12 +16,14 @@ final class TimelineViewController: UIViewController {
     // MARK: - Views -
     
     fileprivate lazy var headerView = HeaderView()
+
+    fileprivate lazy var refreshControl = UIRefreshControl()
     
-    fileprivate lazy var tweetTableView: UITableView  = {
+    fileprivate lazy var tweetTableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
-        tableView.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
         tableView.estimatedRowHeight = 250
+        tableView.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         return tableView
     }()
@@ -81,6 +83,7 @@ extension TimelineViewController {
     fileprivate func setViews() {
         view.addSubview(headerView)
         view.addSubview(tweetTableView)
+        tweetTableView.addSubview(refreshControl)
     }
     
     fileprivate func setConstraints() {
@@ -96,26 +99,20 @@ extension TimelineViewController {
     }
     
     fileprivate func subscribeView() {
-        headerView.refreshButton.rx.tap
+        refreshControl.rx.controlEvent(.valueChanged)
             .subscribe(onNext: { [weak self] (_) in
                 self?.viewModel.inputs.refreshRequest.onNext()
             })
-            .disposed(by: disposeBag)
-    }
-    
-    fileprivate func subscribeViewModel() {
-        viewModel.outputs.tweets.asDriver()
-            .drive(onNext: { [weak self] (_) in
-                self?.tweetTableView.reloadData()
-            })
         .disposed(by: disposeBag)
-        
+    }
+
+    fileprivate func subscribeViewModel() {
         viewModel.outputs.getTweetResult
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
                 case .success:
                     self?.tweetTableView.reloadData()
-                    
+                    self?.refreshControl.endRefreshing()
                 case .failed:
                     break
                 }
