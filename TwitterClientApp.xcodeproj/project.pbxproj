@@ -21,6 +21,8 @@
 		C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; };
 		C784EE901EF77B3F008657A8 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784EE911EF77F3B008657A8 /* LoginViewController.swift */; };
+		C7859CA11F10DDA100F5E80B /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7859CA01F10DDA100F5E80B /* Kingfisher.framework */; };
+		C7859CA21F10DDA100F5E80B /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7859CA01F10DDA100F5E80B /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */; };
 		C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797694C1F022D1700030B22 /* TweetRepository.swift */; };
 		C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */; };
@@ -57,6 +59,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C7859CA21F10DDA100F5E80B /* Kingfisher.framework in Embed Frameworks */,
 				C7C879CA1EF4F7B300E69DCD /* Realm.framework in Embed Frameworks */,
 				C7C879C11EF4F69300E69DCD /* RxCocoa.framework in Embed Frameworks */,
 				C784EE901EF77B3F008657A8 /* OAuthSwift.framework in Embed Frameworks */,
@@ -86,6 +89,7 @@
 		C77C18281F014FAB007FE847 /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C784EE8E1EF77B3F008657A8 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/iOS/OAuthSwift.framework; sourceTree = "<group>"; };
 		C784EE911EF77F3B008657A8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C7859CA01F10DDA100F5E80B /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOAuth1SwiftService.swift; sourceTree = "<group>"; };
 		C797694C1F022D1700030B22 /* TweetRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRepository.swift; sourceTree = "<group>"; };
 		C7C879981EF4EC8700E69DCD /* TwitterClientApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7859CA11F10DDA100F5E80B /* Kingfisher.framework in Frameworks */,
 				C7C879C91EF4F7B300E69DCD /* Realm.framework in Frameworks */,
 				C7C879C01EF4F69300E69DCD /* RxCocoa.framework in Frameworks */,
 				C784EE8F1EF77B3F008657A8 /* OAuthSwift.framework in Frameworks */,
@@ -171,6 +176,7 @@
 		C7C8798F1EF4EC8700E69DCD = {
 			isa = PBXGroup;
 			children = (
+				C7859CA01F10DDA100F5E80B /* Kingfisher.framework */,
 				C7C8799A1EF4EC8700E69DCD /* TwitterClientApp */,
 				C7C879991EF4EC8700E69DCD /* Products */,
 			);
@@ -353,6 +359,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Mapper.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OAuthSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			outputPaths = (
 			);
