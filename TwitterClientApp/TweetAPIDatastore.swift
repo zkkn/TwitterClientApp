@@ -19,11 +19,10 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     
     func getTweets(requestNumberOfTweets: Int, sinceID: Int? = nil, maxID:Int? = nil, trimUser:Bool = false, excludeReplies:Bool = true, includeEntities:Bool = false)
         -> Observable<[[String: Any]]>
-    {
-        return
-            TweetRequest
-                .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: nil, maxID: nil)
-                .sendRequest()
+    { return
+        TweetRequest
+            .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID, trimUser: trimUser, excludeReplies: excludeReplies, includeEntities: includeEntities)
+            .sendRequest()
     }
 }
 
@@ -34,9 +33,9 @@ fileprivate struct TweetRequest {
         fileprivate let requestNumberOfTweets: Int
         fileprivate let sinceID: Int?
         fileprivate let maxID: Int?
-        fileprivate let trimUser = false
-        fileprivate let excludeReplies = true
-        fileprivate let includeEntities = false
+        fileprivate let trimUser: Bool
+        fileprivate let excludeReplies: Bool
+        fileprivate let includeEntities: Bool
         
         fileprivate let oauthswift = BuildOAuth1SwiftService.oauthswift
         
@@ -64,7 +63,7 @@ fileprivate struct TweetRequest {
                     success: { response in
                         let jsonDict = try! response.jsonObject() as? [[String: Any]]
                         observer.onNext(jsonDict!)
-                },
+                    },
                     failure: { error in
                         observer.onError(error)
                 })
