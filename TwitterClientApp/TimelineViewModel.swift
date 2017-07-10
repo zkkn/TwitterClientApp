@@ -9,16 +9,6 @@
 import Foundation
 import RxSwift
 
-enum GetTweetResult {
-    case success
-    case failed
-}
-
-enum PostTweetResult {
-    case success
-    case failed
-}
-
 protocol TimelineViewModelInputs {
     var refreshRequest: PublishSubject<Void> { get }
     var postTweet: PublishSubject<String> { get }
@@ -26,8 +16,8 @@ protocol TimelineViewModelInputs {
 
 protocol TimelineViewModelOutputs {
     var tweets: Variable<[Tweet]> { get }
-    var getTweetResult: PublishSubject<GetTweetResult> { get }
-    var postTweetResult: PublishSubject<PostTweetResult> { get }
+    var getTweetResult: PublishSubject<Bool> { get }
+    var postTweetResult: PublishSubject<Bool> { get }
 }
 
 protocol TimelineViewModelType {
@@ -42,6 +32,16 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     var inputs: TimelineViewModelInputs { return self }
     var outputs: TimelineViewModelOutputs { return self }
     fileprivate let disposeBag = DisposeBag()
+    fileprivate let repository: TweetRepositoryType
+    
+    
+    // MARK - Initializer -
+    
+    init(repository: TweetRepositoryType) {
+        self.repository = repository
+        
+        setBindings()
+    }
     
     
     // MARK - Inputs -
@@ -53,15 +53,8 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     // MARK: - Ouputs -
     
     let tweets = Variable<[Tweet]>([])
-    let getTweetResult = PublishSubject<GetTweetResult>()
-    let postTweetResult = PublishSubject<PostTweetResult>()
-    
-    
-    // MARK - Initializers -
-    
-    init() {
-        setBindings()
-    }
+    let getTweetResult = PublishSubject<Bool>()
+    let postTweetResult = PublishSubject<Bool>()
     
     
     // MARK - Binds -
@@ -70,21 +63,15 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
         refreshRequest
             .subscribe(onNext: { [weak self] in
                 guard let _ = self else { return }
-                TweetRepository(
-                    apiDatastore: TweetAPIDatastore(),
-                    tweetDBDatastore: TweetRealmDatastore(),
-                    selfInfoDBDatastore: SelfInfoDatabaseDatastore()
-                    )
-                    .getTweets(
-                        requestNumberOfTweets: 100
-                    )
+                self?.repository
+                    .getTweets(requestNumberOfTweets: 100, sinceID: nil, maxID: nil, trimUser: false, excludeReplies: true, includeEntities: false)
                     .subscribe(
                         onNext: { [weak self] tweets in
                             self?.tweets.value = tweets
-                            self?.getTweetResult.onNext(.success)
+                            self?.getTweetResult.onNext(true)
                         },
                         onError: { [weak self] (error) in
-                            self?.getTweetResult.onNext(.failed)
+                            self?.getTweetResult.onNext(false)
                     })
                     .disposed(by: self!.disposeBag)
             })
@@ -93,38 +80,16 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
         postTweet
             .subscribe(onNext: { [weak self] tweet in
                 guard let _ = self else { return }
-                TweetRepository(
-                    apiDatastore: TweetAPIDatastore(),
-                    tweetDBDatastore: TweetRealmDatastore(),
-                    selfInfoDBDatastore: SelfInfoDatabaseDatastore()
-                    )
-                    .postTweet(
-                        status: tweet
-                    )
+                self?.repository
+                    .postTweet(status: tweet, inReplyToStatus: nil, mediaFlag: nil, latitude: nil, longtitude: nil, placeID: nil, displayCoordinates: nil, trimUser: nil, mediaIDs: nil)
                     .subscribe(
                         onNext: { [weak self] (_) in
                             guard let _ = self else { return }
-                            TweetRepository(
-                                apiDatastore: TweetAPIDatastore(),
-                                tweetDBDatastore: TweetRealmDatastore(),
-                                selfInfoDBDatastore: SelfInfoDatabaseDatastore()
-                                )
-                                .getTweets(
-                                    requestNumberOfTweets: 100
-                                )
-                                .subscribe(
-                                    onNext: { [weak self] tweets in
-                                        self?.tweets.value = tweets
-                                        self?.getTweetResult.onNext(.success)
-                                    },
-                                    onError: { [weak self] (error) in
-                                        self?.getTweetResult.onNext(.failed)
-                                })
-                                .disposed(by: self!.disposeBag)
-                            self?.postTweetResult.onNext(.success)
+                            self?.refreshRequest.onNext()
+                            self?.postTweetResult.onNext(true)
                         },
                         onError: { [weak self] (error) in
-                            self?.postTweetResult.onNext(.failed)
+                            self?.postTweetResult.onNext(false)
                     })
                     .disposed(by: self!.disposeBag)
             })

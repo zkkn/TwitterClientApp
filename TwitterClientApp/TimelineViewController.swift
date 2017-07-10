@@ -119,9 +119,9 @@ extension TimelineViewController {
         viewModel.outputs.getTweetResult
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
-                case .success:
+                case true:
                     self?.refreshControl.endRefreshing()
-                case .failed:
+                case false:
                     self?.refreshControl.endRefreshing()
                 }
             })
