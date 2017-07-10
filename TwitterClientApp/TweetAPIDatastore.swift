@@ -131,9 +131,13 @@ fileprivate struct TweetRequest {
                     "https://api.twitter.com/1.1/statuses/update.json",
                     method: .POST, parameters: self.parameters, headers: [:],
                     success: { response in
-                        let jsonDict = try! response.jsonObject() as?  [[String: Any]]
-                        observer.onNext(jsonDict!)
-                    },
+                        do { let jsonDict = try response.jsonObject() as?  [[String: Any]]
+                            observer.onNext(jsonDict!)
+                        }
+                        catch {
+                            observer.onError(error)
+                        }
+                },
                     failure: { error in
                         observer.onError(error)
                 })
