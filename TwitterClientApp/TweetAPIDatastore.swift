@@ -13,6 +13,9 @@ import RxSwift
 protocol TweetAPIDatastoreType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
         -> Observable<[[String: Any]]>
+    
+    func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
+        -> Observable<[[String: Any]]>
 }
 
 struct TweetAPIDatastore: TweetAPIDatastoreType {
@@ -20,6 +23,12 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int? = nil, maxID:Int? = nil, trimUser:Bool = false, excludeReplies:Bool = true, includeEntities:Bool = false)
         -> Observable<[[String: Any]]> { return TweetRequest
             .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID, trimUser: trimUser, excludeReplies: excludeReplies, includeEntities: includeEntities)
+            .sendRequest()
+    }
+    
+    func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
+        -> Observable<[[String : Any]]> { return TweetRequest
+            .PostTweet(status: status, inReplyToStatusID: inReplyToStatus, mediaFlag: mediaFlag, latitude: latitude, longtitude: longtitude, placeID: placeID, displayCoordinates: displayCoordinates, trimUser: trimUser, mediaIDs: mediaIDs)
             .sendRequest()
     }
 }
@@ -61,6 +70,74 @@ fileprivate struct TweetRequest {
                     success: { response in
                         let jsonDict = try! response.jsonObject() as? [[String: Any]]
                         observer.onNext(jsonDict!)
+                    },
+                    failure: { error in
+                        observer.onError(error)
+                })
+                return Disposables.create {
+                }
+            }
+        }
+    }
+    
+    fileprivate struct PostTweet {
+        
+        fileprivate let status: String
+        fileprivate let inReplyToStatusID: Int?
+        fileprivate let mediaFlag: Bool?
+        fileprivate let latitude: Float?
+        fileprivate let longtitude: Float?
+        fileprivate let placeID: Int?
+        fileprivate let displayCoordinates: Bool?
+        fileprivate let trimUser: Bool?
+        fileprivate let mediaIDs: [Int]?
+        
+        fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
+        
+        fileprivate var parameters: OAuthSwift.Parameters {
+            var params: [String: Any] = [
+                "status": status
+            ]
+            if let inReplyToStatusID = inReplyToStatusID {
+                params["in_reply_to_status_id"] = inReplyToStatusID
+            }
+            if let mediaFlag = mediaFlag {
+                params["possibly_sensitive"] = mediaFlag
+            }
+            if let latitude = latitude {
+                params["lat"] = latitude
+            }
+            if let longtitude = longtitude {
+                params["long"] = longtitude
+            }
+            if let placeID = placeID {
+                params["place_ID"] = placeID
+            }
+            if let displayCoordinates = displayCoordinates {
+                params["display_coordinates"] = displayCoordinates
+            }
+            if let trimUser = trimUser {
+                params["trime_user"] = trimUser
+            }
+            if let mediaIDs = mediaIDs {
+                params["media_ids"] = mediaIDs
+            }
+            return params
+        }
+        
+        fileprivate func sendRequest() -> Observable<[[String: Any]]> {
+            return Observable.create { observer in
+                self.oauthSwift.client.request(
+                    "https://api.twitter.com/1.1/statuses/update.json",
+                    method: .POST, parameters: self.parameters, headers: [:],
+                    success: { response in
+                        do {
+                            let jsonDict = try response.jsonObject() as?  [[String: Any]]
+                            observer.onNext(jsonDict!)
+                        }
+                        catch {
+                            observer.onError(error)
+                        }
                     },
                     failure: { error in
                         observer.onError(error)
