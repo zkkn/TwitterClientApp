@@ -13,6 +13,9 @@ import RxSwift
 protocol TweetRepositoryType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
         -> Observable<[Tweet]>
+    
+    func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
+        -> Observable<Tweet>
 }
 
 struct TweetRepository: TweetRepositoryType {
@@ -46,5 +49,28 @@ struct TweetRepository: TweetRepositoryType {
                     self.selfInfoDBDatastore.set(tweets: tweets)
                     return tweets
                 }
+    }
+    
+    func postTweet(status: String, inReplyToStatus: Int? = nil, mediaFlag: Bool? = nil, latitude: Float? = nil, longtitude: Float? = nil, placeID: Int? = nil, displayCoordinates: Bool? = nil, trimUser: Bool? = nil, mediaIDs: [Int]? = nil)
+        -> Observable<Tweet> {
+        return apiDatastore
+            .postTweet(
+                status: status,
+                inReplyToStatus: inReplyToStatus,
+                mediaFlag: mediaFlag,
+                latitude: latitude,
+                longtitude: longtitude,
+                placeID: placeID,
+                displayCoordinates: displayCoordinates,
+                trimUser: trimUser,
+                mediaIDs: mediaIDs
+            )
+            .map { json in
+                guard let tweet = self.tweetDBDatastore
+                    .createOrUpdate(json: json, resetRelations: true, inTransaction: false) else {
+                        throw RepositoryError.failedToDeserialize
+                }
+                return tweet
+            }
     }
 }
