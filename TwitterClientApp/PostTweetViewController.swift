@@ -14,18 +14,14 @@ final class PostTweetViewController: UIViewController {
     
     // MARK: - Views -
     
-    fileprivate lazy var headerView: PostTweetHeaderView = PostTweetHeaderView()
-    
-    fileprivate lazy var contentView: UIView = UIView()
-    
-    fileprivate lazy var tweetTextView: UITextView = {
-        let textView = UITextView()
-        textView.layer.borderWidth = 0.5
-        textView.layer.borderColor = UIColor.lightGray.cgColor
-        textView.layer.cornerRadius = 3
-        return textView
+    fileprivate lazy var headerView: HeaderView = {
+        let headerView = HeaderView()
+        headerView.leftButton.setTitle("cancel", for: .normal)
+        headerView.rightButton.setTitle("tweet", for: .normal)
+        return headerView
     }()
     
+    fileprivate lazy var tweetTextView: UITextView = UITextView()
     
     // MARK: - Properties -
     
@@ -69,8 +65,7 @@ extension PostTweetViewController {
     
     fileprivate func setViews() {
         view.addSubview(headerView)
-        view.addSubview(contentView)
-        contentView.addSubview(tweetTextView)
+        view.addSubview(tweetTextView)
     }
     
     fileprivate func setConstraints() {
@@ -79,26 +74,21 @@ extension PostTweetViewController {
             make.height.equalTo(64)
         }
         
-        contentView.snp.makeConstraints { make in
-            make.left.right.bottom.equalTo(view)
-            make.top.equalTo(headerView.snp.bottom)
-        }
-        
         tweetTextView.snp.makeConstraints { make in
-            make.left.right.top.equalTo(contentView).inset(20)
-            make.height.equalTo(250)
+            make.left.right.bottom.equalTo(16)
+            make.top.equalTo(headerView.snp.bottom).offset(16)
         }
     }
     
     fileprivate func subscribeView() {
-        headerView.tweetButton.rx.tap
+        headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 guard let text = self?.tweetTextView.text else { return }
                 self?.viewModel.inputs.postTweet.onNext(text)
             })
             .disposed(by: disposeBag)
         
-        headerView.cancelButton.rx.tap
+        headerView.leftButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 self?.navigationController?.dismiss(animated: true, completion: nil)
             })

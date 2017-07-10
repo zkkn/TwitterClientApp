@@ -1,5 +1,5 @@
 //
-//  PostTweetHeaderView.swift
+//  HeaderView.swift
 //  TwitterClientApp
 //
 //  Created by Shoichi Kanzaki on 2017/07/10.
@@ -8,20 +8,18 @@
 
 import UIKit
 
-class PostTweetHeaderView: UIView {
+class HeaderView: UIView {
     
     // MARK: - Views -
     
-    lazy var cancelButton: UIButton = {
+    lazy var leftButton: UIButton = {
         let button = UIButton()
-        button.setTitle("cancel", for: .normal)
         button.showsTouchWhenHighlighted = true
         return button
     }()
     
-    lazy var tweetButton: UIButton = {
+    lazy var rightButton: UIButton = {
         let button = UIButton()
-        button.setTitle("tweet", for: .normal)
         button.showsTouchWhenHighlighted = true
         return button
     }()
@@ -45,25 +43,25 @@ class PostTweetHeaderView: UIView {
 
 //MARK: - Setup -
 
-extension PostTweetHeaderView {
+extension HeaderView {
     
     fileprivate func configure() {
         backgroundColor = .red
     }
     
     fileprivate func setView() {
-        addSubview(cancelButton)
-        addSubview(tweetButton)
+        addSubview(leftButton)
+        addSubview(rightButton)
     }
     
     fileprivate func setLayout() {
-        cancelButton.snp.makeConstraints { make in
+        leftButton.snp.makeConstraints { make in
             make.left.top.equalTo(self).inset(20)
             make.width.equalTo(80)
             make.height.equalTo(40)
         }
         
-        tweetButton.snp.makeConstraints { make in
+        rightButton.snp.makeConstraints { make in
             make.right.top.equalTo(self).inset(20)
             make.width.equalTo(80)
             make.height.equalTo(40)
