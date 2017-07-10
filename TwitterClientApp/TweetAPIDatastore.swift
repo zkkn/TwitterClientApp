@@ -8,7 +8,6 @@
 
 import Foundation
 import OAuthSwift
-import RealmSwift
 import RxSwift
 
 protocol TweetAPIDatastoreType {
