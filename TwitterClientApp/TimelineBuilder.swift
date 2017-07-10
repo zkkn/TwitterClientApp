@@ -10,8 +10,6 @@ import Foundation
 
 struct TimelineBuilder {
     
-    init() { }
-    
     func build() -> TimelineViewController {
         let repository = TweetRepository(
             apiDatastore: TweetAPIDatastore(),
