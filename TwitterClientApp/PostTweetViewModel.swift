@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import RealmSwift
 import RxSwift
 
 protocol PostTweetViewModelInputs {
@@ -28,7 +27,6 @@ PostTweetViewModelOutputs {
     
     // MARK: - Properties -
     
-    fileprivate let realm = try! Realm()
     var inputs: PostTweetViewModelInputs { return self }
     var outputs: PostTweetViewModelOutputs { return self }
     fileprivate let disposeBag = DisposeBag()
