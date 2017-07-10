@@ -11,13 +11,11 @@ import RxSwift
 
 protocol TimelineViewModelInputs {
     var refreshRequest: PublishSubject<Void> { get }
-    var postTweet: PublishSubject<String> { get }
 }
 
 protocol TimelineViewModelOutputs {
     var tweets: Variable<[Tweet]> { get }
     var getTweetResult: PublishSubject<Bool> { get }
-    var postTweetResult: PublishSubject<Bool> { get }
 }
 
 protocol TimelineViewModelType {
@@ -47,14 +45,12 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     // MARK - Inputs -
     
     let refreshRequest = PublishSubject<Void>()
-    let postTweet = PublishSubject<String>()
     
     
     // MARK: - Ouputs -
     
     let tweets = Variable<[Tweet]>([])
     let getTweetResult = PublishSubject<Bool>()
-    let postTweetResult = PublishSubject<Bool>()
     
     
     // MARK - Binds -
@@ -72,24 +68,6 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                         },
                         onError: { [weak self] (error) in
                             self?.getTweetResult.onNext(false)
-                    })
-                    .disposed(by: self!.disposeBag)
-            })
-            .disposed(by: disposeBag)
-        
-        postTweet
-            .subscribe(onNext: { [weak self] tweet in
-                guard let _ = self else { return }
-                self?.repository
-                    .postTweet(status: tweet, inReplyToStatus: nil, mediaFlag: nil, latitude: nil, longtitude: nil, placeID: nil, displayCoordinates: nil, trimUser: nil, mediaIDs: nil)
-                    .subscribe(
-                        onNext: { [weak self] (_) in
-                            guard let _ = self else { return }
-                            self?.refreshRequest.onNext()
-                            self?.postTweetResult.onNext(true)
-                        },
-                        onError: { [weak self] (error) in
-                            self?.postTweetResult.onNext(false)
                     })
                     .disposed(by: self!.disposeBag)
             })

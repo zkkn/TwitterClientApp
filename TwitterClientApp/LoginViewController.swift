@@ -99,7 +99,7 @@ extension LoginViewController {
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
                 case .success:
-                    let timelineViewController = TimelineViewController(viewModel: TimelineViewModel())
+                    let timelineViewController = TimelineBuilder().build()
                     self?.present(timelineViewController, animated: true, completion: nil)
                     
                 case .failed:
