@@ -14,6 +14,10 @@ final class PostTweetViewController: UIViewController {
     
     // MARK: - Views -
     
+    fileprivate lazy var headerView: PostTweetHeaderView = PostTweetHeaderView()
+    
+    fileprivate lazy var contentView: UIView = UIView()
+    
     fileprivate lazy var tweetTextView: UITextView = {
         let textView = UITextView()
         textView.layer.borderWidth = 0.5
@@ -60,32 +64,41 @@ extension PostTweetViewController {
     
     fileprivate func configure() {
         view.backgroundColor = .white
-        edgesForExtendedLayout = UIRectEdge(rawValue: 0)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     fileprivate func setViews() {
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: nil)
-        view.addSubview(tweetTextView)
+        view.addSubview(headerView)
+        view.addSubview(contentView)
+        contentView.addSubview(tweetTextView)
     }
     
     fileprivate func setConstraints() {
+        headerView.snp.makeConstraints { make in
+            make.left.top.right.equalTo(view)
+            make.height.equalTo(64)
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.left.right.bottom.equalTo(view)
+            make.top.equalTo(headerView.snp.bottom)
+        }
+        
         tweetTextView.snp.makeConstraints { make in
-            make.left.right.top.equalTo(view).inset(20)
+            make.left.right.top.equalTo(contentView).inset(20)
             make.height.equalTo(250)
         }
     }
     
     fileprivate func subscribeView() {
-        navigationItem.rightBarButtonItem?.rx.tap
+        headerView.tweetButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 guard let text = self?.tweetTextView.text else { return }
                 self?.viewModel.inputs.postTweet.onNext(text)
             })
             .disposed(by: disposeBag)
         
-        navigationItem.leftBarButtonItem?.rx.tap
+        headerView.cancelButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 self?.navigationController?.dismiss(animated: true, completion: nil)
             })

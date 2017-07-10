@@ -62,7 +62,17 @@ PostTweetViewModelOutputs {
                 }
                 else {
                     self?.repository
-                        .postTweet(status: tweet, inReplyToStatus: nil, mediaFlag: nil, latitude: nil, longtitude: nil, placeID: nil, displayCoordinates: nil, trimUser: nil, mediaIDs: nil)
+                        .postTweet(
+                            status: tweet,
+                            inReplyToStatus: nil,
+                            mediaFlag: nil,
+                            latitude: nil,
+                            longtitude: nil,
+                            placeID: nil,
+                            displayCoordinates: nil,
+                            trimUser: nil,
+                            mediaIDs: nil
+                        )
                         .subscribe(
                             onNext: { [weak self] (_) in
                                 self?.postTweetResult.onNext(true)
