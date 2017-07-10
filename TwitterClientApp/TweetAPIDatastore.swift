@@ -15,7 +15,7 @@ protocol TweetAPIDatastoreType {
         -> Observable<[[String: Any]]>
     
     func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
-        -> Observable<[[String: Any]]>
+        -> Observable<[String: Any]>
 }
 
 struct TweetAPIDatastore: TweetAPIDatastoreType {
@@ -27,7 +27,7 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     }
     
     func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
-        -> Observable<[[String : Any]]> { return TweetRequest
+        -> Observable<[String : Any]> { return TweetRequest
             .PostTweet(status: status, inReplyToStatusID: inReplyToStatus, mediaFlag: mediaFlag, latitude: latitude, longtitude: longtitude, placeID: placeID, displayCoordinates: displayCoordinates, trimUser: trimUser, mediaIDs: mediaIDs)
             .sendRequest()
     }
@@ -125,14 +125,14 @@ fileprivate struct TweetRequest {
             return params
         }
         
-        fileprivate func sendRequest() -> Observable<[[String: Any]]> {
+        fileprivate func sendRequest() -> Observable<[String: Any]> {
             return Observable.create { observer in
                 self.oauthSwift.client.request(
                     "https://api.twitter.com/1.1/statuses/update.json",
                     method: .POST, parameters: self.parameters, headers: [:],
                     success: { response in
                         do {
-                            let jsonDict = try response.jsonObject() as?  [[String: Any]]
+                            let jsonDict = try response.jsonObject() as?  [String: Any]
                             observer.onNext(jsonDict!)
                         }
                         catch {
