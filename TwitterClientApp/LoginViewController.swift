@@ -99,9 +99,8 @@ extension LoginViewController {
             .subscribe(onNext: { [weak self] (result) in
                 switch result {
                 case .success:
-//                    let timelineViewController = TimelineBuilder().build()
-                    let postTweetVC = PostTweetViewController(viewModel: PostTweetViewModel(repository: TweetRepository(apiDatastore: TweetAPIDatastore(), tweetDBDatastore: TweetRealmDatastore(), selfInfoDBDatastore: SelfInfoDatabaseDatastore())))
-                    self?.present(postTweetVC, animated: true, completion: nil)
+                    let timelineViewController = TimelineBuilder().build()
+                    self?.present(timelineViewController, animated: true, completion: nil)
                     
                 case .failed:
                     let alert = UIAlertController(title: "Login Result", message: "Login Failed", preferredStyle: UIAlertControllerStyle.alert)
