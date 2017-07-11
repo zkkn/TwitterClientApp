@@ -16,8 +16,8 @@ final class CreateTweetViewController: UIViewController {
     
     fileprivate lazy var headerView: HeaderView = {
         let headerView = HeaderView()
-        headerView.leftButton.setTitle("cancel", for: .normal)
-        headerView.rightButton.setTitle("tweet", for: .normal)
+        headerView.leftButton.setImage(#imageLiteral(resourceName: "ic_cross_white_40.png"), for: .normal)
+        headerView.rightButton.setImage(#imageLiteral(resourceName: "ic_pen_white_24.png"), for: .normal)
         return headerView
     }()
     
@@ -67,7 +67,7 @@ extension CreateTweetViewController {
         tweetTextView.becomeFirstResponder()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         view.endEditing(true)
