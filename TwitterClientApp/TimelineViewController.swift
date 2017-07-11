@@ -111,8 +111,7 @@ extension TimelineViewController {
         headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let createTweetViewController = CreateTweetBuilder().build()
-                let navVC = UINavigationController(rootViewController: createTweetViewController)
-                self?.present(navVC, animated: true, completion: nil)
+                self?.present(createTweetViewController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
