@@ -24,6 +24,10 @@
 		C7859CA21F10DDA100F5E80B /* Kingfisher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7859CA01F10DDA100F5E80B /* Kingfisher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7859CA81F10EFE900F5E80B /* TweetRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CA71F10EFE900F5E80B /* TweetRealmDatastore.swift */; };
 		C7859CAA1F137FBD00F5E80B /* TimelineBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CA91F137FBD00F5E80B /* TimelineBuilder.swift */; };
+		C7859CAD1F13954500F5E80B /* CreateTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CAC1F13954500F5E80B /* CreateTweetViewController.swift */; };
+		C7859CAF1F139A7E00F5E80B /* CreateTweetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CAE1F139A7E00F5E80B /* CreateTweetViewModel.swift */; };
+		C7859CB31F13AAF700F5E80B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CB21F13AAF700F5E80B /* HeaderView.swift */; };
+		C7859CB51F149D2500F5E80B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CB41F149D2500F5E80B /* UIColor+Extension.swift */; };
 		C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */; };
 		C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797694C1F022D1700030B22 /* TweetRepository.swift */; };
 		C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */; };
@@ -92,6 +96,10 @@
 		C7859CA01F10DDA100F5E80B /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		C7859CA71F10EFE900F5E80B /* TweetRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRealmDatastore.swift; sourceTree = "<group>"; };
 		C7859CA91F137FBD00F5E80B /* TimelineBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineBuilder.swift; sourceTree = "<group>"; };
+		C7859CAC1F13954500F5E80B /* CreateTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTweetViewController.swift; sourceTree = "<group>"; };
+		C7859CAE1F139A7E00F5E80B /* CreateTweetViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTweetViewModel.swift; sourceTree = "<group>"; };
+		C7859CB21F13AAF700F5E80B /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		C7859CB41F149D2500F5E80B /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOAuth1SwiftService.swift; sourceTree = "<group>"; };
 		C797694C1F022D1700030B22 /* TweetRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRepository.swift; sourceTree = "<group>"; };
 		C7C879981EF4EC8700E69DCD /* TwitterClientApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				C73B390E1F06975500E2313C /* UIFont+Extension.swift */,
+				C7859CB41F149D2500F5E80B /* UIColor+Extension.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 			children = (
 				C7DF941B1EFB51DB0058DF1B /* LoginViewModel.swift */,
 				C73B390A1F06452500E2313C /* TimelineViewModel.swift */,
+				C7859CAE1F139A7E00F5E80B /* CreateTweetViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -269,6 +279,8 @@
 				C7C879D01EF517FD00E69DCD /* TweetCell.swift */,
 				C7C879CE1EF5104600E69DCD /* TimelineViewController.swift */,
 				C784EE911EF77F3B008657A8 /* LoginViewController.swift */,
+				C7859CAC1F13954500F5E80B /* CreateTweetViewController.swift */,
+				C7859CB21F13AAF700F5E80B /* HeaderView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -388,6 +400,7 @@
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
 				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
+				C7859CAD1F13954500F5E80B /* CreateTweetViewController.swift in Sources */,
 				C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */,
 				C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */,
 				C73B39091F051BBB00E2313C /* SelfInfoDatabaseDatastore.swift in Sources */,
@@ -401,11 +414,14 @@
 				C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */,
 				C73B390F1F06975500E2313C /* UIFont+Extension.swift in Sources */,
 				C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */,
+				C7859CB31F13AAF700F5E80B /* HeaderView.swift in Sources */,
 				C7859CA81F10EFE900F5E80B /* TweetRealmDatastore.swift in Sources */,
 				C7C879CF1EF5104600E69DCD /* TimelineViewController.swift in Sources */,
 				C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */,
 				C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */,
 				C73B39011F04919E00E2313C /* User.swift in Sources */,
+				C7859CB51F149D2500F5E80B /* UIColor+Extension.swift in Sources */,
+				C7859CAF1F139A7E00F5E80B /* CreateTweetViewModel.swift in Sources */,
 				C73B390B1F06452500E2313C /* TimelineViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

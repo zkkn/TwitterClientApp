@@ -17,7 +17,7 @@ final class TimelineViewController: UIViewController {
     
     fileprivate lazy var headerView: UIView = {
         let headerView = UIView()
-        headerView.backgroundColor = .red
+        headerView.backgroundColor = .exBlue()
         return headerView
     }()
     

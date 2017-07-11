@@ -14,7 +14,7 @@ protocol TweetRepositoryType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID:Int?, trimUser:Bool, excludeReplies:Bool, includeEntities:Bool)
         -> Observable<[Tweet]>
     
-    func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
+    func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
         -> Observable<Tweet>
 }
 
@@ -51,10 +51,10 @@ struct TweetRepository: TweetRepositoryType {
                 }
     }
     
-    func postTweet(status: String, inReplyToStatus: Int? = nil, mediaFlag: Bool? = nil, latitude: Float? = nil, longtitude: Float? = nil, placeID: Int? = nil, displayCoordinates: Bool? = nil, trimUser: Bool? = nil, mediaIDs: [Int]? = nil)
+    func createTweet(status: String, inReplyToStatus: Int? = nil, mediaFlag: Bool? = nil, latitude: Float? = nil, longtitude: Float? = nil, placeID: Int? = nil, displayCoordinates: Bool? = nil, trimUser: Bool? = nil, mediaIDs: [Int]? = nil)
         -> Observable<Tweet> {
         return apiDatastore
-            .postTweet(
+            .createTweet(
                 status: status,
                 inReplyToStatus: inReplyToStatus,
                 mediaFlag: mediaFlag,
