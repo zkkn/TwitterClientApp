@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class PostTweetViewController: UIViewController {
+final class PostTweetViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Views -
     
@@ -21,7 +21,21 @@ final class PostTweetViewController: UIViewController {
         return headerView
     }()
     
-    fileprivate lazy var tweetTextView: UITextView = UITextView()
+    fileprivate lazy var scrollView: UIScrollView = {
+        let scrollView =  UIScrollView()
+        scrollView.alwaysBounceVertical = true
+        scrollView.keyboardDismissMode = .onDrag
+        return scrollView
+    }()
+    
+    fileprivate lazy var tweetTextView: UITextView = {
+        let tweetTextView = UITextView()
+        tweetTextView.delegate = self
+        tweetTextView.font = UIFont.hirakakuProNW3(size: 20)
+        return tweetTextView
+    }()
+    
+    fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
     // MARK: - Properties -
     
@@ -52,6 +66,20 @@ extension PostTweetViewController {
         setConstraints()
         subscribeView()
         subscribeViewModel()
+        
+        bindView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tweetTextView.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        view.endEditing(true)
     }
 }
 
@@ -65,7 +93,8 @@ extension PostTweetViewController {
     
     fileprivate func setViews() {
         view.addSubview(headerView)
-        view.addSubview(tweetTextView)
+        view.addSubview(scrollView)
+        scrollView.addSubview(tweetTextView)
     }
     
     fileprivate func setConstraints() {
@@ -74,10 +103,26 @@ extension PostTweetViewController {
             make.height.equalTo(64)
         }
         
-        tweetTextView.snp.makeConstraints { make in
-            make.left.right.bottom.equalTo(16)
-            make.top.equalTo(headerView.snp.bottom).offset(16)
+        scrollView.snp.makeConstraints { make in
+            make.left.right.bottom.equalTo(view)
+            make.top.equalTo(headerView.snp.bottom)
         }
+        
+        keyboardFrameChanged
+            .subscribe(onNext: { [weak self] (frame, duration) in
+                guard let _ = self else { return }
+                
+                self!.tweetTextView.snp.remakeConstraints { (make) in
+                    make.left.right.equalTo(self!.view).inset(16)
+                    make.top.equalTo(self!.headerView.snp.bottom).offset(16)
+                    make.bottom.equalTo(self!.view).inset(frame.height)
+                }
+                
+                UIView.animate(withDuration: duration) { [weak self] in
+                    self?.view.layoutIfNeeded()
+                }
+            })
+            .disposed(by: disposeBag)
     }
     
     fileprivate func subscribeView() {
@@ -104,6 +149,35 @@ extension PostTweetViewController {
                 else {
                     self?.showCanNotTweetAlert()
                 }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    fileprivate func bindView() {
+        NotificationCenter.default.rx.notification(.UIKeyboardWillShow)
+            .subscribe(onNext: { [weak self] (notification) in
+                guard
+                    let userInfo = notification.userInfo,
+                    let infoKey  = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+                    let durationValue = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double
+                    else { return }
+                
+                let keyboardScreenEndFrame = infoKey.cgRectValue
+                
+                self?.keyboardFrameChanged
+                    .onNext((frame: keyboardScreenEndFrame, duration: durationValue))
+            })
+            .disposed(by: disposeBag)
+        
+        NotificationCenter.default.rx.notification(.UIKeyboardWillHide)
+            .subscribe(onNext: { [weak self] (notification) in
+                guard let _ = self else { return }
+                guard
+                    let beforeDuration = try? self!.keyboardFrameChanged.value().duration
+                    else { return }
+                
+                self?.keyboardFrameChanged
+                    .onNext((frame: CGRect.zero, duration: beforeDuration))
             })
             .disposed(by: disposeBag)
     }
