@@ -33,16 +33,7 @@ CreateTweetViewModelOutputs {
     fileprivate let repository: TweetRepositoryType
     
     
-    // MARK - Initializer -
-    
-    init(repository: TweetRepositoryType) {
-        self.repository = repository
-        
-        setBindings()
-    }
-    
-    
-    // MARK: - Inputs -
+     // MARK: - Inputs -
     
     let createTweet = PublishSubject<String>()
     
@@ -50,6 +41,15 @@ CreateTweetViewModelOutputs {
     
     let createTweetResult = PublishSubject<Bool>()
     
+    
+    // MARK - Initializer -
+    
+    init(repository: TweetRepositoryType) {
+        self.repository = repository
+        
+        setBindings()
+    }
+   
     
     // MARK: - Binds -
     
