@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let initialViewController = LoginViewController(viewModel: LoginViewModel())
         window?.rootViewController = initialViewController
-        
+
         return true
     }
 
