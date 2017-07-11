@@ -14,11 +14,11 @@ import UIKit
 final class TimelineViewController: UIViewController {
     
     // MARK: - Views -
-    
-    fileprivate lazy var headerView: UIView = {
-        let headerView = UIView()
-        headerView.backgroundColor = .exBlue()
-        return headerView
+   
+    fileprivate lazy var headerView: HeaderView = {
+        let view = HeaderView()
+        view.rightButton.setImage(#imageLiteral(resourceName: "ic_pen_white_24.png"), for: .normal)
+        return view
     }()
     
     fileprivate lazy var refreshControl = UIRefreshControl()
@@ -70,7 +70,7 @@ extension TimelineViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tweetTableView.reloadData()
+        viewModel.inputs.refreshRequest.onNext()
     }
 }
 
@@ -105,6 +105,14 @@ extension TimelineViewController {
         refreshControl.rx.controlEvent(.valueChanged)
             .subscribe(onNext: { [weak self] (_) in
                 self?.viewModel.inputs.refreshRequest.onNext()
+            })
+            .disposed(by: disposeBag)
+        
+        headerView.rightButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let createTweetViewController = CreateTweetBuilder().build()
+                let navVC = UINavigationController(rootViewController: createTweetViewController)
+                self?.present(navVC, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }

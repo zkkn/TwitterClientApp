@@ -20,7 +20,6 @@ class HeaderView: UIView {
     
     lazy var rightButton: UIButton = {
         let button = UIButton()
-        button.showsTouchWhenHighlighted = true
         return button
     }()
     
@@ -56,15 +55,13 @@ extension HeaderView {
     
     fileprivate func setLayout() {
         leftButton.snp.makeConstraints { make in
-            make.left.top.equalTo(self).inset(20)
-            make.width.equalTo(80)
-            make.height.equalTo(40)
+            make.left.bottom.equalTo(self).inset(10)
+            make.width.height.equalTo(24)
         }
         
         rightButton.snp.makeConstraints { make in
-            make.right.top.equalTo(self).inset(20)
-            make.width.equalTo(80)
-            make.height.equalTo(40)
+            make.right.bottom.equalTo(self).inset(10)
+            make.width.height.equalTo(24)
         }
     }
 }
