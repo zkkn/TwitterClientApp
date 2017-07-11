@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class CreateTweetViewController: UIViewController, UITextViewDelegate {
+final class CreateTweetViewController: UIViewController {
     
     // MARK: - Views -
     
@@ -23,7 +23,6 @@ final class CreateTweetViewController: UIViewController, UITextViewDelegate {
     
     fileprivate lazy var tweetTextView: UITextView = {
         let tweetTextView = UITextView()
-        tweetTextView.delegate = self
         tweetTextView.font = UIFont.hirakakuProNW3(size: 20)
         return tweetTextView
     }()
@@ -59,7 +58,6 @@ extension CreateTweetViewController {
         setConstraints()
         subscribeView()
         subscribeViewModel()
-        
         subscribeNotificationCenter()
     }
     
@@ -83,7 +81,7 @@ extension CreateTweetViewController {
     
     fileprivate func configure() {
         view.backgroundColor = .white
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     fileprivate func setViews() {
