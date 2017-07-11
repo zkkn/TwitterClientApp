@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let initialViewController = LoginViewController(viewModel: LoginViewModel())
         window?.rootViewController = initialViewController
         
+        //        let postTweetVC = PostTweetViewController(viewModel: PostTweetViewModel(repository: TweetRepository(apiDatastore: TweetAPIDatastore(), tweetDBDatastore: TweetRealmDatastore(), selfInfoDBDatastore: SelfInfoDatabaseDatastore())))
+        //       window?.rootViewController = postTweetVC
+        
         return true
     }
 

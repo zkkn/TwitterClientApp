@@ -37,6 +37,7 @@ final class PostTweetViewController: UIViewController, UITextViewDelegate {
     
     fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
+    
     // MARK: - Properties -
     
     fileprivate let disposeBag = DisposeBag()
@@ -83,6 +84,8 @@ extension PostTweetViewController {
     }
 }
 
+
+// MARK - Setup -
 
 extension PostTweetViewController {
     

@@ -41,6 +41,7 @@ PostTweetViewModelOutputs {
         setBindings()
     }
     
+    
     // MARK: - Inputs -
     
     let postTweet = PublishSubject<String>()
