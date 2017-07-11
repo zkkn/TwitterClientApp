@@ -1,5 +1,5 @@
 //
-//  PostTweetViewController.swift
+//  CreateTweetViewController.swift
 //  TwitterClientApp
 //
 //  Created by Shoichi Kanzaki on 2017/07/10.
@@ -10,7 +10,7 @@ import RxCocoa
 import RxSwift
 import UIKit
 
-final class PostTweetViewController: UIViewController, UITextViewDelegate {
+final class CreateTweetViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Views -
     
@@ -19,13 +19,6 @@ final class PostTweetViewController: UIViewController, UITextViewDelegate {
         headerView.leftButton.setTitle("cancel", for: .normal)
         headerView.rightButton.setTitle("tweet", for: .normal)
         return headerView
-    }()
-    
-    fileprivate lazy var scrollView: UIScrollView = {
-        let scrollView =  UIScrollView()
-        scrollView.alwaysBounceVertical = true
-        scrollView.keyboardDismissMode = .onDrag
-        return scrollView
     }()
     
     fileprivate lazy var tweetTextView: UITextView = {
@@ -39,10 +32,10 @@ final class PostTweetViewController: UIViewController, UITextViewDelegate {
     // MARK: - Properties -
     
     fileprivate let disposeBag = DisposeBag()
-    fileprivate let viewModel: PostTweetViewModelType
+    fileprivate let viewModel: CreateTweetViewModelType
     fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
-    init(viewModel: PostTweetViewModelType) {
+    init(viewModel: CreateTweetViewModelType) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)
@@ -56,7 +49,7 @@ final class PostTweetViewController: UIViewController, UITextViewDelegate {
 
 // MARK - Life Cycle Event -
 
-extension PostTweetViewController {
+extension CreateTweetViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,7 +79,7 @@ extension PostTweetViewController {
 
 // MARK - Setup -
 
-extension PostTweetViewController {
+extension CreateTweetViewController {
     
     fileprivate func configure() {
         view.backgroundColor = .white
@@ -95,19 +88,13 @@ extension PostTweetViewController {
     
     fileprivate func setViews() {
         view.addSubview(headerView)
-        view.addSubview(scrollView)
-        scrollView.addSubview(tweetTextView)
+        view.addSubview(tweetTextView)
     }
     
     fileprivate func setConstraints() {
         headerView.snp.makeConstraints { make in
             make.left.top.right.equalTo(view)
             make.height.equalTo(64)
-        }
-        
-        scrollView.snp.makeConstraints { make in
-            make.left.right.bottom.equalTo(view)
-            make.top.equalTo(headerView.snp.bottom)
         }
         
         keyboardFrameChanged
@@ -131,7 +118,7 @@ extension PostTweetViewController {
         headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 guard let text = self?.tweetTextView.text else { return }
-                self?.viewModel.inputs.postTweet.onNext(text)
+                self?.viewModel.inputs.createTweet.onNext(text)
             })
             .disposed(by: disposeBag)
         
@@ -143,7 +130,7 @@ extension PostTweetViewController {
     }
     
     fileprivate func subscribeViewModel() {
-        viewModel.outputs.postTweetResult
+        viewModel.outputs.createTweetResult
             .subscribe(onNext: { [weak self] (result) in
                 if result {
                     self?.navigationController?.dismiss(animated: true, completion: nil)
@@ -188,7 +175,7 @@ extension PostTweetViewController {
 
 // MARK: - Alert -
 
-extension PostTweetViewController {
+extension CreateTweetViewController {
     
     func showCanNotTweetAlert() {
         let alert: UIAlertController = UIAlertController(

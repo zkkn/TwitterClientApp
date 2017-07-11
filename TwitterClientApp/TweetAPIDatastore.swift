@@ -14,7 +14,7 @@ protocol TweetAPIDatastoreType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int?, maxID: Int?, trimUser: Bool, excludeReplies: Bool, includeEntities: Bool)
         -> Observable<[[String: Any]]>
     
-    func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
+    func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
         -> Observable<[String: Any]>
 }
 
@@ -26,9 +26,9 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
             .sendRequest()
     }
     
-    func postTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
+    func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
         -> Observable<[String : Any]> { return TweetRequest
-            .PostTweet(status: status, inReplyToStatusID: inReplyToStatus, mediaFlag: mediaFlag, latitude: latitude, longtitude: longtitude, placeID: placeID, displayCoordinates: displayCoordinates, trimUser: trimUser, mediaIDs: mediaIDs)
+            .CreateTweet(status: status, inReplyToStatusID: inReplyToStatus, mediaFlag: mediaFlag, latitude: latitude, longtitude: longtitude, placeID: placeID, displayCoordinates: displayCoordinates, trimUser: trimUser, mediaIDs: mediaIDs)
             .sendRequest()
     }
 }
@@ -80,7 +80,7 @@ fileprivate struct TweetRequest {
         }
     }
     
-    fileprivate struct PostTweet {
+    fileprivate struct CreateTweet {
         
         fileprivate let status: String
         fileprivate let inReplyToStatusID: Int?

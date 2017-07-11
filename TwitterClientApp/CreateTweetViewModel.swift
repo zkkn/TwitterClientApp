@@ -1,5 +1,5 @@
 //
-//  PostTweetViewModel.swift
+//  CreateTweetViewModel.swift
 //  TwitterClientApp
 //
 //  Created by Shoichi Kanzaki on 2017/07/10.
@@ -9,26 +9,26 @@
 import Foundation
 import RxSwift
 
-protocol PostTweetViewModelInputs {
-    var postTweet: PublishSubject<String> { get }
+protocol CreateTweetViewModelInputs {
+    var createTweet: PublishSubject<String> { get }
 }
 
-protocol PostTweetViewModelOutputs {
-    var postTweetResult: PublishSubject<Bool> { get }
+protocol CreateTweetViewModelOutputs {
+    var createTweetResult: PublishSubject<Bool> { get }
 }
 
-protocol PostTweetViewModelType {
-    var inputs: PostTweetViewModelInputs { get }
-    var outputs: PostTweetViewModelOutputs { get }
+protocol CreateTweetViewModelType {
+    var inputs: CreateTweetViewModelInputs { get }
+    var outputs: CreateTweetViewModelOutputs { get }
 }
 
-final class PostTweetViewModel: PostTweetViewModelType, PostTweetViewModelInputs,
-PostTweetViewModelOutputs {
+final class CreateTweetViewModel: CreateTweetViewModelType, CreateTweetViewModelInputs,
+CreateTweetViewModelOutputs {
     
     // MARK: - Properties -
     
-    var inputs: PostTweetViewModelInputs { return self }
-    var outputs: PostTweetViewModelOutputs { return self }
+    var inputs: CreateTweetViewModelInputs { return self }
+    var outputs: CreateTweetViewModelOutputs { return self }
     fileprivate let disposeBag = DisposeBag()
     fileprivate let repository: TweetRepositoryType
     
@@ -44,26 +44,26 @@ PostTweetViewModelOutputs {
     
     // MARK: - Inputs -
     
-    let postTweet = PublishSubject<String>()
+    let createTweet = PublishSubject<String>()
     
     // MARK: - Outputs -
     
-    let postTweetResult = PublishSubject<Bool>()
+    let createTweetResult = PublishSubject<Bool>()
     
     
     // MARK: - Binds -
     
     fileprivate func setBindings() {
-        postTweet
+        createTweet
             .subscribe(onNext: { [weak self] tweet in
                 guard let _ = self else { return }
                 
                 if tweet.isEmpty {
-                    self?.postTweetResult.onNext(false)
+                    self?.createTweetResult.onNext(false)
                 }
                 else {
                     self?.repository
-                        .postTweet(
+                        .createTweet(
                             status: tweet,
                             inReplyToStatus: nil,
                             mediaFlag: nil,
@@ -76,10 +76,10 @@ PostTweetViewModelOutputs {
                         )
                         .subscribe(
                             onNext: { [weak self] (_) in
-                                self?.postTweetResult.onNext(true)
+                                self?.createTweetResult.onNext(true)
                             },
                             onError: { [weak self] (error) in
-                                self?.postTweetResult.onNext(false)
+                                self?.createTweetResult.onNext(false)
                         })
                         .disposed(by: self!.disposeBag)
                 }
