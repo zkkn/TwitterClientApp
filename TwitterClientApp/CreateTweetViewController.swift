@@ -122,7 +122,7 @@ extension CreateTweetViewController {
         
         headerView.leftButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
-                self?.navigationController?.dismiss(animated: true, completion: nil)
+                self?.dismiss(animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
     }
@@ -131,7 +131,7 @@ extension CreateTweetViewController {
         viewModel.outputs.createTweetResult
             .subscribe(onNext: { [weak self] (result) in
                 if result {
-                    self?.navigationController?.dismiss(animated: true, completion: nil)
+                    self?.dismiss(animated: true, completion: nil)
                 }
                 else {
                     self?.showCanNotTweetAlert()
