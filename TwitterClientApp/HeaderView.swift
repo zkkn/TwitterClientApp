@@ -41,7 +41,7 @@ class HeaderView: UIView {
 }
 
 
-//MARK: - Setup -
+// MARK: - Setup -
 
 extension HeaderView {
     

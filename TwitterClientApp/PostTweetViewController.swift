@@ -35,13 +35,12 @@ final class PostTweetViewController: UIViewController, UITextViewDelegate {
         return tweetTextView
     }()
     
-    fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
-    
     
     // MARK: - Properties -
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let viewModel: PostTweetViewModelType
+    fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
     init(viewModel: PostTweetViewModelType) {
         self.viewModel = viewModel
@@ -68,7 +67,7 @@ extension PostTweetViewController {
         subscribeView()
         subscribeViewModel()
         
-        bindView()
+        subscribeNotificationCenter()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -156,7 +155,7 @@ extension PostTweetViewController {
             .disposed(by: disposeBag)
     }
     
-    fileprivate func bindView() {
+    fileprivate func subscribeNotificationCenter() {
         NotificationCenter.default.rx.notification(.UIKeyboardWillShow)
             .subscribe(onNext: { [weak self] (notification) in
                 guard
