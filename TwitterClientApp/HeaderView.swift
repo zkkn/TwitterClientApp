@@ -14,12 +14,12 @@ class HeaderView: UIView {
     
     lazy var leftButton: UIButton = {
         let button = UIButton()
-        button.showsTouchWhenHighlighted = true
         return button
     }()
     
     lazy var rightButton: UIButton = {
         let button = UIButton()
+        button.showsTouchWhenHighlighted = true
         return button
     }()
     
