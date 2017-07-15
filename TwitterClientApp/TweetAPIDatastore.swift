@@ -37,7 +37,7 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     
     func likeTweet(twitterTweetID: Int, includeEntities: Bool?)
         -> Observable<[String : Any]> { return TweetRequest
-            .LikeTweet(twitterTweetID: twitterTweetID, includeEntitites: includeEntities)
+            .LikeTweet(twitterTweetID: twitterTweetID, includeEntities: includeEntities)
             .sendRequest()
     }
 }
@@ -164,7 +164,7 @@ fileprivate struct TweetRequest {
     fileprivate struct LikeTweet {
         
         fileprivate let twitterTweetID: Int
-        fileprivate let includeEntitites: Bool?
+        fileprivate let includeEntities: Bool?
         
         fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
         
@@ -172,8 +172,8 @@ fileprivate struct TweetRequest {
             var params: [String: Any] = [
                 "id": twitterTweetID
             ]
-            if let includeEntitites = includeEntitites {
-                params["include_entities"] = includeEntitites
+            if let includeEntities = includeEntities {
+                params["include_entities"] = includeEntities
             }
             return params
         }
