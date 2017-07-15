@@ -16,6 +16,9 @@ protocol TweetAPIDatastoreType {
     
     func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
         -> Observable<[String: Any]>
+    
+    func likeTweet(twitterTweetID: Int, includeEntities: Bool?)
+        -> Observable<[String: Any]>
 }
 
 struct TweetAPIDatastore: TweetAPIDatastoreType {
@@ -29,6 +32,12 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
         -> Observable<[String : Any]> { return TweetRequest
             .CreateTweet(status: status, inReplyToStatusID: inReplyToStatus, mediaFlag: mediaFlag, latitude: latitude, longtitude: longtitude, placeID: placeID, displayCoordinates: displayCoordinates, trimUser: trimUser, mediaIDs: mediaIDs)
+            .sendRequest()
+    }
+    
+    func likeTweet(twitterTweetID: Int, includeEntities: Bool?)
+        -> Observable<[String : Any]> { return TweetRequest
+            .LikeTweet(twitterTweetID: twitterTweetID, includeEntitites: includeEntities)
             .sendRequest()
     }
 }
@@ -66,7 +75,9 @@ fileprivate struct TweetRequest {
             return Observable.create { observer in
                 self.oauthswift.client.request(
                     "https://api.twitter.com/1.1/statuses/home_timeline.json",
-                    method: .GET, parameters: self.parameters, headers: [:],
+                    method: .GET,
+                    parameters: self.parameters,
+                    headers: [:],
                     success: { response in
                         let jsonDict = try! response.jsonObject() as? [[String: Any]]
                         observer.onNext(jsonDict!)
@@ -129,10 +140,54 @@ fileprivate struct TweetRequest {
             return Observable.create { observer in
                 self.oauthSwift.client.request(
                     "https://api.twitter.com/1.1/statuses/update.json",
-                    method: .POST, parameters: self.parameters, headers: [:],
+                    method: .POST,
+                    parameters: self.parameters,
+                    headers: [:],
                     success: { response in
                         do {
                             let jsonDict = try response.jsonObject() as?  [String: Any]
+                            observer.onNext(jsonDict!)
+                        }
+                        catch {
+                            observer.onError(error)
+                        }
+                    },
+                    failure: { error in
+                        observer.onError(error)
+                })
+                return Disposables.create {
+                }
+            }
+        }
+    }
+    
+    fileprivate struct LikeTweet {
+        
+        fileprivate let twitterTweetID: Int
+        fileprivate let includeEntitites: Bool?
+        
+        fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
+        
+        fileprivate var parameters: OAuthSwift.Parameters {
+            var params: [String: Any] = [
+                "id": twitterTweetID
+            ]
+            if let includeEntitites = includeEntitites {
+                params["include_entities"] = includeEntitites
+            }
+            return params
+        }
+        
+        fileprivate func sendRequest() -> Observable<[String: Any]> {
+            return Observable.create { observer in
+                self.oauthSwift.client.request(
+                    "https://api.twitter.com/1.1/favorites/create.json",
+                    method: .POST,
+                    parameters: self.parameters,
+                    headers: [:],
+                    success: { response in
+                        do {
+                            let jsonDict = try response.jsonObject() as? [String: Any]
                             observer.onNext(jsonDict!)
                         }
                         catch {
