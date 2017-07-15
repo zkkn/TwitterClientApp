@@ -35,10 +35,9 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
             .sendRequest()
     }
     
-    func likeTweet(twitterTweetID: Int, includeEntities: Bool?)
-        -> Observable<[String : Any]> { return TweetRequest
-            .LikeTweet(twitterTweetID: twitterTweetID, includeEntities: includeEntities)
-            .sendRequest()
+    func likeTweet(twitterTweetID: Int, includeEntities: Bool?) -> Observable<[String : Any]> { return TweetRequest
+        .LikeTweet(twitterTweetID: twitterTweetID, includeEntities: includeEntities)
+        .sendRequest()
     }
 }
 
