@@ -11,11 +11,13 @@ import RxSwift
 
 protocol TimelineViewModelInputs {
     var refreshRequest: PublishSubject<Void> { get }
+    var likeTweetRequest: PublishSubject<Int> { get }
 }
 
 protocol TimelineViewModelOutputs {
     var tweets: Variable<[Tweet]> { get }
     var getTweetResult: PublishSubject<Bool> { get }
+    var likeTweetResult: PublishSubject<Bool> { get }
 }
 
 protocol TimelineViewModelType {
@@ -45,12 +47,14 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     // MARK - Inputs -
     
     let refreshRequest = PublishSubject<Void>()
+    let likeTweetRequest = PublishSubject<Int>()
     
     
     // MARK: - Ouputs -
     
     let tweets = Variable<[Tweet]>([])
     let getTweetResult = PublishSubject<Bool>()
+    let likeTweetResult = PublishSubject<Bool>()
     
     
     // MARK - Binds -
@@ -68,6 +72,25 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                         },
                         onError: { [weak self] (error) in
                             self?.getTweetResult.onNext(false)
+                    })
+                    .disposed(by: self!.disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
+        likeTweetRequest
+            .subscribe(onNext: { [weak self] value in
+                guard let _ = self else { return }
+                self?.repository
+                    .likeTweet(
+                        twitterTweetID: value,
+                        includeEntities: nil
+                    )
+                    .subscribe(
+                        onNext: { [weak self] (_) in
+                            self?.likeTweetResult.onNext(true)
+                        },
+                        onError: { [weak self] (error) in
+                            self?.likeTweetResult.onNext(false)
                     })
                     .disposed(by: self!.disposeBag)
             })

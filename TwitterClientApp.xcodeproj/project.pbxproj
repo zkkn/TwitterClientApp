@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */; };
+		C72703CD1F1A0ADE0014D96E /* ic_heart_pink_32.png in Resources */ = {isa = PBXBuildFile; fileRef = C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */; };
+		C72703CE1F1A0ADE0014D96E /* ic_heart_pink_48.png in Resources */ = {isa = PBXBuildFile; fileRef = C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */; };
 		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
 		C73B38FD1F048D8100E2313C /* RepositoryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B38FC1F048D8100E2313C /* RepositoryError.swift */; };
 		C73B38FF1F04918900E2313C /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73B38FE1F04918900E2313C /* Tweet.swift */; };
@@ -85,6 +87,8 @@
 
 /* Begin PBXFileReference section */
 		C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDatastore.swift; sourceTree = "<group>"; };
+		C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_heart_pink_32.png; sourceTree = "<group>"; };
+		C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_heart_pink_48.png; sourceTree = "<group>"; };
 		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
 		C73B38FC1F048D8100E2313C /* RepositoryError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryError.swift; sourceTree = "<group>"; };
 		C73B38FE1F04918900E2313C /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tweet.swift; path = TwitterClientApp/Tweet.swift; sourceTree = "<group>"; };
@@ -202,6 +206,8 @@
 		C7859CB81F14B14C00F5E80B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */,
+				C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */,
 				C7859CBB1F14B56A00F5E80B /* ic_cross_white_40.png */,
 				C7859CB61F14B13F00F5E80B /* ic_pen_white_24.png */,
 			);
@@ -376,6 +382,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C72703CE1F1A0ADE0014D96E /* ic_heart_pink_48.png in Resources */,
+				C72703CD1F1A0ADE0014D96E /* ic_heart_pink_32.png in Resources */,
 				C7859CBC1F14B56A00F5E80B /* ic_cross_white_40.png in Resources */,
 				C7C879A61EF4EC8700E69DCD /* LaunchScreen.storyboard in Resources */,
 				C7C879A31EF4EC8700E69DCD /* Assets.xcassets in Resources */,

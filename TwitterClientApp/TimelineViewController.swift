@@ -147,8 +147,27 @@ extension TimelineViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tweetTableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        let twitterTweetID = viewModel.outputs.tweets.value[indexPath.row].twitterTweetID
         cell.update(tweet: viewModel.outputs.tweets.value[indexPath.row])
         
+        cell.likeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let _ = self else { return }
+                cell.updateLike()
+                self?.viewModel.inputs.likeTweetRequest.onNext(twitterTweetID)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.likeTweetResult
+            .subscribe(onNext: { [weak self] (result) in
+                if result {
+                    cell.update(tweet: (self?.viewModel.outputs.tweets.value[indexPath.row])!)
+                }
+                else { 
+                    print("error")
+                }
+            })
+            .disposed(by: disposeBag)
         return cell
     }
 }

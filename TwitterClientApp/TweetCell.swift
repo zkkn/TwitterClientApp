@@ -40,12 +40,30 @@ class TweetCell: UITableViewCell {
     
     fileprivate lazy var contentLabel: UILabel = {
         let contentLabel = UILabel()
-        contentLabel.font = UIFont.hirakakuProNW3(size: 10)
+        contentLabel.font = UIFont.hirakakuProNW3(size: 15)
         contentLabel.lineBreakMode = .byWordWrapping
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
         contentLabel.textColor = .black
         return contentLabel
+    }()
+    
+    lazy var likeButton: UIButton = {
+        let button = UIButton()
+        button.contentMode = .scaleToFill
+        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_32.png"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_48.png"), for: .selected)
+        return button
+    }()
+    
+    fileprivate lazy var likeCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.hirakakuProNW3(size: 15)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.textColor = .lightGray
+        return label
     }()
     
     
@@ -73,6 +91,8 @@ extension TweetCell {
         addSubview(nameLabel)
         addSubview(screenNameLabel)
         addSubview(contentLabel)
+        addSubview(likeButton)
+        addSubview(likeCountLabel)
     }
     
     fileprivate func setConstraints() {
@@ -94,8 +114,21 @@ extension TweetCell {
         
         contentLabel.snp.makeConstraints { make in
             make.left.equalTo(profileImageView.snp.right).offset(8)
-            make.right.bottom.equalTo(self).inset(8)
+            make.right.equalTo(self).inset(8)
             make.top.equalTo(screenNameLabel.snp.bottom).offset(8)
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.left.equalTo(profileImageView.snp.right).offset(8)
+            make.bottom.equalTo(self).inset(8)
+            make.top.equalTo(contentLabel.snp.bottom).offset(8)
+            make.width.height.equalTo(24)
+        }
+        
+        likeCountLabel.snp.makeConstraints { make in
+            make.left.equalTo(likeButton.snp.right).offset(8)
+            make.right.bottom.equalTo(self).inset(8)
+            make.top.equalTo(contentLabel.snp.bottom).offset(8)
         }
     }
 }
@@ -111,5 +144,15 @@ extension TweetCell {
         self.screenNameLabel.text = "@" + (tweet.user?.screenName)!
         self.nameLabel.text = tweet.user?.name
         self.contentLabel.text = tweet.text
+        self.likeCountLabel.text = "\(tweet.favoriteCount)"
+    }
+    
+    func updateLike() {
+        if self.likeButton.isSelected == true {
+            self.likeButton.isSelected = false
+        }
+        else {
+            self.likeButton.isSelected = true
+        }
     }
 }
