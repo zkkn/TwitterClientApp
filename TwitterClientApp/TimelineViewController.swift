@@ -154,9 +154,8 @@ extension TimelineViewController: UITableViewDataSource {
             .subscribe(onNext: { [weak self] in
                 guard let _ = self else { return }
                 self?.viewModel.inputs.likeTweetRequest.onNext(twitterTweetID)
-                cell.disposeBag = DisposeBag()
             })
-            .disposed(by: disposeBag)
+            .disposed(by: cell.disposeBag)
         
         viewModel.outputs.likeTweetResult
             .subscribe(onNext: { [weak self] (value) in
