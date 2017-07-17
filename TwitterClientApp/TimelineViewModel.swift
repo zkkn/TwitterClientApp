@@ -78,16 +78,16 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
             .disposed(by: disposeBag)
         
         likeTweetRequest
-            .subscribe(onNext: { [weak self] value in
+            .subscribe(onNext: { [weak self] id in
                 guard let _ = self else { return }
                 self?.repository
                     .likeTweet(
-                        twitterTweetID: value,
+                        twitterTweetID: id,
                         includeEntities: nil
                     )
                     .subscribe(
                         onNext: { [weak self] (_) in
-                            self?.likeTweetResult.onNext(value)
+                            self?.likeTweetResult.onNext(id)
                         },
                         onError: { [weak self] (error) in
                             self?.likeTweetResult.onNext(nil)

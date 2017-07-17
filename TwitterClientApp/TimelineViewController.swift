@@ -35,7 +35,7 @@ final class TimelineViewController: UIViewController {
     
     // MARK - Properties -
     
-    var disposeBag = DisposeBag()
+    fileprivate let disposeBag = DisposeBag()
     fileprivate let viewModel: TimelineViewModelType
     
     
@@ -158,15 +158,16 @@ extension TimelineViewController: UITableViewDataSource {
             .disposed(by: cell.disposeBag)
         
         viewModel.outputs.likeTweetResult
-            .subscribe(onNext: { [weak self] (value) in
-                if value == twitterTweetID {
-                    cell.updateLike(tweet: (self?.viewModel.outputs.tweets.value[indexPath.row])!)
+            .subscribe(onNext: { [weak self] (id) in
+                guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
+                if id == twitterTweetID {
+                    cell.updateLike(tweet: tweet)
                 }
                 else { 
                     print("error")
                 }
             })
-            .disposed(by: disposeBag)
+            .disposed(by: cell.disposeBag)
         return cell
     }
 }

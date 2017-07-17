@@ -150,21 +150,21 @@ extension TweetCell {
     
     func update(tweet: Tweet) {
         guard let profileImageString = tweet.user?.profileImageURLHTTPS else { return }
-        self.profileImageView.kf.setImage(with: URL(string: profileImageString)!)
-        self.screenNameLabel.text = "@" + (tweet.user?.screenName)!
-        self.nameLabel.text = tweet.user?.name
-        self.contentLabel.text = tweet.text
-        self.likeCountLabel.text = "\(tweet.favoriteCount)"
+        profileImageView.kf.setImage(with: URL(string: profileImageString)!)
+        screenNameLabel.text = "@" + (tweet.user?.screenName)!
+        nameLabel.text = tweet.user?.name
+        contentLabel.text = tweet.text
+        likeCountLabel.text = "\(tweet.favoriteCount)"
     }
     
     func updateLike(tweet: Tweet) {
-        if self.likeButton.isSelected == true {
-            self.likeCountLabel.text = "\(tweet.favoriteCount)"
-            self.likeButton.isSelected = false
+        if likeButton.isSelected == !likeButton.isSelected {
+            likeCountLabel.text = "\(tweet.favoriteCount)"
+            likeButton.isSelected = false
         }
         else {
-            self.likeCountLabel.text = "\(tweet.favoriteCount)"
-            self.likeButton.isSelected = true
+            likeCountLabel.text = "\(tweet.favoriteCount)"
+            likeButton.isSelected = true
         }
     }
 }
