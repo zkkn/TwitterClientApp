@@ -17,7 +17,7 @@ protocol TimelineViewModelInputs {
 protocol TimelineViewModelOutputs {
     var tweets: Variable<[Tweet]> { get }
     var getTweetResult: PublishSubject<Bool> { get }
-    var likeTweetResult: PublishSubject<Bool> { get }
+    var likeTweetResult: PublishSubject<Int?> { get }
 }
 
 protocol TimelineViewModelType {
@@ -54,7 +54,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     
     let tweets = Variable<[Tweet]>([])
     let getTweetResult = PublishSubject<Bool>()
-    let likeTweetResult = PublishSubject<Bool>()
+    let likeTweetResult = PublishSubject<Int?>()
     
     
     // MARK - Binds -
@@ -87,10 +87,10 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                     )
                     .subscribe(
                         onNext: { [weak self] (_) in
-                            self?.likeTweetResult.onNext(true)
+                            self?.likeTweetResult.onNext(value)
                         },
                         onError: { [weak self] (error) in
-                            self?.likeTweetResult.onNext(false)
+                            self?.likeTweetResult.onNext(nil)
                     })
                     .disposed(by: self!.disposeBag)
             })

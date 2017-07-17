@@ -35,7 +35,7 @@ final class TimelineViewController: UIViewController {
     
     // MARK - Properties -
     
-    fileprivate let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     fileprivate let viewModel: TimelineViewModelType
     
     
@@ -149,19 +149,19 @@ extension TimelineViewController: UITableViewDataSource {
         let cell = tweetTableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         let twitterTweetID = viewModel.outputs.tweets.value[indexPath.row].twitterTweetID
         cell.update(tweet: viewModel.outputs.tweets.value[indexPath.row])
-        
+       
         cell.likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let _ = self else { return }
-                cell.updateLike()
                 self?.viewModel.inputs.likeTweetRequest.onNext(twitterTweetID)
+                cell.disposeBag = DisposeBag()
             })
             .disposed(by: disposeBag)
         
         viewModel.outputs.likeTweetResult
-            .subscribe(onNext: { [weak self] (result) in
-                if result {
-                    cell.update(tweet: (self?.viewModel.outputs.tweets.value[indexPath.row])!)
+            .subscribe(onNext: { [weak self] (value) in
+                if value == twitterTweetID {
+                    cell.updateLike(tweet: (self?.viewModel.outputs.tweets.value[indexPath.row])!)
                 }
                 else { 
                     print("error")

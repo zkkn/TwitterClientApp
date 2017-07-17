@@ -7,6 +7,7 @@
 //
 
 import Kingfisher
+import RxSwift
 import UIKit
 
 class TweetCell: UITableViewCell {
@@ -65,7 +66,10 @@ class TweetCell: UITableViewCell {
         label.textColor = .lightGray
         return label
     }()
+   
+    // MARK - Properties -
     
+    var disposeBag = DisposeBag()
     
     // MARK: - Initializer -
     
@@ -78,6 +82,12 @@ class TweetCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
     }
 }
 
@@ -147,11 +157,13 @@ extension TweetCell {
         self.likeCountLabel.text = "\(tweet.favoriteCount)"
     }
     
-    func updateLike() {
+    func updateLike(tweet: Tweet) {
         if self.likeButton.isSelected == true {
+            self.likeCountLabel.text = "\(tweet.favoriteCount)"
             self.likeButton.isSelected = false
         }
         else {
+            self.likeCountLabel.text = "\(tweet.favoriteCount)"
             self.likeButton.isSelected = true
         }
     }
