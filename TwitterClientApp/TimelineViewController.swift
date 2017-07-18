@@ -153,7 +153,7 @@ extension TimelineViewController: UITableViewDataSource {
         cell.likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let _ = self else { return }
-                self?.viewModel.inputs.likeTweetRequest.onNext(twitterTweetID)
+                self?.viewModel.inputs.likeTweet.onNext(twitterTweetID)
             })
             .disposed(by: cell.disposeBag)
         
@@ -161,10 +161,7 @@ extension TimelineViewController: UITableViewDataSource {
             .subscribe(onNext: { [weak self] (id) in
                 guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
                 if id == twitterTweetID {
-                    cell.updateLike(tweet: tweet)
-                }
-                else { 
-                    print("error")
+                    cell.update(tweet: tweet)
                 }
             })
             .disposed(by: cell.disposeBag)

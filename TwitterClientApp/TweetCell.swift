@@ -155,15 +155,11 @@ extension TweetCell {
         nameLabel.text = tweet.user?.name
         contentLabel.text = tweet.text
         likeCountLabel.text = "\(tweet.favoriteCount)"
-    }
-    
-    func updateLike(tweet: Tweet) {
+        
         if likeButton.isSelected == !likeButton.isSelected {
-            likeCountLabel.text = "\(tweet.favoriteCount)"
             likeButton.isSelected = false
         }
         else {
-            likeCountLabel.text = "\(tweet.favoriteCount)"
             likeButton.isSelected = true
         }
     }

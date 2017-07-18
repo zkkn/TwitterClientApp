@@ -11,7 +11,7 @@ import RxSwift
 
 protocol TimelineViewModelInputs {
     var refreshRequest: PublishSubject<Void> { get }
-    var likeTweetRequest: PublishSubject<Int> { get }
+    var likeTweet: PublishSubject<Int> { get }
 }
 
 protocol TimelineViewModelOutputs {
@@ -47,7 +47,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
     // MARK - Inputs -
     
     let refreshRequest = PublishSubject<Void>()
-    let likeTweetRequest = PublishSubject<Int>()
+    let likeTweet = PublishSubject<Int>()
     
     
     // MARK: - Ouputs -
@@ -77,7 +77,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
             })
             .disposed(by: disposeBag)
         
-        likeTweetRequest
+        likeTweet
             .subscribe(onNext: { [weak self] id in
                 guard let _ = self else { return }
                 self?.repository
