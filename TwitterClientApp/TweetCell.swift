@@ -53,7 +53,7 @@ class TweetCell: UITableViewCell {
         let button = UIButton()
         button.contentMode = .scaleToFill
         button.setImage(#imageLiteral(resourceName: "ic_heart_pink_32.png"), for: .normal)
-        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_48.png"), for: .highlighted)
+        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_48.png"), for: .selected)
         return button
     }()
     
@@ -157,10 +157,12 @@ extension TweetCell {
         likeCountLabel.text = "\(tweet.favoriteCount)"
         
         if tweet.favorited {
-            likeButton.isHighlighted = true
+            likeButton.isSelected = true
+            print(tweet.favorited)
         }
         else {
-            likeButton.isHighlighted = false
+            likeButton.isSelected = false
+            print(tweet.favorited)
         }
     }
 }
