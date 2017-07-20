@@ -17,7 +17,10 @@ protocol TweetRepositoryType {
     func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
         -> Observable<Tweet>
     
-    func likeTweet(twitterTweetID: Int, includeEntities: Bool?)
+    func likeTweet(tweetID: Int, includeEntities: Bool?)
+        -> Observable<Tweet>
+    
+    func unlikeTweet(tweetID: Int, includeEntities: Bool?)
         -> Observable<Tweet>
 }
 
@@ -77,11 +80,11 @@ struct TweetRepository: TweetRepositoryType {
             }
     }
     
-    func likeTweet(twitterTweetID: Int, includeEntities: Bool? = nil)
+    func likeTweet(tweetID: Int, includeEntities: Bool? = nil)
         -> Observable<Tweet> {
         return apiDatastore
             .likeTweet(
-                twitterTweetID: twitterTweetID,
+                tweetID: tweetID,
                 includeEntities: includeEntities
             )
             .map { json in
@@ -90,6 +93,22 @@ struct TweetRepository: TweetRepositoryType {
                         throw RepositoryError.failedToDeserialize
                 }
                 return tweet
+            }
+    }
+    
+    func unlikeTweet(tweetID: Int, includeEntities: Bool? = nil)
+        -> Observable<Tweet> {
+            return apiDatastore
+                .unlikeTweet(
+                    tweetID: tweetID,
+                    includeEntities: includeEntities
+                )
+                .map { json in
+                    guard let tweet = self.tweetDBDatastore
+                        .createOrUpdate(json: json, resetRelations: true, inTransaction: false) else {
+                            throw RepositoryError.failedToDeserialize
+                    }
+                    return tweet
             }
     }
 }

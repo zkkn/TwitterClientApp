@@ -17,7 +17,10 @@ protocol TweetAPIDatastoreType {
     func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
         -> Observable<[String: Any]>
     
-    func likeTweet(twitterTweetID: Int, includeEntities: Bool?)
+    func likeTweet(tweetID: Int, includeEntities: Bool?)
+        -> Observable<[String: Any]>
+    
+    func unlikeTweet(tweetID: Int, includeEntities: Bool?)
         -> Observable<[String: Any]>
 }
 
@@ -35,8 +38,13 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
             .sendRequest()
     }
     
-    func likeTweet(twitterTweetID: Int, includeEntities: Bool?) -> Observable<[String : Any]> { return TweetRequest
-        .LikeTweet(twitterTweetID: twitterTweetID, includeEntities: includeEntities)
+    func likeTweet(tweetID: Int, includeEntities: Bool?) -> Observable<[String : Any]> { return TweetRequest
+        .LikeTweet(tweetID: tweetID, includeEntities: includeEntities)
+        .sendRequest()
+    }
+    
+    func unlikeTweet(tweetID: Int, includeEntities: Bool?) -> Observable<[String : Any]> { return TweetRequest
+        .UnlikeTweet(tweetID: tweetID, includeEntities: includeEntities)
         .sendRequest()
     }
 }
@@ -162,14 +170,14 @@ fileprivate struct TweetRequest {
     
     fileprivate struct LikeTweet {
         
-        fileprivate let twitterTweetID: Int
+        fileprivate let tweetID: Int
         fileprivate let includeEntities: Bool?
         
         fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
         
         fileprivate var parameters: OAuthSwift.Parameters {
             var params: [String: Any] = [
-                "id": twitterTweetID
+                "id": tweetID
             ]
             if let includeEntities = includeEntities {
                 params["include_entities"] = includeEntities
@@ -193,6 +201,48 @@ fileprivate struct TweetRequest {
                             observer.onError(error)
                         }
                     },
+                    failure: { error in
+                        observer.onError(error)
+                })
+                return Disposables.create {
+                }
+            }
+        }
+    }
+    
+    fileprivate struct UnlikeTweet {
+        
+        fileprivate let tweetID: Int
+        fileprivate let includeEntities: Bool?
+        
+        fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
+        
+        fileprivate var parameters: OAuthSwift.Parameters {
+            var params: [String: Any] = [
+                "id": tweetID
+            ]
+            if let includeEntities = includeEntities {
+                params["include_entities"] = includeEntities
+            }
+            return params
+        }
+        
+        fileprivate func sendRequest() -> Observable<[String: Any]> {
+            return Observable.create { observer in
+                self.oauthSwift.client.request(
+                    "https://api.twitter.com/1.1/favorites/destroy.json",
+                    method: .POST,
+                    parameters: self.parameters,
+                    headers: [:],
+                    success: { response in
+                        do {
+                            let jsonDict = try response.jsonObject() as? [String: Any]
+                            observer.onNext(jsonDict!)
+                        }
+                        catch {
+                            observer.onError(error)
+                        }
+                },
                     failure: { error in
                         observer.onError(error)
                 })
