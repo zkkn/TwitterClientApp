@@ -7,6 +7,7 @@
 //
 
 import Kingfisher
+import RxSwift
 import UIKit
 
 class TweetCell: UITableViewCell {
@@ -15,6 +16,7 @@ class TweetCell: UITableViewCell {
     
     fileprivate lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .gray
         return imageView
     }()
     
@@ -40,7 +42,7 @@ class TweetCell: UITableViewCell {
     
     fileprivate lazy var contentLabel: UILabel = {
         let contentLabel = UILabel()
-        contentLabel.font = UIFont.hirakakuProNW3(size: 10)
+        contentLabel.font = UIFont.hirakakuProNW3(size: 15)
         contentLabel.lineBreakMode = .byWordWrapping
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
@@ -48,6 +50,27 @@ class TweetCell: UITableViewCell {
         return contentLabel
     }()
     
+    lazy var likeButton: UIButton = {
+        let button = UIButton()
+        button.contentMode = .scaleToFill
+        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_32.png"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_48.png"), for: .selected)
+        return button
+    }()
+    
+    fileprivate lazy var likeCountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.hirakakuProNW3(size: 15)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.textColor = .lightGray
+        return label
+    }()
+   
+    // MARK - Properties -
+    
+    var disposeBag = DisposeBag()
     
     // MARK: - Initializer -
     
@@ -61,6 +84,12 @@ class TweetCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        disposeBag = DisposeBag()
+    }
 }
 
 
@@ -73,6 +102,8 @@ extension TweetCell {
         addSubview(nameLabel)
         addSubview(screenNameLabel)
         addSubview(contentLabel)
+        addSubview(likeButton)
+        addSubview(likeCountLabel)
     }
     
     fileprivate func setConstraints() {
@@ -94,8 +125,21 @@ extension TweetCell {
         
         contentLabel.snp.makeConstraints { make in
             make.left.equalTo(profileImageView.snp.right).offset(8)
-            make.right.bottom.equalTo(self).inset(8)
+            make.right.equalTo(self).inset(8)
             make.top.equalTo(screenNameLabel.snp.bottom).offset(8)
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.left.equalTo(profileImageView.snp.right).offset(8)
+            make.bottom.equalTo(self).inset(8)
+            make.top.equalTo(contentLabel.snp.bottom).offset(8)
+            make.width.height.equalTo(24)
+        }
+        
+        likeCountLabel.snp.makeConstraints { make in
+            make.left.equalTo(likeButton.snp.right).offset(8)
+            make.right.bottom.equalTo(self).inset(8)
+            make.top.equalTo(contentLabel.snp.bottom).offset(8)
         }
     }
 }
@@ -106,10 +150,20 @@ extension TweetCell {
 extension TweetCell {
     
     func update(tweet: Tweet) {
-        guard let profileImageString = tweet.user?.profileImageURLHTTPS else { return }
-        self.profileImageView.kf.setImage(with: URL(string: profileImageString)!)
-        self.screenNameLabel.text = "@" + (tweet.user?.screenName)!
-        self.nameLabel.text = tweet.user?.name
-        self.contentLabel.text = tweet.text
+        if let profileImageString = tweet.user?.profileImageURLHTTPS {
+            profileImageView.kf.setImage(with: URL(string: profileImageString))
+        }
+        
+        contentLabel.text = tweet.text
+        likeCountLabel.text = "\(tweet.favoriteCount)"
+        nameLabel.text = tweet.user!.name
+        screenNameLabel.text = "@\(tweet.user!.screenName)"
+        
+        if tweet.favorited {
+            likeButton.isSelected = true
+        }
+        else {
+            likeButton.isSelected = false
+        }
     }
 }

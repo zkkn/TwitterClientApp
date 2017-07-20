@@ -15,7 +15,7 @@ final class Tweet: Object {
     
     dynamic var id = 0
     dynamic var createdAt = ""
-    dynamic var twitterTweetID = 0
+    dynamic var tweetID = 0
     dynamic var text = ""
     dynamic var source = ""
     dynamic var favoriteCount = 0
