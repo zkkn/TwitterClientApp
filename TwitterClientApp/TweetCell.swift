@@ -149,11 +149,12 @@ extension TweetCell {
 extension TweetCell {
     
     func update(tweet: Tweet) {
-        guard let profileImageString = tweet.user?.profileImageURLHTTPS else {
-            profileImageView.image = #imageLiteral(resourceName: "mario_profile_image.jpg")
-            return
+        if let profileImageString = tweet.user?.profileImageURLHTTPS {
+            profileImageView.kf.setImage(with: URL(string: profileImageString))
         }
-        profileImageView.kf.setImage(with: URL(string: profileImageString))
+        else {
+            profileImageView.backgroundColor = .gray
+        }
         screenNameLabel.text = "@\((tweet.user?.screenName)!)"
         nameLabel.text = tweet.user?.name
         contentLabel.text = tweet.text
