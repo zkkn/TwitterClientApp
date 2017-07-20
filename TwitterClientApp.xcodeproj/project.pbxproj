@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */; };
-		C727030C1F20553800B8915B /* mario_profile_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C727030B1F20553800B8915B /* mario_profile_image.jpg */; };
 		C72703CD1F1A0ADE0014D96E /* ic_heart_pink_32.png in Resources */ = {isa = PBXBuildFile; fileRef = C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */; };
 		C72703CE1F1A0ADE0014D96E /* ic_heart_pink_48.png in Resources */ = {isa = PBXBuildFile; fileRef = C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */; };
 		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
@@ -88,7 +87,6 @@
 
 /* Begin PBXFileReference section */
 		C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDatastore.swift; sourceTree = "<group>"; };
-		C727030B1F20553800B8915B /* mario_profile_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mario_profile_image.jpg; sourceTree = "<group>"; };
 		C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_heart_pink_32.png; sourceTree = "<group>"; };
 		C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_heart_pink_48.png; sourceTree = "<group>"; };
 		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 		C7859CB81F14B14C00F5E80B /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C727030B1F20553800B8915B /* mario_profile_image.jpg */,
 				C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */,
 				C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */,
 				C7859CBB1F14B56A00F5E80B /* ic_cross_white_40.png */,
@@ -385,7 +382,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C727030C1F20553800B8915B /* mario_profile_image.jpg in Resources */,
 				C72703CE1F1A0ADE0014D96E /* ic_heart_pink_48.png in Resources */,
 				C72703CD1F1A0ADE0014D96E /* ic_heart_pink_32.png in Resources */,
 				C7859CBC1F14B56A00F5E80B /* ic_cross_white_40.png in Resources */,
