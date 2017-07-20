@@ -16,6 +16,7 @@ class TweetCell: UITableViewCell {
     
     fileprivate lazy var profileImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.backgroundColor = .gray
         return imageView
     }()
     
@@ -152,13 +153,11 @@ extension TweetCell {
         if let profileImageString = tweet.user?.profileImageURLHTTPS {
             profileImageView.kf.setImage(with: URL(string: profileImageString))
         }
-        else {
-            profileImageView.backgroundColor = .gray
-        }
-        screenNameLabel.text = "@\((tweet.user?.screenName)!)"
-        nameLabel.text = tweet.user?.name
+        
         contentLabel.text = tweet.text
         likeCountLabel.text = "\(tweet.favoriteCount)"
+        nameLabel.text = tweet.user!.name
+        screenNameLabel.text = "@\(tweet.user!.screenName)"
         
         if tweet.favorited {
             likeButton.isSelected = true
