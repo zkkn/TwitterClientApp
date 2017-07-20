@@ -149,20 +149,21 @@ extension TweetCell {
 extension TweetCell {
     
     func update(tweet: Tweet) {
-        guard let profileImageString = tweet.user?.profileImageURLHTTPS else { return }
-        profileImageView.kf.setImage(with: URL(string: profileImageString)!)
-        screenNameLabel.text = "@" + (tweet.user?.screenName)!
+        guard let profileImageString = tweet.user?.profileImageURLHTTPS else {
+            profileImageView.image = #imageLiteral(resourceName: "mario_profile_image.jpg")
+            return
+        }
+        profileImageView.kf.setImage(with: URL(string: profileImageString))
+        screenNameLabel.text = "@\((tweet.user?.screenName)!)"
         nameLabel.text = tweet.user?.name
         contentLabel.text = tweet.text
         likeCountLabel.text = "\(tweet.favoriteCount)"
         
         if tweet.favorited {
             likeButton.isSelected = true
-            print(tweet.favorited)
         }
         else {
             likeButton.isSelected = false
-            print(tweet.favorited)
         }
     }
 }
