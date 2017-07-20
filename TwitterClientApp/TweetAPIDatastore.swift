@@ -20,7 +20,7 @@ protocol TweetAPIDatastoreType {
     func likeTweet(tweetID: Int, includeEntities: Bool?)
         -> Observable<[String: Any]>
     
-    func unlikeTweet(tweetID: Int, includeEntities: Bool?)
+    func deleteLikeTweet(tweetID: Int, includeEntities: Bool?)
         -> Observable<[String: Any]>
 }
 
@@ -43,8 +43,8 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
         .sendRequest()
     }
     
-    func unlikeTweet(tweetID: Int, includeEntities: Bool?) -> Observable<[String : Any]> { return TweetRequest
-        .UnlikeTweet(tweetID: tweetID, includeEntities: includeEntities)
+    func deleteLikeTweet(tweetID: Int, includeEntities: Bool?) -> Observable<[String : Any]> { return TweetRequest
+        .DeleteLikeTweet(tweetID: tweetID, includeEntities: includeEntities)
         .sendRequest()
     }
 }
@@ -210,7 +210,7 @@ fileprivate struct TweetRequest {
         }
     }
     
-    fileprivate struct UnlikeTweet {
+    fileprivate struct DeleteLikeTweet {
         
         fileprivate let tweetID: Int
         fileprivate let includeEntities: Bool?

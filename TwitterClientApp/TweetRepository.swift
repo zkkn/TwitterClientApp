@@ -20,7 +20,7 @@ protocol TweetRepositoryType {
     func likeTweet(tweetID: Int, includeEntities: Bool?)
         -> Observable<Tweet>
     
-    func unlikeTweet(tweetID: Int, includeEntities: Bool?)
+    func deleteLikeTweet(tweetID: Int, includeEntities: Bool?)
         -> Observable<Tweet>
 }
 
@@ -96,10 +96,10 @@ struct TweetRepository: TweetRepositoryType {
             }
     }
     
-    func unlikeTweet(tweetID: Int, includeEntities: Bool? = nil)
+    func deleteLikeTweet(tweetID: Int, includeEntities: Bool? = nil)
         -> Observable<Tweet> {
             return apiDatastore
-                .unlikeTweet(
+                .deleteLikeTweet(
                     tweetID: tweetID,
                     includeEntities: includeEntities
                 )
