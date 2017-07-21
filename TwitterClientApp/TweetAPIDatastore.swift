@@ -29,7 +29,9 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     func getTweets(requestNumberOfTweets: Int, sinceID: Int? = nil, maxID:Int? = nil, trimUser:Bool = false, excludeReplies:Bool = true, includeEntities:Bool = false)
         -> Observable<[[String: Any]]> { return TweetRequest
             .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID, trimUser: trimUser, excludeReplies: excludeReplies, includeEntities: includeEntities)
-            .sendRequest(requestURL: "https://api.twitter.com/1.1/statuses/home_timeline.json", method: .GET, parameters: TweetRequest.GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID, trimUser: trimUser, excludeReplies: excludeReplies, includeEntities: includeEntities).parameters)
+            .bulkSendRequest()
+ 
+ 
     }
     
     func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
@@ -49,19 +51,41 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     }
 }
 
-protocol SendRequest {
+protocol SendRequestType {
+    var requestURL: String { get }
+    var method: OAuthSwiftHTTPRequest.Method { get }
+    var parameters: OAuthSwift.Parameters { get }
 }
 
-extension SendRequest {
-    func sendRequest(requestURL: String, method: OAuthSwiftHTTPRequest.Method, parameters: OAuthSwift.Parameters) -> Observable<[[String: Any]]> {
+extension SendRequestType {
+    func bulkSendRequest() -> Observable<[[String: Any]]> {
         return Observable.create { observer in
             BuildOAuth1SwiftService.oauthswift.client.request(
-                requestURL,
-                method: method,
-                parameters: parameters,
+                self.requestURL,
+                method: self.method,
+                parameters: self.parameters,
                 headers: [:],
                 success: { response in
                     let jsonDict = try! response.jsonObject() as? [[String: Any]]
+                    observer.onNext(jsonDict!)
+            },
+                failure: { error in
+                    observer.onError(error)
+            })
+            return Disposables.create {
+            }
+        }
+    }
+    
+    func sendRequest() -> Observable<[String: Any]> {
+        return Observable.create { observer in
+            BuildOAuth1SwiftService.oauthswift.client.request(
+                self.requestURL,
+                method: self.method,
+                parameters: self.parameters,
+                headers: [:],
+                success: { response in
+                    let jsonDict = try! response.jsonObject() as? [String: Any]
                     observer.onNext(jsonDict!)
             },
                 failure: { error in
@@ -75,7 +99,7 @@ extension SendRequest {
 
 fileprivate struct TweetRequest {
     
-    fileprivate struct GetTweets: SendRequest {
+    fileprivate struct GetTweets: SendRequestType {
         
         fileprivate let requestNumberOfTweets: Int
         fileprivate let sinceID: Int?
@@ -84,6 +108,12 @@ fileprivate struct TweetRequest {
         fileprivate let excludeReplies: Bool
         fileprivate let includeEntities: Bool
         
+        var requestURL: String {
+            return "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        }
+        var method: OAuthSwiftHTTPRequest.Method {
+            return .GET
+        }
         var parameters: OAuthSwift.Parameters {
             var params: [String: Any] = [
                 "count": requestNumberOfTweets,
@@ -101,7 +131,7 @@ fileprivate struct TweetRequest {
         }
     }
     
-    fileprivate struct CreateTweet {
+    fileprivate struct CreateTweet: SendRequestType {
         
         fileprivate let status: String
         fileprivate let inReplyToStatusID: Int?
@@ -113,8 +143,12 @@ fileprivate struct TweetRequest {
         fileprivate let trimUser: Bool?
         fileprivate let mediaIDs: [Int]?
         
-        fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
-        
+        var requestURL: String {
+            return "https://api.twitter.com/1.1/statuses/update.json"
+        }
+        var method: OAuthSwiftHTTPRequest.Method {
+            return .POST
+        }
         fileprivate var parameters: OAuthSwift.Parameters {
             var params: [String: Any] = [
                 "status": status
@@ -145,39 +179,19 @@ fileprivate struct TweetRequest {
             }
             return params
         }
-        
-        fileprivate func sendRequest() -> Observable<[String: Any]> {
-            return Observable.create { observer in
-                self.oauthSwift.client.request(
-                    "https://api.twitter.com/1.1/statuses/update.json",
-                    method: .POST,
-                    parameters: self.parameters,
-                    headers: [:],
-                    success: { response in
-                        do {
-                            let jsonDict = try response.jsonObject() as?  [String: Any]
-                            observer.onNext(jsonDict!)
-                        }
-                        catch {
-                            observer.onError(error)
-                        }
-                    },
-                    failure: { error in
-                        observer.onError(error)
-                })
-                return Disposables.create {
-                }
-            }
-        }
     }
     
-    fileprivate struct LikeTweet {
+    fileprivate struct LikeTweet: SendRequestType {
         
         fileprivate let tweetID: Int
         fileprivate let includeEntities: Bool?
         
-        fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
-        
+        var requestURL: String {
+            return "https://api.twitter.com/1.1/favorites/create.json"
+        }
+        var method: OAuthSwiftHTTPRequest.Method {
+            return .POST
+        }
         fileprivate var parameters: OAuthSwift.Parameters {
             var params: [String: Any] = [
                 "id": tweetID
@@ -187,39 +201,19 @@ fileprivate struct TweetRequest {
             }
             return params
         }
-        
-        fileprivate func sendRequest() -> Observable<[String: Any]> {
-            return Observable.create { observer in
-                self.oauthSwift.client.request(
-                    "https://api.twitter.com/1.1/favorites/create.json",
-                    method: .POST,
-                    parameters: self.parameters,
-                    headers: [:],
-                    success: { response in
-                        do {
-                            let jsonDict = try response.jsonObject() as? [String: Any]
-                            observer.onNext(jsonDict!)
-                        }
-                        catch {
-                            observer.onError(error)
-                        }
-                    },
-                    failure: { error in
-                        observer.onError(error)
-                })
-                return Disposables.create {
-                }
-            }
-        }
     }
     
-    fileprivate struct DeleteLikeTweet {
+    fileprivate struct DeleteLikeTweet: SendRequestType {
         
         fileprivate let tweetID: Int
         fileprivate let includeEntities: Bool?
         
-        fileprivate let oauthSwift = BuildOAuth1SwiftService.oauthswift
-        
+        var requestURL: String {
+            return "https://api.twitter.com/1.1/favorites/destroy.json"
+        }
+        var method: OAuthSwiftHTTPRequest.Method {
+            return .POST
+        }
         fileprivate var parameters: OAuthSwift.Parameters {
             var params: [String: Any] = [
                 "id": tweetID
@@ -228,30 +222,6 @@ fileprivate struct TweetRequest {
                 params["include_entities"] = includeEntities
             }
             return params
-        }
-        
-        fileprivate func sendRequest() -> Observable<[String: Any]> {
-            return Observable.create { observer in
-                self.oauthSwift.client.request(
-                    "https://api.twitter.com/1.1/favorites/destroy.json",
-                    method: .POST,
-                    parameters: self.parameters,
-                    headers: [:],
-                    success: { response in
-                        do {
-                            let jsonDict = try response.jsonObject() as? [String: Any]
-                            observer.onNext(jsonDict!)
-                        }
-                        catch {
-                            observer.onError(error)
-                        }
-                },
-                    failure: { error in
-                        observer.onError(error)
-                })
-                return Disposables.create {
-                }
-            }
         }
     }
 }
