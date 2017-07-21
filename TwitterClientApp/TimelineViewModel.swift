@@ -82,7 +82,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
                 guard let _ = self else { return }
                 self?.repository
                     .likeTweet(
-                        twitterTweetID: id,
+                        tweetID: id,
                         includeEntities: nil
                     )
                     .subscribe(
