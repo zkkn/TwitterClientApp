@@ -30,8 +30,6 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
         -> Observable<[[String: Any]]> { return TweetRequest
             .GetTweets(requestNumberOfTweets: requestNumberOfTweets, sinceID: sinceID, maxID: maxID, trimUser: trimUser, excludeReplies: excludeReplies, includeEntities: includeEntities)
             .bulkSendRequest()
- 
- 
     }
     
     func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
@@ -54,7 +52,7 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
 protocol SendRequestType {
     var requestURL: String { get }
     var method: OAuthSwiftHTTPRequest.Method { get }
-    var parameters: OAuthSwift.Parameters { get }
+    var parameters: OAuthSwift.Parameters? { get }
 }
 
 extension SendRequestType {
@@ -63,7 +61,7 @@ extension SendRequestType {
             BuildOAuth1SwiftService.oauthswift.client.request(
                 self.requestURL,
                 method: self.method,
-                parameters: self.parameters,
+                parameters: self.parameters!,
                 headers: [:],
                 success: { response in
                     let jsonDict = try! response.jsonObject() as? [[String: Any]]
@@ -82,7 +80,7 @@ extension SendRequestType {
             BuildOAuth1SwiftService.oauthswift.client.request(
                 self.requestURL,
                 method: self.method,
-                parameters: self.parameters,
+                parameters: self.parameters!,
                 headers: [:],
                 success: { response in
                     let jsonDict = try! response.jsonObject() as? [String: Any]
@@ -114,7 +112,7 @@ fileprivate struct TweetRequest {
         var method: OAuthSwiftHTTPRequest.Method {
             return .GET
         }
-        var parameters: OAuthSwift.Parameters {
+        var parameters: OAuthSwift.Parameters? {
             var params: [String: Any] = [
                 "count": requestNumberOfTweets,
                 "trim_user": trimUser,
@@ -149,7 +147,7 @@ fileprivate struct TweetRequest {
         var method: OAuthSwiftHTTPRequest.Method {
             return .POST
         }
-        fileprivate var parameters: OAuthSwift.Parameters {
+        fileprivate var parameters: OAuthSwift.Parameters? {
             var params: [String: Any] = [
                 "status": status
             ]
@@ -192,7 +190,7 @@ fileprivate struct TweetRequest {
         var method: OAuthSwiftHTTPRequest.Method {
             return .POST
         }
-        fileprivate var parameters: OAuthSwift.Parameters {
+        fileprivate var parameters: OAuthSwift.Parameters? {
             var params: [String: Any] = [
                 "id": tweetID
             ]
@@ -214,7 +212,7 @@ fileprivate struct TweetRequest {
         var method: OAuthSwiftHTTPRequest.Method {
             return .POST
         }
-        fileprivate var parameters: OAuthSwift.Parameters {
+        fileprivate var parameters: OAuthSwift.Parameters? {
             var params: [String: Any] = [
                 "id": tweetID
             ]
