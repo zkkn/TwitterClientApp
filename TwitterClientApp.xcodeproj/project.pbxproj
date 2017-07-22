@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */; };
+		C727030E1F22DD0B00B8915B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727030D1F22DD0B00B8915B /* RequestType.swift */; };
+		C72703101F22EA5700B8915B /* APIDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727030F1F22EA5700B8915B /* APIDatastoreError.swift */; };
 		C72703CD1F1A0ADE0014D96E /* ic_heart_pink_32.png in Resources */ = {isa = PBXBuildFile; fileRef = C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */; };
 		C72703CE1F1A0ADE0014D96E /* ic_heart_pink_48.png in Resources */ = {isa = PBXBuildFile; fileRef = C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */; };
 		C737A6061EFE4109004CF23B /* TweetAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */; };
@@ -87,6 +89,8 @@
 
 /* Begin PBXFileReference section */
 		C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDatastore.swift; sourceTree = "<group>"; };
+		C727030D1F22DD0B00B8915B /* RequestType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		C727030F1F22EA5700B8915B /* APIDatastoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDatastoreError.swift; sourceTree = "<group>"; };
 		C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_heart_pink_32.png; sourceTree = "<group>"; };
 		C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_heart_pink_48.png; sourceTree = "<group>"; };
 		C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetAPIDatastore.swift; sourceTree = "<group>"; };
@@ -159,6 +163,8 @@
 			children = (
 				C737A6051EFE4109004CF23B /* TweetAPIDatastore.swift */,
 				C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */,
+				C727030D1F22DD0B00B8915B /* RequestType.swift */,
+				C727030F1F22EA5700B8915B /* APIDatastoreError.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -425,6 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C784EE921EF77F3B008657A8 /* LoginViewController.swift in Sources */,
+				C72703101F22EA5700B8915B /* APIDatastoreError.swift in Sources */,
 				C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */,
 				C7DF941C1EFB51DB0058DF1B /* LoginViewModel.swift in Sources */,
 				C7859CAD1F13954500F5E80B /* CreateTweetViewController.swift in Sources */,
@@ -447,6 +454,7 @@
 				C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */,
 				C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */,
 				C73B39011F04919E00E2313C /* User.swift in Sources */,
+				C727030E1F22DD0B00B8915B /* RequestType.swift in Sources */,
 				C7859CB51F149D2500F5E80B /* UIColor+Extension.swift in Sources */,
 				C7859CAF1F139A7E00F5E80B /* CreateTweetViewModel.swift in Sources */,
 				C7859CBA1F14B2AC00F5E80B /* CreateTweetBuilder.swift in Sources */,
