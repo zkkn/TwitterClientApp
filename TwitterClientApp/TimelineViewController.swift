@@ -152,8 +152,13 @@ extension TimelineViewController: UITableViewDataSource {
        
         cell.likeButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                guard let _ = self else { return }
-                self?.viewModel.inputs.likeTweet.onNext(tweetID)
+                guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
+                if tweet.favorited {
+                    self?.viewModel.inputs.deleteLikeTweet.onNext(tweetID)
+                }
+                else {
+                    self?.viewModel.inputs.likeTweet.onNext(tweetID)
+                }
             })
             .disposed(by: cell.disposeBag)
         
