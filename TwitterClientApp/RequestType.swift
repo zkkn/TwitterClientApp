@@ -30,8 +30,8 @@ extension RequestType {
                 parameters: self.parameters!,
                 headers: [:],
                 success: { response in
-                    let jsonDict = try! response.jsonObject() as? Response
-                    observer.onNext(jsonDict!)
+                    guard let jsonDict = try! response.jsonObject() as? Response else { return observer.onError(APIDatastoreError.failedToDeserialize) }
+                    observer.onNext(jsonDict)
             },
                 failure: { error in
                     observer.onError(error)
