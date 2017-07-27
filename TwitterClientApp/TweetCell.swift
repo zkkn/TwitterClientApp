@@ -39,7 +39,7 @@ class TweetCell: UITableViewCell {
         label.textColor = .lightGray
         return label
     }()
-    
+
     fileprivate lazy var contentLabel: UILabel = {
         let contentLabel = UILabel()
         contentLabel.font = UIFont.hirakakuProNW3(size: 15)
@@ -48,6 +48,13 @@ class TweetCell: UITableViewCell {
         contentLabel.textAlignment = .left
         contentLabel.textColor = .black
         return contentLabel
+    }()
+    
+    lazy var commentButton: UIButton = {
+        let button = UIButton()
+        button.contentMode = .scaleToFill
+        button.setImage(#imageLiteral(resourceName: "ic_balloon_blue_48.png"), for: .normal)
+        return button
     }()
     
     lazy var likeButton: UIButton = {
@@ -104,6 +111,7 @@ extension TweetCell {
         addSubview(contentLabel)
         addSubview(likeButton)
         addSubview(likeCountLabel)
+        addSubview(commentButton)
     }
     
     fileprivate func setConstraints() {
@@ -122,7 +130,7 @@ extension TweetCell {
             make.right.equalTo(self).inset(8)
             make.top.equalTo(nameLabel.snp.bottom)
         }
-        
+       
         contentLabel.snp.makeConstraints { make in
             make.left.equalTo(profileImageView.snp.right).offset(8)
             make.right.equalTo(self).inset(8)
@@ -140,6 +148,13 @@ extension TweetCell {
             make.left.equalTo(likeButton.snp.right).offset(8)
             make.right.bottom.equalTo(self).inset(8)
             make.top.equalTo(contentLabel.snp.bottom).offset(8)
+        }
+        
+        commentButton.snp.makeConstraints { make in
+            make.left.equalTo(likeCountLabel.snp.right).offset(8)
+            make.right.bottom.equalTo(self).inset(8)
+            make.top.equalTo(contentLabel.snp.bottom).offset(8)
+            make.width.height.equalTo(24)
         }
     }
 }
