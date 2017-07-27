@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 5,
+            schemaVersion: 6,
             migrationBlock: { migration, oldSchemaVersion in
                 migration.enumerateObjects(ofType: Tweet.className()) { oldObject, newObject in
                     
-                    if oldSchemaVersion < 6 {
+                    if oldSchemaVersion < 7 {
                     }
                 }
         })
