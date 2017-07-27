@@ -32,7 +32,7 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
             .sendRequest()
     }
     
-    func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool?, mediaIDs: [Int]?)
+    func createTweet(status: String, inReplyToStatus: Int? = nil, mediaFlag: Bool?, latitude: Float?, longtitude: Float?, placeID: Int?, displayCoordinates: Bool?, trimUser: Bool? = false, mediaIDs: [Int]?)
         -> Observable<[String : Any]> { return TweetRequest
             .CreateTweet(status: status, inReplyToStatusID: inReplyToStatus, mediaFlag: mediaFlag, latitude: latitude, longtitude: longtitude, placeID: placeID, displayCoordinates: displayCoordinates, trimUser: trimUser, mediaIDs: mediaIDs)
             .sendRequest()
