@@ -66,7 +66,7 @@ final class TimelineViewModel: TimelineViewModelType, TimelineViewModelInputs, T
             .subscribe(onNext: { [weak self] in
                 guard let _ = self else { return }
                 self?.repository
-                    .getTweets(requestNumberOfTweets: 100, sinceID: nil, maxID: nil, trimUser: false, excludeReplies: true, includeEntities: false)
+                    .getTweets(requestNumberOfTweets: 100, sinceID: nil, maxID: nil, trimUser: false, excludeReplies: false, includeEntities: false)
                     .subscribe(
                         onNext: { [weak self] tweets in
                             self?.tweets.value = tweets

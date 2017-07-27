@@ -10,7 +10,7 @@ import Foundation
 
 struct CreateTweetBuilder {
     
-    func build() -> CreateTweetViewController {
+    func build(replyTweetID: Int?) -> CreateTweetViewController {
         let repository = TweetRepository(
             apiDatastore: TweetAPIDatastore(),
             tweetDBDatastore: TweetRealmDatastore(),
@@ -20,7 +20,7 @@ struct CreateTweetBuilder {
         let viewModel = CreateTweetViewModel(repository: repository)
         
         return CreateTweetViewController(
-            viewModel: viewModel
+            viewModel: viewModel, replyTweetID: replyTweetID
         )
     }
 }

@@ -17,10 +17,11 @@ final class Tweet: Object {
     dynamic var createdAt = ""
     dynamic var tweetID = 0
     dynamic var text = ""
-    dynamic var source = ""
     dynamic var favoriteCount = 0
     dynamic var favorited = false
     dynamic var user: User?
+    dynamic var replyTweetID = 0
+    dynamic var replyUserID = 0
     
     
     // MARK - Configuration -

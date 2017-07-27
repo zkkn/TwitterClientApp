@@ -110,7 +110,7 @@ extension TimelineViewController {
         
         headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] in
-                let createTweetViewController = CreateTweetBuilder().build()
+                let createTweetViewController = CreateTweetBuilder().build(replyTweetID: nil)
                 self?.present(createTweetViewController, animated: true, completion: nil)
             })
             .disposed(by: disposeBag)
@@ -161,6 +161,13 @@ extension TimelineViewController: UITableViewDataSource {
                 }
             })
             .disposed(by: cell.disposeBag)
+        
+        cell.commentButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                let createTweetViewController = CreateTweetBuilder().build(replyTweetID: tweetID)
+                self?.present(createTweetViewController, animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
         
         viewModel.outputs.likeTweetResult
             .subscribe(onNext: { [weak self] (id) in
