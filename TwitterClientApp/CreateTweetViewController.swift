@@ -118,7 +118,7 @@ extension CreateTweetViewController {
         headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 guard let text = self?.tweetTextView.text else { return }
-                self?.viewModel.inputs.createTweet.onNext(text)
+                self?.viewModel.inputs.createTweet.onNext((text, self?.replyTweetID))
             })
             .disposed(by: disposeBag)
         

@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol CreateTweetViewModelInputs {
-    var createTweet: PublishSubject<String> { get }
+    var createTweet: PublishSubject<(String, Int?)> { get }
 }
 
 protocol CreateTweetViewModelOutputs {
@@ -35,7 +35,7 @@ CreateTweetViewModelOutputs {
     
      // MARK: - Inputs -
     
-    let createTweet = PublishSubject<String>()
+    let createTweet = PublishSubject<(String, Int?)>()
     
     // MARK: - Outputs -
     
@@ -55,7 +55,7 @@ CreateTweetViewModelOutputs {
     
     fileprivate func setBindings() {
         createTweet
-            .subscribe(onNext: { [weak self] tweet in
+            .subscribe(onNext: { [weak self] (tweet, replyTweetID) in
                 guard let _ = self else { return }
                 
                 if tweet.isEmpty {
@@ -65,13 +65,13 @@ CreateTweetViewModelOutputs {
                     self?.repository
                         .createTweet(
                             status: tweet,
-                            inReplyToStatus: nil,
+                            inReplyToStatus: replyTweetID,
                             mediaFlag: nil,
                             latitude: nil,
                             longtitude: nil,
                             placeID: nil,
                             displayCoordinates: nil,
-                            trimUser: nil,
+                            trimUser: false,
                             mediaIDs: nil
                         )
                         .subscribe(
