@@ -35,7 +35,7 @@ final class CreateTweetViewController: UIViewController {
     fileprivate let replyTweetID: Int?
     fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
-    init(viewModel: CreateTweetViewModelType, replyTweetID: Int?) {
+    init(viewModel: CreateTweetViewModelType, replyTweetID: Int? = nil) {
         self.viewModel = viewModel
         self.replyTweetID = replyTweetID
         
