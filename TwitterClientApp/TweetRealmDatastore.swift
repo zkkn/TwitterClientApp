@@ -30,6 +30,8 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         try object.favorited = map.from("favorited")
         try object.text = map.from("text")
         try object.tweetID = map.from("id")
+        object.replyTweetID = map.optionalFrom("in_reply_to_status_id") ?? 0
+        object.replyUserID = map.optionalFrom("in_reply_to_user_id") ?? 0
         
         object.user = UserRealmDatastore()
         .createOrUpdate(json: json["user"], resetRelations: resetRelations, inTransaction: true)
