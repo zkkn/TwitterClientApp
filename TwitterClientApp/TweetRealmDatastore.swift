@@ -28,7 +28,6 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         try object.createdAt = map.from("created_at")
         try object.favoriteCount = map.from("favorite_count")
         try object.favorited = map.from("favorited")
-        try object.source = map.from("source")
         try object.text = map.from("text")
         try object.tweetID = map.from("id")
         

@@ -62,6 +62,7 @@
 		C7E6D3591F00E96C00F105AD /* UserAPIDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */; };
 		C7E6D35B1F00F44300F105AD /* UserRealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */; };
 		C7E6D35D1F01058E00F105AD /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E6D35C1F01058E00F105AD /* UserRepository.swift */; };
+		C7F95ABD1F298FE900281655 /* ic_balloon_blue_48.png in Resources */ = {isa = PBXBuildFile; fileRef = C7F95ABC1F298FE900281655 /* ic_balloon_blue_48.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -135,6 +136,7 @@
 		C7E6D3581F00E96C00F105AD /* UserAPIDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPIDatastore.swift; sourceTree = "<group>"; };
 		C7E6D35A1F00F44300F105AD /* UserRealmDatastore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRealmDatastore.swift; sourceTree = "<group>"; };
 		C7E6D35C1F01058E00F105AD /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		C7F95ABC1F298FE900281655 /* ic_balloon_blue_48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_balloon_blue_48.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 		C7859CB81F14B14C00F5E80B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C7F95ABC1F298FE900281655 /* ic_balloon_blue_48.png */,
 				C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */,
 				C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */,
 				C7859CBB1F14B56A00F5E80B /* ic_cross_white_40.png */,
@@ -388,6 +391,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F95ABD1F298FE900281655 /* ic_balloon_blue_48.png in Resources */,
 				C72703CE1F1A0ADE0014D96E /* ic_heart_pink_48.png in Resources */,
 				C72703CD1F1A0ADE0014D96E /* ic_heart_pink_32.png in Resources */,
 				C7859CBC1F14B56A00F5E80B /* ic_cross_white_40.png in Resources */,
