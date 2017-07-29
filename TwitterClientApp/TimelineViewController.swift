@@ -145,38 +145,39 @@ extension TimelineViewController: UITableViewDataSource {
         return viewModel.outputs.tweets.value.count
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tweetTableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
-//        let tweetID = viewModel.outputs.tweets.value[indexPath.row].tweetID
-//        cell.update(tweet: viewModel.outputs.tweets.value[indexPath.row])
-//       
-//        cell.likeButton.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
-//                if tweet.favorited {
-//                    self?.viewModel.inputs.deleteLikeTweet.onNext(tweetID)
-//                }
-//                else {
-//                    self?.viewModel.inputs.likeTweet.onNext(tweetID)
-//                }
-//            })
-//            .disposed(by: cell.disposeBag)
-//        
-//        cell.commentButton.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                let createTweetViewController = CreateTweetBuilder().build(replyTweetID: tweetID)
-//                self?.present(createTweetViewController, animated: true, completion: nil)
-//            })
-//            .disposed(by: disposeBag)
-//        
-//        viewModel.outputs.likeTweetResult
-//            .subscribe(onNext: { [weak self] (id) in
-//                if id == tweetID {
-//                    guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
-//                    cell.update(tweet: tweet)
-//                }
-//            })
-//            .disposed(by: cell.disposeBag)
-//        return cell
-//    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tweetTableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        let tweetID = viewModel.outputs.tweets.value[indexPath.row].tweetID
+        cell.update(tweet: viewModel.outputs.tweets.value[indexPath.row])
+       
+        cell.likeButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
+                if tweet.favorited {
+                    self?.viewModel.inputs.deleteLikeTweet.onNext(tweetID)
+                }
+                else {
+                    self?.viewModel.inputs.likeTweet.onNext(tweetID)
+                }
+            })
+            .disposed(by: cell.disposeBag)
+        
+        cell.commentButton.rx.tap
+            .subscribe(onNext: { [weak self] in
+                guard let _ = self else { return }
+                let createTweetViewController = CreateTweetBuilder().build(replyTweetID: tweetID)
+                self?.present(createTweetViewController, animated: true, completion: nil)
+            })
+            .disposed(by: cell.disposeBag)
+    
+        viewModel.outputs.likeTweetResult
+            .subscribe(onNext: { [weak self] (id) in
+                if id == tweetID {
+                    guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
+                    cell.update(tweet: tweet)
+                }
+            })
+            .disposed(by: cell.disposeBag)
+        return cell
+    }
 }
