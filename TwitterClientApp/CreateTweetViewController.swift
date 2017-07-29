@@ -32,12 +32,10 @@ final class CreateTweetViewController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let viewModel: CreateTweetViewModelType
-    fileprivate let replyTweetID: Int?
     fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
-    init(viewModel: CreateTweetViewModelType, replyTweetID: Int? = nil) {
+    init(viewModel: CreateTweetViewModelType) {
         self.viewModel = viewModel
-        self.replyTweetID = replyTweetID
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -118,7 +116,7 @@ extension CreateTweetViewController {
         headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] (_) in
                 guard let text = self?.tweetTextView.text else { return }
-                self?.viewModel.inputs.createTweet.onNext((text, self?.replyTweetID))
+                self?.viewModel.inputs.createTweet.onNext(text)
             })
             .disposed(by: disposeBag)
         

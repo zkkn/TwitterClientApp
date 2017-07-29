@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol CreateTweetViewModelInputs {
-    var createTweet: PublishSubject<(String, Int?)> { get }
+    var createTweet: PublishSubject<String> { get }
 }
 
 protocol CreateTweetViewModelOutputs {
@@ -29,13 +29,14 @@ CreateTweetViewModelOutputs {
     
     var inputs: CreateTweetViewModelInputs { return self }
     var outputs: CreateTweetViewModelOutputs { return self }
+    fileprivate var replyTweetID: Int?
     fileprivate let disposeBag = DisposeBag()
     fileprivate let repository: TweetRepositoryType
     
     
      // MARK: - Inputs -
     
-    let createTweet = PublishSubject<(String, Int?)>()
+    let createTweet = PublishSubject<String>()
     
     // MARK: - Outputs -
     
@@ -44,8 +45,9 @@ CreateTweetViewModelOutputs {
     
     // MARK - Initializer -
     
-    init(repository: TweetRepositoryType) {
+    init(repository: TweetRepositoryType, replyTweetID: Int? = nil) {
         self.repository = repository
+        self.replyTweetID = replyTweetID
         
         setBindings()
     }
@@ -55,7 +57,7 @@ CreateTweetViewModelOutputs {
     
     fileprivate func setBindings() {
         createTweet
-            .subscribe(onNext: { [weak self] (tweet, replyTweetID) in
+            .subscribe(onNext: { [weak self] (tweet) in
                 guard let _ = self else { return }
                 
                 if tweet.isEmpty {
@@ -65,7 +67,7 @@ CreateTweetViewModelOutputs {
                     self?.repository
                         .createTweet(
                             status: tweet,
-                            inReplyToStatus: replyTweetID,
+                            inReplyToStatus: self?.replyTweetID,
                             mediaFlag: nil,
                             latitude: nil,
                             longtitude: nil,
