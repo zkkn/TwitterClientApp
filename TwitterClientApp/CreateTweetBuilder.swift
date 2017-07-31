@@ -10,17 +10,26 @@ import Foundation
 
 struct CreateTweetBuilder {
     
-    func build(replyTweetID: Int? = nil) -> CreateTweetViewController {
+    // MARK - Properties -
+    
+    fileprivate var replyTweetID: Int?
+    
+    
+    // MARK - Initializer
+    
+    init(replyTweetID: Int? = nil) {
+        self.replyTweetID = replyTweetID
+    }
+    
+    func build() -> CreateTweetViewController {
         let repository = TweetRepository(
             apiDatastore: TweetAPIDatastore(),
             tweetDBDatastore: TweetRealmDatastore(),
             selfInfoDBDatastore: SelfInfoDatabaseDatastore()
         )
         
-        let viewModel = CreateTweetViewModel(repository: repository)
+        let viewModel = CreateTweetViewModel(repository: repository, replyTweetID: replyTweetID)
         
-        return CreateTweetViewController(
-            viewModel: viewModel, replyTweetID: replyTweetID
-        )
+        return CreateTweetViewController(viewModel: viewModel)
     }
 }

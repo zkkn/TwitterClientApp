@@ -57,7 +57,7 @@ struct TweetRepository: TweetRepositoryType {
                 }
     }
     
-    func createTweet(status: String, inReplyToStatus: Int? = nil, mediaFlag: Bool? = nil, latitude: Float? = nil, longtitude: Float? = nil, placeID: Int? = nil, displayCoordinates: Bool? = nil, trimUser: Bool? = nil, mediaIDs: [Int]? = nil)
+    func createTweet(status: String, inReplyToStatus: Int?, mediaFlag: Bool? = nil, latitude: Float? = nil, longtitude: Float? = nil, placeID: Int? = nil, displayCoordinates: Bool? = nil, trimUser: Bool? = false, mediaIDs: [Int]? = nil)
         -> Observable<Tweet> {
         return apiDatastore
             .createTweet(

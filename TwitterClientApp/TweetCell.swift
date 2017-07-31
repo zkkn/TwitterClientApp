@@ -146,13 +146,13 @@ extension TweetCell {
         
         likeCountLabel.snp.makeConstraints { make in
             make.left.equalTo(likeButton.snp.right).offset(8)
-            make.right.bottom.equalTo(self).inset(8)
+            make.bottom.equalTo(self).inset(8)
             make.top.equalTo(contentLabel.snp.bottom).offset(8)
         }
         
         commentButton.snp.makeConstraints { make in
             make.left.equalTo(likeCountLabel.snp.right).offset(8)
-            make.right.bottom.equalTo(self).inset(8)
+            make.bottom.equalTo(self).inset(8)
             make.top.equalTo(contentLabel.snp.bottom).offset(8)
             make.width.height.equalTo(24)
         }

@@ -29,6 +29,7 @@ CreateTweetViewModelOutputs {
     
     var inputs: CreateTweetViewModelInputs { return self }
     var outputs: CreateTweetViewModelOutputs { return self }
+    fileprivate var replyTweetID: Int?
     fileprivate let disposeBag = DisposeBag()
     fileprivate let repository: TweetRepositoryType
     
@@ -44,8 +45,9 @@ CreateTweetViewModelOutputs {
     
     // MARK - Initializer -
     
-    init(repository: TweetRepositoryType) {
+    init(repository: TweetRepositoryType, replyTweetID: Int? = nil) {
         self.repository = repository
+        self.replyTweetID = replyTweetID
         
         setBindings()
     }
@@ -55,7 +57,7 @@ CreateTweetViewModelOutputs {
     
     fileprivate func setBindings() {
         createTweet
-            .subscribe(onNext: { [weak self] tweet in
+            .subscribe(onNext: { [weak self] (tweet) in
                 guard let _ = self else { return }
                 
                 if tweet.isEmpty {
@@ -65,13 +67,13 @@ CreateTweetViewModelOutputs {
                     self?.repository
                         .createTweet(
                             status: tweet,
-                            inReplyToStatus: nil,
+                            inReplyToStatus: self?.replyTweetID,
                             mediaFlag: nil,
                             latitude: nil,
                             longtitude: nil,
                             placeID: nil,
                             displayCoordinates: nil,
-                            trimUser: nil,
+                            trimUser: false,
                             mediaIDs: nil
                         )
                         .subscribe(

@@ -32,12 +32,10 @@ final class CreateTweetViewController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let viewModel: CreateTweetViewModelType
-    fileprivate let replyTweetID: Int?
     fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
-    init(viewModel: CreateTweetViewModelType, replyTweetID: Int? = nil) {
+    init(viewModel: CreateTweetViewModelType) {
         self.viewModel = viewModel
-        self.replyTweetID = replyTweetID
         
         super.init(nibName: nil, bundle: nil)
     }
