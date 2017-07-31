@@ -20,9 +20,9 @@ final class Tweet: Object {
     dynamic var favoriteCount = 0
     dynamic var favorited = false
     dynamic var user: User?
-    dynamic var replyTweetID = 0
-    dynamic var replyUserID = 0
-    dynamic var replyScreenName: String? = nil
+    let replyTweetID = RealmOptional<Int>()
+    let replyUserID = RealmOptional<Int>()
+    dynamic var replyScreenName = ""
     
     
     // MARK - Configuration -
