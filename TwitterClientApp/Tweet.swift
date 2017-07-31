@@ -22,7 +22,7 @@ final class Tweet: Object {
     dynamic var user: User?
     dynamic var replyTweetID = 0
     dynamic var replyUserID = 0
-    dynamic var replyScreenName = ""
+    dynamic var replyScreenName: String? = nil
     
     
     // MARK - Configuration -
