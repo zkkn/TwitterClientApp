@@ -30,8 +30,8 @@ struct TweetRealmDatastore: TweetDatabaseDatastoreType, RealmDatastore {
         try object.favorited = map.from("favorited")
         try object.text = map.from("text")
         try object.tweetID = map.from("id")
-        object.replyTweetID.value = map.optionalFrom("in_reply_to_status_id") ?? 0
-        object.replyUserID.value = map.optionalFrom("in_reply_to_user_id") ?? 0
+        object.replyTweetID.value = map.optionalFrom("in_reply_to_status_id")
+        object.replyUserID.value = map.optionalFrom("in_reply_to_user_id")
         object.replyScreenName = map.optionalFrom("in_reply_to_screen_name") ?? ""
         
         object.user = UserRealmDatastore()
