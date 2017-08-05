@@ -24,6 +24,9 @@ final class CreateTweetViewController: UIViewController {
     fileprivate lazy var tweetTextView: UITextView = {
         let tweetTextView = UITextView()
         tweetTextView.font = UIFont.hirakakuProNW3(size: 20)
+        if let replyScreenName = self.replyScreenName {
+            tweetTextView.text.append("@\(replyScreenName) ")
+        }
         return tweetTextView
     }()
     
@@ -32,10 +35,12 @@ final class CreateTweetViewController: UIViewController {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let viewModel: CreateTweetViewModelType
+    fileprivate let replyScreenName: String?
     fileprivate let keyboardFrameChanged = BehaviorSubject<(frame: CGRect, duration: Double)>(value: (CGRect.zero, 0))
     
-    init(viewModel: CreateTweetViewModelType) {
+    init(viewModel: CreateTweetViewModelType, replyScreenName: String? = nil) {
         self.viewModel = viewModel
+        self.replyScreenName = replyScreenName
         
         super.init(nibName: nil, bundle: nil)
     }

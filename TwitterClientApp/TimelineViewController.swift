@@ -165,7 +165,7 @@ extension TimelineViewController: UITableViewDataSource {
         cell.commentButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 guard let tweet = self?.viewModel.outputs.tweets.value[indexPath.row] else { return }
-                let createTweetViewController = CreateTweetBuilder(replyTweetID: tweet.tweetID).build()
+                let createTweetViewController = CreateTweetBuilder(replyTweetID: tweet.tweetID, replyScreenName: tweet.user?.screenName).build()
                 self?.present(createTweetViewController, animated: true, completion: nil)
             })
             .disposed(by: cell.disposeBag)
