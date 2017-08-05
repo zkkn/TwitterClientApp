@@ -13,12 +13,14 @@ struct CreateTweetBuilder {
     // MARK - Properties -
     
     fileprivate var replyTweetID: Int?
+    fileprivate var replyScreenName: String?
     
     
     // MARK - Initializer
     
-    init(replyTweetID: Int? = nil) {
+    init(replyTweetID: Int? = nil, replyScreenName: String? = nil) {
         self.replyTweetID = replyTweetID
+        self.replyScreenName = replyScreenName
     }
     
     func build() -> CreateTweetViewController {
@@ -30,6 +32,6 @@ struct CreateTweetBuilder {
         
         let viewModel = CreateTweetViewModel(repository: repository, replyTweetID: replyTweetID)
         
-        return CreateTweetViewController(viewModel: viewModel)
+        return CreateTweetViewController(viewModel: viewModel, replyScreenName: replyScreenName)
     }
 }
