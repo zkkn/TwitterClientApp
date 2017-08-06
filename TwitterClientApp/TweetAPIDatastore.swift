@@ -22,6 +22,9 @@ protocol TweetAPIDatastoreType {
     
     func deleteLikeTweet(tweetID: Int, includeEntities: Bool?)
         -> Observable<[String: Any]>
+    
+    func getFollowers(userID: Int?, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int?, skipStatus: Bool?, includeEntities: Bool?)
+        -> Observable<[[String: Any ]]>
 }
 
 struct TweetAPIDatastore: TweetAPIDatastoreType {
@@ -49,7 +52,12 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
         .DeleteLikeTweet(tweetID: tweetID, includeEntities: includeEntities)
         .sendRequest()
     }
-}
+    
+    func getFollowers(userID: Int? = nil, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int? = 200, skipStatus: Bool?, includeEntities: Bool? = false)
+        ->Observable<[[String: Any]]> { return TweetRequest
+            .GetFollowers(userID: userID, screenName: screenName, cursor: cursor, requestNumberOfFollwers: requestNumberOfFollwers, skipStatus: skipStatus, includeEntities: includeEntities)
+            .sendRequest()
+    }
 
 
 
@@ -167,5 +175,48 @@ fileprivate struct TweetRequest {
             }
             return params
         }
+    }
+    
+    fileprivate struct GetFollowers: RequestType {
+        typealias Response = [[String: Any]]
+        
+        fileprivate let userID: Int?
+        fileprivate let screenName: String?
+        fileprivate let cursor: Int?
+        fileprivate let requestNumberOfFollwers: Int?
+        fileprivate let skipStatus: Bool?
+        fileprivate let includeEntities: Bool?
+        
+        var path: String { return "followers/list.json" }
+        var method: OAuthSwiftHTTPRequest.Method { return .GET }
+        var parameters: OAuthSwift.Parameters? {
+            var params: [String: Any] = [:]
+            
+            if let userID = userID {
+                params["userID"] = userID
+            }
+            
+            if let screenName = screenName {
+                params["screen_name"] = screenName
+            }
+            
+            if let cursor = cursor {
+                params["cursor"] = cursor
+            }
+            
+            if let requestNumberOfFollwers = requestNumberOfFollwers {
+                params["count"] = requestNumberOfFollwers
+            }
+            
+            if let skipStatus = skipStatus {
+                params["skip_status"] = skipStatus
+            }
+            
+            if let includeEntities = includeEntities {
+                params["include_user_entities"] = includeEntities
+            }
+            return params
+        }
+    }
     }
 }
