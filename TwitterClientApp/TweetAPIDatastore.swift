@@ -49,7 +49,8 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
         .DeleteLikeTweet(tweetID: tweetID, includeEntities: includeEntities)
         .sendRequest()
     }
-    
+}
+
 fileprivate struct TweetRequest {
     
     fileprivate struct GetTweets: RequestType {
@@ -164,6 +165,5 @@ fileprivate struct TweetRequest {
             }
             return params
         }
-    }
     }
 }
