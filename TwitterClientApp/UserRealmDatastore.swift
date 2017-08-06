@@ -10,6 +10,8 @@ import Foundation
 import Mapper
 
 protocol UserDatabaseDatastoreType {
+    func bulkCreateOrUpdate(json: Any?, resetRelations: Bool, inTransaction: Bool)
+        -> [User]?
 }
 
 struct UserRealmDatastore: RealmDatastore, UserDatabaseDatastoreType {
