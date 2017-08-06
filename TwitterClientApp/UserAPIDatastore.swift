@@ -12,7 +12,7 @@ import RxSwift
 
 protocol UserAPIDatastoreType {
     func getFollowers(userID: Int?, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int?, skipStatus: Bool?, includeEntities: Bool?)
-        -> Observable<[[String: Any ]]>
+        -> Observable<[[String: Any]]>
 }
 
 struct UserAPIDatastore: UserAPIDatastoreType {
