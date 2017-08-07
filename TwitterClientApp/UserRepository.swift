@@ -35,20 +35,17 @@ struct UserRespository: UserRespositoryType {
                     cursor: cursor,
                     requestNumberOfFollwers: requestNumberOfFollwers,
                     skipStatus: skipStatus,
-                    includeEntities: includeEntities
-                )
+                    includeEntities: includeEntities)
                 .map { json in
                     guard let followers = self.userDBDatastore
                         .bulkCreateOrUpdate(
                             json: json["users"],
                             resetRelations: true,
-                            inTransaction: false
-                        )
-                        else
-                        {
+                            inTransaction: false)
+                        else {
                             throw RepositoryError.failedToDeserialize
-                        }
-                    self.selfInfoDBDatastore.set(followers: followers)
+                    }
+                    self.selfInfoDBDatastore.setFollowers(followers)
                     return followers
             }
     }

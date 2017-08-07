@@ -11,7 +11,7 @@ import RealmSwift
 
 protocol SelfInfoDatabaseDatastoreType {
     func set(tweets: [Tweet])
-    func set(followers: [User])
+    func setFollowers(_ followers: [User])
 }
 
 struct SelfInfoDatabaseDatastore: SelfInfoDatabaseDatastoreType {
@@ -26,11 +26,14 @@ struct SelfInfoDatabaseDatastore: SelfInfoDatabaseDatastoreType {
         }
     }
     
-    func set(followers: [User]) {
+    func setFollowers(_ followers: [User]) {
         let realm = try! Realm()
         try! realm.write {
             let defaults = UserDefaults.standard
-            guard let selfInfo = try! Realm().object(ofType: SelfInfo.self, forPrimaryKey: defaults.integer(forKey: "userID")) else { return }
+            guard let selfInfo = try! Realm().object(ofType: SelfInfo.self, forPrimaryKey: defaults.integer(forKey: "userID"))
+                else {
+                    return
+            }
             selfInfo.followers = List(followers)
             realm.add(selfInfo, update: true)
         }
