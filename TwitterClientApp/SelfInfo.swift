@@ -16,7 +16,7 @@ final class SelfInfo: Object {
     dynamic var userID = 0
     dynamic var authHeaderString: String?
     var tweets = List<Tweet>()
-    var users = List<User>()
+    var followers = List<User>()
     
     
     // MARK - Configuration -

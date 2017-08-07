@@ -29,21 +29,28 @@ struct UserRespository: UserRespositoryType {
     func getFollowers(userID: Int? = nil, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int? = 200, skipStatus: Bool?, includeEntities: Bool? = false)
         -> Observable<[User]> {
             return apiDatastore
-            .getFollowers(
-                userID: userID,
-                screenName: screenName,
-                cursor: cursor,
-                requestNumberOfFollwers: requestNumberOfFollwers,
-                skipStatus: skipStatus,
-                includeEntities: includeEntities
-            )
+                .getFollowers(
+                    userID: userID,
+                    screenName: screenName,
+                    cursor: cursor,
+                    requestNumberOfFollwers: requestNumberOfFollwers,
+                    skipStatus: skipStatus,
+                    includeEntities: includeEntities
+                )
                 .map { json in
-                    guard let users = self.userDBDatastore
-                        .bulkCreateOrUpdate(json: json, resetRelations: true, inTransaction: false) else {
+                    let bulkJson = json["users"]
+                    guard let followers = self.userDBDatastore
+                        .bulkCreateOrUpdate(
+                            json: bulkJson,
+                            resetRelations: true,
+                            inTransaction: false
+                        )
+                        else
+                        {
                             throw RepositoryError.failedToDeserialize
-                    }
-                    self.selfInfoDBDatastore.set(users: users)
-                    return users
+                        }
+                    self.selfInfoDBDatastore.set(followers: followers)
+                    return followers
             }
     }
 }

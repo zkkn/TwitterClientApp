@@ -12,12 +12,12 @@ import RxSwift
 
 protocol UserAPIDatastoreType {
     func getFollowers(userID: Int?, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int?, skipStatus: Bool?, includeEntities: Bool?)
-        -> Observable<[[String: Any]]>
+        -> Observable<[String: Any]>
 }
 
 struct UserAPIDatastore: UserAPIDatastoreType {
     func getFollowers(userID: Int? = nil, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int? = 200, skipStatus: Bool?, includeEntities: Bool? = false)
-        ->Observable<[[String: Any]]> { return UserRequest
+        ->Observable<[String: Any]> { return UserRequest
             .GetFollowers(userID: userID, screenName: screenName, cursor: cursor, requestNumberOfFollwers: requestNumberOfFollwers, skipStatus: skipStatus, includeEntities: includeEntities)
             .sendRequest()
     }
@@ -25,7 +25,7 @@ struct UserAPIDatastore: UserAPIDatastoreType {
 
 fileprivate struct UserRequest {
       fileprivate struct GetFollowers: RequestType {
-        typealias Response = [[String: Any]]
+        typealias Response = [String: Any]
         
         fileprivate let userID: Int?
         fileprivate let screenName: String?
