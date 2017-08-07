@@ -38,10 +38,9 @@ struct UserRespository: UserRespositoryType {
                     includeEntities: includeEntities
                 )
                 .map { json in
-                    let bulkJson = json["users"]
                     guard let followers = self.userDBDatastore
                         .bulkCreateOrUpdate(
-                            json: bulkJson,
+                            json: json["users"],
                             resetRelations: true,
                             inTransaction: false
                         )
