@@ -51,8 +51,6 @@ struct TweetAPIDatastore: TweetAPIDatastoreType {
     }
 }
 
-
-
 fileprivate struct TweetRequest {
     
     fileprivate struct GetTweets: RequestType {
