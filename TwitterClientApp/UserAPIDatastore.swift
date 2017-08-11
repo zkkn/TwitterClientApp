@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Mapper
 import OAuthSwift
 import RxSwift
 
