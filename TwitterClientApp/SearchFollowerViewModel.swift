@@ -11,7 +11,6 @@ import RxSwift
 
 protocol SearchFollowerViewModelInputs {
     var followerString: PublishSubject<String> { get }
-    var refreshFollower: PublishSubject<Void> { get }
     
 }
 
@@ -46,7 +45,7 @@ final class SearchFollowerViewModel: SearchFollowerViewModelType, SearchFollower
     // MARK - Inputs -
     
     let followerString = PublishSubject<String>()
-    let refreshFollower = PublishSubject<Void>()
+    
     
     // MARK - Outputs -
     
