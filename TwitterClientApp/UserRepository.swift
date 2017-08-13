@@ -62,7 +62,6 @@ struct UserRespository: UserRespositoryType {
     
     func getFollowersID(userID: Int?, screenName: String?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?) {
         var ids: [Int] = []
-        getFollowersIDIncrement.onNext(-1)
         getFollowersIDIncrement.subscribe(onNext: { nextCursor in
             self.apiDatastore
                 .getFollowersID(
@@ -94,11 +93,18 @@ struct UserRespository: UserRespositoryType {
             })
             .disposed(by: disposeBag)
         
+        getFollowersIDIncrement.onNext(-1)
+        
         getFollowersIDList.subscribe(onNext: { ids in
+            // TODO: idsSliceは[Int]でないので、型を揃える
+            let idsSlice = ids.prefix(100)
+            let ids = ids.dropFirst(100)
             self.apiDatastore
-            .getFollowersDetail(screenName: nil, userID: ids, includeEntities: false)
-            
-            
+            .getFollowersDetail(screenName: nil, userID:  idsSlice, includeEntities: false)
+                .subscribe(onNext: {
+                    
+                })
+           .disposed(by: disposeBag)
         })
         .disposed(by: disposeBag)
     }
