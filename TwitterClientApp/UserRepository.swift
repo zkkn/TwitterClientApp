@@ -22,7 +22,7 @@ struct UserRespository: UserRespositoryType {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let getFollowersIDIncrement = PublishSubject<Int?>()
-    let getFollowersIDDatastore = PublishSubject<[String]>()
+    let getFollowersIDList = PublishSubject<[String]>()
     
     fileprivate let apiDatastore: UserAPIDatastoreType
     fileprivate let userDBDatastore: UserDatabaseDatastoreType
@@ -35,7 +35,6 @@ struct UserRespository: UserRespositoryType {
         self.userDBDatastore = userDBDatastore
         self.selfInfoDBDatastore = selfInfoDBDatastore
     }
-    
     
     func getFollowers(userID: Int? = nil, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int? = 200, skipStatus: Bool?, includeEntities: Bool? = false)
         -> Observable<[User]> {
@@ -81,7 +80,7 @@ struct UserRespository: UserRespositoryType {
                             self.getFollowersIDIncrement.onNext(nextCursor)
                         }
                         else {
-                            self.getFollowersIDDatastore.onNext(ids)
+                            self.getFollowersIDList.onNext(ids)
                         }
                     }
                     else {
@@ -91,5 +90,12 @@ struct UserRespository: UserRespositoryType {
                 .disposed(by: self.disposeBag)
             })
             .disposed(by: disposeBag)
+        
+        getFollowersIDList.subscribe(onNext: { ids in
+            
+            
+            
+        })
+        .disposed(by: disposeBag)
     }
 }

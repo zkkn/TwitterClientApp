@@ -16,6 +16,9 @@ protocol UserAPIDatastoreType {
     
     func getFollowersID(userID: Int?, screenName: String?, cursor: Int?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[String: Any]>
+    
+    func getFollowersDetail(screenName: [String]?, userID: [Int]?, includeEntities: Bool?)
+        -> Observable<[[String: Any]]>
 }
 
 struct UserAPIDatastore: UserAPIDatastoreType {
@@ -28,6 +31,12 @@ struct UserAPIDatastore: UserAPIDatastoreType {
     func getFollowersID(userID: Int? = nil, screenName: String?, cursor: Int?, stringifyIDs: Bool? = false, requestNumberOfFollwers: Int? = 5000)
         ->Observable<[String: Any]> { return UserRequest
             .GetFollowersID(userID: userID, screenName: screenName, cursor: cursor, stringifyIDs: stringifyIDs, requestNumberOfFollwers: requestNumberOfFollwers)
+            .sendRequest()
+    }
+    
+    func getFollowersDetail(screenName: [String]? = nil, userID: [Int]?, includeEntities: Bool? = false)
+        -> Observable<[[String: Any]]> { return UserRequest
+            .GetFollowersDetail(screenName: screenName, userID: userID, includeEntities: includeEntities)
             .sendRequest()
     }
 }
@@ -107,6 +116,33 @@ fileprivate struct UserRequest {
             
             if let stringifyIDs = stringifyIDs {
                 params["stringify_ids"] = stringifyIDs
+            }
+            return params
+        }
+    }
+    
+      fileprivate struct GetFollowersDetail: RequestType {
+        typealias Response = [[String: Any]]
+        
+        fileprivate let screenName: [String]?
+        fileprivate let userID: [Int]?
+        fileprivate let includeEntities: Bool?
+        
+        var path: String { return "users/lookup.json" }
+        var method: OAuthSwiftHTTPRequest.Method { return .POST }
+        var parameters: OAuthSwift.Parameters? {
+            var params: [String: Any] = [:]
+            
+            if let userID = userID {
+                params["userID"] = userID
+            }
+            
+            if let screenName = screenName {
+                params["screen_name"] = screenName
+            }
+            
+            if let includeEntities = includeEntities {
+                params["include_user_entities"] = includeEntities
             }
             return params
         }
