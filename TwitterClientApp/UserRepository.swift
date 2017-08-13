@@ -22,7 +22,7 @@ struct UserRespository: UserRespositoryType {
     
     fileprivate let disposeBag = DisposeBag()
     fileprivate let getFollowersIDIncrement = PublishSubject<Int?>()
-    let getFollowersIDList = PublishSubject<[String]>()
+    let getFollowersIDList = PublishSubject<[Int]>()
     
     fileprivate let apiDatastore: UserAPIDatastoreType
     fileprivate let userDBDatastore: UserDatabaseDatastoreType
@@ -59,8 +59,9 @@ struct UserRespository: UserRespositoryType {
                     return followers
             }
     }
-   
+    
     func getFollowersID(userID: Int?, screenName: String?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?) {
+        var ids: [Int] = []
         getFollowersIDIncrement.onNext(-1)
         getFollowersIDIncrement.subscribe(onNext: { nextCursor in
             self.apiDatastore
@@ -72,11 +73,13 @@ struct UserRespository: UserRespositoryType {
                     requestNumberOfFollwers: requestNumberOfFollwers
                 )
                 .subscribe(onNext: { json in
-                    var ids:[String] = []
-                    ids.append(json["ids"] as! String)
                     if let nextCursorString = json["next_cursor"] as? String {
                         let nextCursor = Int(nextCursorString)
                         if nextCursor != 0 {
+                            let jsonIds = json["ids"] as! [Int: String]
+                            for id in jsonIds.map({ Int($0.1)! }) {
+                                ids.append(id)
+                            }
                             self.getFollowersIDIncrement.onNext(nextCursor)
                         }
                         else {
@@ -92,7 +95,8 @@ struct UserRespository: UserRespositoryType {
             .disposed(by: disposeBag)
         
         getFollowersIDList.subscribe(onNext: { ids in
-            
+            self.apiDatastore
+            .getFollowersDetail(screenName: nil, userID: ids, includeEntities: false)
             
             
         })
