@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UserRespositoryType {
-    func getFollowers(userID: Int?, screenName: String?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
+    func getFollowersByID(userID: Int?, screenName: String?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[User]>
 }
 
@@ -34,7 +34,7 @@ struct UserRespository: UserRespositoryType {
         self.selfInfoDBDatastore = selfInfoDBDatastore
     }
     
-    func getFollowers(userID: Int?, screenName: String?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
+    func getFollowersByID(userID: Int?, screenName: String?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[User]> {
             return Observable.create { observer in
                 var ids: [Int] = []
