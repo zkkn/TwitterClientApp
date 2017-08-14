@@ -18,7 +18,7 @@ protocol UserAPIDatastoreType {
         -> Observable<[String: Any]>
     
     func getFollowersDetail(screenName: [String]?, userID: [Int]?, includeEntities: Bool?)
-        -> Observable<[[String: Any]]>
+        -> Observable<[String: Any]>
 }
 
 struct UserAPIDatastore: UserAPIDatastoreType {
@@ -35,7 +35,7 @@ struct UserAPIDatastore: UserAPIDatastoreType {
     }
     
     func getFollowersDetail(screenName: [String]? = nil, userID: [Int]?, includeEntities: Bool? = false)
-        -> Observable<[[String: Any]]> { return UserRequest
+        -> Observable<[String: Any]> { return UserRequest
             .GetFollowersDetail(screenName: screenName, userID: userID, includeEntities: includeEntities)
             .sendRequest()
     }
@@ -122,7 +122,7 @@ fileprivate struct UserRequest {
     }
     
       fileprivate struct GetFollowersDetail: RequestType {
-        typealias Response = [[String: Any]]
+        typealias Response = [String: Any]
         
         fileprivate let screenName: [String]?
         fileprivate let userID: [Int]?

@@ -14,6 +14,7 @@ protocol UserRespositoryType {
         -> Observable<[User]>
     
     func getFollowersID(userID: Int?, screenName: String?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?)
+        -> Observable<[User]>
 }
 
 struct UserRespository: UserRespositoryType {
@@ -21,7 +22,7 @@ struct UserRespository: UserRespositoryType {
     // MARK - Properties -
     
     fileprivate let disposeBag = DisposeBag()
-    fileprivate let getFollowersIDIncrement = PublishSubject<Int?>()
+    fileprivate let getFollowersIDStream = PublishSubject<Int?>()
     let getFollowersIDList = PublishSubject<[Int]>()
     
     fileprivate let apiDatastore: UserAPIDatastoreType
@@ -60,9 +61,10 @@ struct UserRespository: UserRespositoryType {
             }
     }
     
-    func getFollowersID(userID: Int?, screenName: String?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?) {
+    func getFollowersID(userID: Int?, screenName: String?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?)
+        -> Observable<[User]> {
         var ids: [Int] = []
-        getFollowersIDIncrement.subscribe(onNext: { nextCursor in
+        getFollowersIDStream.subscribe(onNext: { nextCursor in
             self.apiDatastore
                 .getFollowersID(
                     userID: userID,
@@ -79,7 +81,7 @@ struct UserRespository: UserRespositoryType {
                             for id in jsonIds.map({ Int($0.1)! }) {
                                 ids.append(id)
                             }
-                            self.getFollowersIDIncrement.onNext(nextCursor)
+                            self.getFollowersIDStream.onNext(nextCursor)
                         }
                         else {
                             self.getFollowersIDList.onNext(ids)
@@ -93,18 +95,34 @@ struct UserRespository: UserRespositoryType {
             })
             .disposed(by: disposeBag)
         
-        getFollowersIDIncrement.onNext(-1)
+        getFollowersIDStream.onNext(-1)
         
         getFollowersIDList.subscribe(onNext: { ids in
-            // TODO: idsSliceは[Int]でないので、型を揃える
-            let idsSlice = ids.prefix(100)
-            let ids = ids.dropFirst(100)
+            let idSlice = Array(ids.prefix(100)).map { $0 }
+            let ids = Array(ids.dropFirst(100))
             self.apiDatastore
-            .getFollowersDetail(screenName: nil, userID:  idsSlice, includeEntities: false)
-                .subscribe(onNext: {
-                    
-                })
-           .disposed(by: disposeBag)
+                .getFollowersDetail(
+                    screenName: nil,
+                    userID: idSlice,
+                    includeEntities: nil)
+                .subscribe(onNext: { json in
+                    guard let followers = self.userDBDatastore
+                        .bulkCreateOrUpdate(
+                            json: json,
+                            resetRelations: true,
+                            inTransaction: false)
+                        else {
+                            return
+                    }
+                    self.selfInfoDBDatastore.setFollowers(followers)
+                    if ids.count != 0 {
+                        self.getFollowersIDList.onNext(ids)
+                    }
+                    else {
+                        
+                    }
+            })
+            .disposed(by: self.disposeBag)
         })
         .disposed(by: disposeBag)
     }
