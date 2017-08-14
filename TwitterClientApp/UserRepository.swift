@@ -10,10 +10,7 @@ import Foundation
 import RxSwift
 
 protocol UserRespositoryType {
-    func getFollowers(userID: Int?, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int?, skipStatus: Bool?, includeEntities: Bool?)
-        -> Observable<[User]>
-    
-    func getFollowersID(userID: Int?, screenName: String?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?)
+    func getFollowers(userID: Int?, screenName: String?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[User]>
 }
 
@@ -37,31 +34,7 @@ struct UserRespository: UserRespositoryType {
         self.selfInfoDBDatastore = selfInfoDBDatastore
     }
     
-    func getFollowers(userID: Int? = nil, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int? = 200, skipStatus: Bool?, includeEntities: Bool? = false)
-        -> Observable<[User]> {
-            return apiDatastore
-                .getFollowers(
-                    userID: userID,
-                    screenName: screenName,
-                    cursor: cursor,
-                    requestNumberOfFollwers: requestNumberOfFollwers,
-                    skipStatus: skipStatus,
-                    includeEntities: includeEntities)
-                .map { json in
-                    guard let followers = self.userDBDatastore
-                        .bulkCreateOrUpdate(
-                            json: json["users"],
-                            resetRelations: true,
-                            inTransaction: false)
-                        else {
-                            throw RepositoryError.failedToDeserialize
-                    }
-                    self.selfInfoDBDatastore.setFollowers(followers)
-                    return followers
-            }
-    }
-    
-    func getFollowersID(userID: Int?, screenName: String?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?)
+    func getFollowers(userID: Int?, screenName: String?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[User]> {
             return Observable.create { observer in
                 var ids: [Int] = []
@@ -71,7 +44,7 @@ struct UserRespository: UserRespositoryType {
                             userID: userID,
                             screenName: screenName,
                             cursor: nextCursor,
-                            stringifyIDs: stringifyIDs,
+                            isStringifyIDs: isStringifyIDs,
                             requestNumberOfFollwers: requestNumberOfFollwers
                         )
                         .subscribe(onNext: { json in

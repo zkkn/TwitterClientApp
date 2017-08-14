@@ -14,7 +14,7 @@ protocol UserAPIDatastoreType {
     func getFollowers(userID: Int?, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int?, skipStatus: Bool?, includeEntities: Bool?)
         -> Observable<[String: Any]>
     
-    func getFollowersID(userID: Int?, screenName: String?, cursor: Int?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?)
+    func getFollowersID(userID: Int?, screenName: String?, cursor: Int?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[String: Any]>
     
     func getFollowersDetail(screenNames: [String]?, userID: [Int]?, isIncludeEntities: Bool?)
@@ -34,13 +34,13 @@ struct UserAPIDatastore: UserAPIDatastoreType {
             .sendRequest()
     }
     
-    func getFollowersID(userID: Int? = nil, screenName: String?, cursor: Int?, stringifyIDs: Bool? = false, requestNumberOfFollwers: Int? = 5000)
+    func getFollowersID(userID: Int? = nil, screenName: String?, cursor: Int?, isStringifyIDs: Bool? = false, requestNumberOfFollwers: Int? = 5000)
         -> Observable<[String: Any]> { return UserRequest
             .GetFollowersID(
                 userID: userID,
                 screenName: screenName,
                 cursor: cursor,
-                stringifyIDs: stringifyIDs,
+                isStringifyIDs: isStringifyIDs,
                 requestNumberOfFollwers: requestNumberOfFollwers)
             .sendRequest()
     }
@@ -104,7 +104,7 @@ fileprivate struct UserRequest {
         fileprivate let userID: Int?
         fileprivate let screenName: String?
         fileprivate let cursor: Int?
-        fileprivate let stringifyIDs: Bool?
+        fileprivate let isStringifyIDs: Bool?
         fileprivate let requestNumberOfFollwers: Int?
         
         var path: String { return "followers/ids.json" }
@@ -128,8 +128,8 @@ fileprivate struct UserRequest {
                 params["count"] = requestNumberOfFollwers
             }
             
-            if let stringifyIDs = stringifyIDs {
-                params["stringify_ids"] = stringifyIDs
+            if let isStringifyIDs = isStringifyIDs {
+                params["stringify_ids"] = isStringifyIDs
             }
             return params
         }
