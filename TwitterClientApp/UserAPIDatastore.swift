@@ -17,26 +17,40 @@ protocol UserAPIDatastoreType {
     func getFollowersID(userID: Int?, screenName: String?, cursor: Int?, stringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[String: Any]>
     
-    func getFollowersDetail(screenName: [String]?, userID: [Int]?, includeEntities: Bool?)
+    func getFollowersDetail(screenNames: [String]?, userID: [Int]?, isIncludeEntities: Bool?)
         -> Observable<[String: Any]>
 }
 
 struct UserAPIDatastore: UserAPIDatastoreType {
     func getFollowers(userID: Int? = nil, screenName: String?, cursor: Int?, requestNumberOfFollwers: Int? = 200, skipStatus: Bool?, includeEntities: Bool? = false)
-        ->Observable<[String: Any]> { return UserRequest
-            .GetFollowers(userID: userID, screenName: screenName, cursor: cursor, requestNumberOfFollwers: requestNumberOfFollwers, skipStatus: skipStatus, includeEntities: includeEntities)
+        -> Observable<[String: Any]> { return UserRequest
+            .GetFollowers(
+                userID: userID,
+                screenName: screenName,
+                cursor: cursor,
+                requestNumberOfFollwers: requestNumberOfFollwers,
+                skipStatus: skipStatus,
+                includeEntities: includeEntities)
             .sendRequest()
     }
     
     func getFollowersID(userID: Int? = nil, screenName: String?, cursor: Int?, stringifyIDs: Bool? = false, requestNumberOfFollwers: Int? = 5000)
-        ->Observable<[String: Any]> { return UserRequest
-            .GetFollowersID(userID: userID, screenName: screenName, cursor: cursor, stringifyIDs: stringifyIDs, requestNumberOfFollwers: requestNumberOfFollwers)
+        -> Observable<[String: Any]> { return UserRequest
+            .GetFollowersID(
+                userID: userID,
+                screenName: screenName,
+                cursor: cursor,
+                stringifyIDs: stringifyIDs,
+                requestNumberOfFollwers: requestNumberOfFollwers)
             .sendRequest()
     }
     
-    func getFollowersDetail(screenName: [String]? = nil, userID: [Int]?, includeEntities: Bool? = false)
+    func getFollowersDetail(screenNames: [String]? = nil, userID: [Int]?, isIncludeEntities: Bool? = false)
         -> Observable<[String: Any]> { return UserRequest
-            .GetFollowersDetail(screenName: screenName, userID: userID, includeEntities: includeEntities)
+            .GetFollowersDetail(
+                screenNames: screenNames,
+                userID: userID,
+                isIncludeEntities: isIncludeEntities)
             .sendRequest()
     }
 }
@@ -124,9 +138,9 @@ fileprivate struct UserRequest {
       fileprivate struct GetFollowersDetail: RequestType {
         typealias Response = [String: Any]
         
-        fileprivate let screenName: [String]?
+        fileprivate let screenNames: [String]?
         fileprivate let userID: [Int]?
-        fileprivate let includeEntities: Bool?
+        fileprivate let isIncludeEntities: Bool?
         
         var path: String { return "users/lookup.json" }
         var method: OAuthSwiftHTTPRequest.Method { return .POST }
@@ -137,12 +151,12 @@ fileprivate struct UserRequest {
                 params["userID"] = userID
             }
             
-            if let screenName = screenName {
-                params["screen_name"] = screenName
+            if let screenNames = screenNames {
+                params["screen_name"] = screenNames
             }
             
-            if let includeEntities = includeEntities {
-                params["include_user_entities"] = includeEntities
+            if let isIncludeEntities = isIncludeEntities {
+                params["include_user_entities"] = isIncludeEntities
             }
             return params
         }
