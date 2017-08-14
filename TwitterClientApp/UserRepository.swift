@@ -19,8 +19,6 @@ struct UserRespository: UserRespositoryType {
     // MARK - Properties -
     
     fileprivate let disposeBag = DisposeBag()
-    fileprivate let getFollowersIDStream = PublishSubject<Int?>()
-    fileprivate let getFollowersIDList = PublishSubject<[Int]>()
     
     fileprivate let apiDatastore: UserAPIDatastoreType
     fileprivate let userDBDatastore: UserDatabaseDatastoreType
@@ -36,9 +34,12 @@ struct UserRespository: UserRespositoryType {
     
     func getFollowersByID(userID: Int?, screenName: String?, isStringifyIDs: Bool?, requestNumberOfFollwers: Int?)
         -> Observable<[User]> {
+            let getFollowersIDStream = PublishSubject<Int?>()
+            let getFollowersAllIDStream = PublishSubject<[Int]>()
+            var ids: [Int] = []
+            
             return Observable.create { observer in
-                var ids: [Int] = []
-                self.getFollowersIDStream.subscribe(onNext: { nextCursor in
+                getFollowersIDStream.subscribe(onNext: { nextCursor in
                     self.apiDatastore
                         .getFollowersID(
                             userID: userID,
@@ -48,17 +49,16 @@ struct UserRespository: UserRespositoryType {
                             requestNumberOfFollwers: requestNumberOfFollwers
                         )
                         .subscribe(onNext: { json in
-                            if let nextCursorString = json["next_cursor"] as? String {
-                                let nextCursor = Int(nextCursorString)
+                            if let nextCursor = json["next_cursor"] as? Int {
                                 if nextCursor != 0 {
-                                    let jsonIds = json["ids"] as! [Int: String]
-                                    for id in jsonIds.map({ Int($0.1)! }) {
+                                    let jsonIds = json["ids"] as! [Int]
+                                    for id in jsonIds {
                                         ids.append(id)
                                     }
-                                    self.getFollowersIDStream.onNext(nextCursor)
+                                    getFollowersIDStream.onNext(nextCursor)
                                 }
                                 else {
-                                    self.getFollowersIDList.onNext(ids)
+                                    getFollowersAllIDStream.onNext(ids)
                                 }
                             }
                             else {
@@ -69,11 +69,11 @@ struct UserRespository: UserRespositoryType {
                     })
                     .disposed(by: self.disposeBag)
                 
-                self.getFollowersIDStream.onNext(-1)
+                getFollowersIDStream.onNext(-1)
                 
-                self.getFollowersIDList.subscribe(onNext: { ids in
+                getFollowersAllIDStream.subscribe(onNext: { ids in
                     let idSlice = Array(ids.prefix(100)).map { $0 }
-                    let ids = Array(ids.dropFirst(100))
+                    let idsDropped = Array(ids.dropFirst(100))
                     self.apiDatastore
                         .getFollowersDetail(
                             screenNames: nil,
@@ -88,17 +88,20 @@ struct UserRespository: UserRespositoryType {
                                 else {
                                     return
                             }
-                            self.selfInfoDBDatastore.setFollowers(followers)
-                            if ids.count != 0 {
-                                self.getFollowersIDList.onNext(ids)
+                            if idsDropped.count != 0 {
+                                getFollowersAllIDStream.onNext(idsDropped)
                             }
                             else {
+                                self.selfInfoDBDatastore.setFollowers(followers)
                                 observer.onNext(followers)
                             }
                         })
                         .disposed(by: self.disposeBag)
                     })
                     .disposed(by: self.disposeBag)
+                
+                getFollowersAllIDStream.onNext(ids)
+                
                 return Disposables.create {
                 }
             }
