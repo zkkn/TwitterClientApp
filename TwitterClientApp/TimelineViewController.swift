@@ -6,6 +6,7 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
+import DGElasticPullToRefresh
 import RxCocoa
 import RxSwift
 import SnapKit
@@ -21,6 +22,7 @@ final class TimelineViewController: UIViewController {
         return view
     }()
     
+    
     fileprivate lazy var refreshControl = UIRefreshControl()
     
     fileprivate lazy var tweetTableView: UITableView = {
@@ -29,6 +31,16 @@ final class TimelineViewController: UIViewController {
         tableView.estimatedRowHeight = 250
         tableView.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
+        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
+            // Add your logic here
+            // Do not forget to call dg_stopLoading() at the end
+            tableView.dg_stopLoading()
+            }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         return tableView
     }()
     
@@ -49,6 +61,10 @@ final class TimelineViewController: UIViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        tweetTableView.dg_removePullToRefresh()
     }
 }
 
