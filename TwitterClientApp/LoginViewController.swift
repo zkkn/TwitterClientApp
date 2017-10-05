@@ -18,9 +18,18 @@ final class LoginViewController: UIViewController {
     
     fileprivate lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Twitter OAuth", for: .normal)
-        button.setTitleColor(UIColor.blue, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        
+        // 背景色を設定する.
+        button.backgroundColor = UIColor(hex: 0xCECECE, alpha: 1.0)
+        
+        // 枠を丸くする.
+        button.layer.cornerRadius = 20.0
+        button.layer.masksToBounds = true
+        
+        button.setTitle("Login", for: UIControlState.normal)
+        button.setTitleColor(UIColor(hex:0x3a3a3a, alpha:1.0), for: UIControlState.normal)
+        
+        button.titleLabel?.font = UIFont.gillSans(size: 15)
         return button
     }()
     
@@ -75,7 +84,10 @@ extension LoginViewController {
     
     fileprivate func setConstraints() {
         loginButton.snp.makeConstraints { make in
+            make.width.equalTo(200)
+            make.height.equalTo(40)
             make.center.equalTo(view)
+            
         }
     }
     
