@@ -1,12 +1,15 @@
 PODS:
   - DGElasticPullToRefresh (1.1)
+  - DOFavoriteButton (0.0.4)
 
 DEPENDENCIES:
   - DGElasticPullToRefresh
+  - DOFavoriteButton
 
 SPEC CHECKSUMS:
   DGElasticPullToRefresh: 28f11a6026302a90f8ffebbc6e24748e584dddd3
+  DOFavoriteButton: 866e15af173d2dd5233971a1f657a5f31d2491d5
 
-PODFILE CHECKSUM: 0a6c46c7785f65fffecf4dcf546d3567acc6bf08
+PODFILE CHECKSUM: ab0f25e7135e955e1eff49a243e290f80898c882
 
 COCOAPODS: 1.3.1

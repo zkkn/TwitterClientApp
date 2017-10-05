@@ -7,5 +7,7 @@ target 'TwitterClientApp' do
 
   # Pods for TwitterClientApp
   pod 'DGElasticPullToRefresh'
+  pod 'DOFavoriteButton'
+
 
 end

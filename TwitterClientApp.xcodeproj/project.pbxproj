@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66127D4267CC5CF79A440F9F /* Pods_TwitterClientApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F35D29CAABF29DFDC25C650 /* Pods_TwitterClientApp.framework */; };
 		C7036CD91EFE840B00DBC7A1 /* RealmDatastore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7036CD81EFE840B00DBC7A1 /* RealmDatastore.swift */; };
 		C727030E1F22DD0B00B8915B /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727030D1F22DD0B00B8915B /* RequestType.swift */; };
 		C72703101F22EA5700B8915B /* APIDatastoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C727030F1F22EA5700B8915B /* APIDatastoreError.swift */; };
@@ -160,6 +161,7 @@
 				C7C879BC1EF4F69300E69DCD /* RealmSwift.framework in Frameworks */,
 				C7C879B61EF4F69300E69DCD /* APIKit.framework in Frameworks */,
 				C7C879C41EF4F69300E69DCD /* SnapKit.framework in Frameworks */,
+				66127D4267CC5CF79A440F9F /* Pods_TwitterClientApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,10 +499,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-TwitterClientApp/Pods-TwitterClientApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DGElasticPullToRefresh/DGElasticPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/DOFavoriteButton/DOFavoriteButton.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DGElasticPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DOFavoriteButton.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
