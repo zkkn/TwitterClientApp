@@ -35,8 +35,7 @@ final class TimelineViewController: UIViewController {
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
         loadingView.tintColor = UIColor(red: 78/255.0, green: 221/255.0, blue: 200/255.0, alpha: 1.0)
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            // Add your logic here
-            // Do not forget to call dg_stopLoading() at the end
+            self?.viewModel.inputs.refreshRequest.onNext()
             tableView.dg_stopLoading()
             }, loadingView: loadingView)
         tableView.dg_setPullToRefreshFillColor(UIColor(red: 57/255.0, green: 67/255.0, blue: 89/255.0, alpha: 1.0))
@@ -102,7 +101,6 @@ extension TimelineViewController {
     fileprivate func setViews() {
         view.addSubview(headerView)
         view.addSubview(tweetTableView)
-        tweetTableView.addSubview(refreshControl)
     }
     
     fileprivate func setConstraints() {
@@ -118,12 +116,6 @@ extension TimelineViewController {
     }
     
     fileprivate func subscribeView() {
-        refreshControl.rx.controlEvent(.valueChanged)
-            .subscribe(onNext: { [weak self] (_) in
-                self?.viewModel.inputs.refreshRequest.onNext()
-            })
-            .disposed(by: disposeBag)
-        
         headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let createTweetViewController = CreateTweetBuilder().build()
