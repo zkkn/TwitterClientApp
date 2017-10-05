@@ -27,18 +27,19 @@ final class TimelineViewController: UIViewController {
     
     fileprivate lazy var tweetTableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = UIColor(hex: 0xCECECE, alpha: 1.0)
         tableView.dataSource = self
         tableView.estimatedRowHeight = 250
         tableView.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         
         let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(hex: 0xA9B0B7, alpha: 1.0)
+        loadingView.tintColor = UIColor(hex: 0xCECECE, alpha: 1.0)
         tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
             self?.viewModel.inputs.refreshRequest.onNext()
             tableView.dg_stopLoading()
             }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(hex: 0xCECED1, alpha: 1.0))
+        tableView.dg_setPullToRefreshFillColor(UIColor(hex: 0x3a3a3a, alpha: 1.0))
         tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         return tableView
     }()

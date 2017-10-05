@@ -16,4 +16,17 @@ extension UIFont {
     class func hirakakuProNW6(size: CGFloat) -> UIFont {
         return UIFont(name: "HirakakuProN-W6", size: size)!
     }
+    
+    class func hiraMinProNW3(size: CGFloat) -> UIFont {
+        return UIFont(name: "HiraMinProN-W3", size: size)!
+    }
+    
+    class func hiraMinProNW6(size: CGFloat) -> UIFont {
+        return UIFont(name: "HiraMinProN-W6", size: size)!
+    }
+    
+    
+    class func gillSans(size: CGFloat) -> UIFont {
+        return UIFont(name: "GillSans", size: size)!
+    }
 }

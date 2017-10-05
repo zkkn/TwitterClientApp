@@ -45,7 +45,7 @@ class HeaderView: UIView {
 extension HeaderView {
     
     fileprivate func configure() {
-        backgroundColor = UIColor(hex: 0xCECED1, alpha: 1.0)
+        backgroundColor = UIColor(hex: 0x3a3a3a, alpha: 1.0)
     }
     
     fileprivate func setView() {

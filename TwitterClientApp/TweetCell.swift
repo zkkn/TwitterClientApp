@@ -20,33 +20,23 @@ class TweetCell: UITableViewCell {
         return imageView
     }()
     
-    fileprivate lazy var nameLabel: UILabel = {
+    fileprivate lazy var screenNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.hirakakuProNW6(size: 15)
+        label.font = UIFont.gillSans(size: 15)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = .black
+        label.textColor = UIColor(hex: 0x3a3a3a, alpha: 1.0)
         return label
     }()
     
-    fileprivate lazy var screenNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.hirakakuProNW3(size: 10)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 1
-        label.textAlignment = .left
-        label.textColor = .lightGray
-        return label
-    }()
-
     fileprivate lazy var contentLabel: UILabel = {
         let contentLabel = UILabel()
-        contentLabel.font = UIFont.hirakakuProNW3(size: 15)
+        contentLabel.font = UIFont.gillSans(size: 15)
         contentLabel.lineBreakMode = .byWordWrapping
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
-        contentLabel.textColor = .black
+        contentLabel.textColor = UIColor(hex: 0x3a3a3a, alpha: 1.0)
         return contentLabel
     }()
     
@@ -105,8 +95,10 @@ class TweetCell: UITableViewCell {
 extension TweetCell {
     
     fileprivate func setViews() {
+        self.backgroundColor = UIColor(hex: 0xCECECE, alpha: 1.0)
+        
         addSubview(profileImageView)
-        addSubview(nameLabel)
+//        addSubview(nameLabel)
         addSubview(screenNameLabel)
         addSubview(contentLabel)
         addSubview(likeButton)
@@ -120,16 +112,16 @@ extension TweetCell {
             make.width.height.equalTo(50)
         }
         
-        nameLabel.snp.makeConstraints { make in
+        screenNameLabel.snp.makeConstraints { make in
             make.left.equalTo(profileImageView.snp.right).offset(8)
             make.top.right.equalTo(self).inset(8)
         }
         
-        screenNameLabel.snp.makeConstraints { make in
-            make.left.equalTo(profileImageView.snp.right).offset(8)
-            make.right.equalTo(self).inset(8)
-            make.top.equalTo(nameLabel.snp.bottom)
-        }
+//        screenNameLabel.snp.makeConstraints { make in
+//            make.left.equalTo(profileImageView.snp.right).offset(8)
+//            make.right.equalTo(self).inset(8)
+//            make.top.equalTo(nameLabel.snp.bottom)
+//        }
        
         contentLabel.snp.makeConstraints { make in
             make.left.equalTo(profileImageView.snp.right).offset(8)
@@ -171,7 +163,7 @@ extension TweetCell {
         
         contentLabel.text = tweet.text
         likeCountLabel.text = "\(tweet.favoriteCount)"
-        nameLabel.text = tweet.user!.name
+//        nameLabel.text = tweet.user!.name
         screenNameLabel.text = "@\(tweet.user!.screenName)"
         
         if tweet.favorited {
