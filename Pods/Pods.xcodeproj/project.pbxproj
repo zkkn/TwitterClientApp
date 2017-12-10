@@ -7,172 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0683B76F4132E6F9398DD2CE5B0B2997 /* Pods-TwitterClientApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ACE6A1429EAF537C48909C3CFBE19E40 /* Pods-TwitterClientApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0A932F75F60FD22EA6A7974D900E7E54 /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 89498E8DBD7C15887D18EAAFC40882F4 /* star.png */; };
-		0B7820EEC22CE6A6EB76285119EC1622 /* DGElasticPullToRefresh-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6E5CDE7E4DC6C2C4CEA2F951BACB830 /* DGElasticPullToRefresh-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2396619931C9EEA401A1BBECC2C54174 /* DOFavoriteButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 35D5CEC4D10162C5BDEA0A07B589D976 /* DOFavoriteButton-dummy.m */; };
-		24556AC18E33C36C0AF17209354453DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
-		34F8CA351A3078D51A50BDEA5978D8A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
-		46B588342EEE013A1B9E47BADE4580BC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
-		5044C16E89474AA88B99FFFD23049451 /* DGElasticPullToRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B789270A391CE1116B64A76BF03A75 /* DGElasticPullToRefreshView.swift */; };
-		52D2DD7EE891B3719A475CE30E81CABD /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20321326F311EC1D776B4ED9FD0FED03 /* DGElasticPullToRefreshLoadingViewCircle.swift */; };
-		542EA745200BCFEFAA4C66A73CE1B0CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */; };
-		6DB8B5A771FDF7E89AC09ACC9058BD18 /* Pods-TwitterClientApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9CADB8024F327333FFD86A5B79D0D2 /* Pods-TwitterClientApp-dummy.m */; };
-		8533C8F7048164F973EC12F23AA85444 /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 13FBA76133A4160520471F4CC3767074 /* like.png */; };
-		8A8AC5DD98A121BAD486BA9783B9C8AC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */; };
-		932506111FDFECDEE22DD9C459BC4CF6 /* DOFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89149E8766C7985826D84695A30A514 /* DOFavoriteButton.swift */; };
-		9F074D42C938325AFF55A4C9FF8D4CFB /* DGElasticPullToRefreshConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447BA8EADC00EAA71290695FDB68664A /* DGElasticPullToRefreshConstants.swift */; };
-		A27226839B74309EEEA9E486C4CBCA07 /* DGElasticPullToRefresh-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF945DA46766A8C8E2007EE2EDBA801 /* DGElasticPullToRefresh-dummy.m */; };
-		ACDF08724B7290EAC82F79B3744DFBF8 /* DOFavoriteButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 045217383EC2F41C44EEFE1032884375 /* DOFavoriteButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B4B6FFE7B4349A5BD1001E8287A21E6C /* DGElasticPullToRefreshExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5060655AF3971FB9FB4B268B6F9516C5 /* DGElasticPullToRefreshExtensions.swift */; };
-		BE6BE6265230857E33B8266EB5917297 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = EBEF976B31C54091995011AE44AC2AE0 /* heart.png */; };
-		D89DB12AB63FC0F659719705976A32DD /* DGElasticPullToRefreshLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B795BCA08D799028119BE37648A42C /* DGElasticPullToRefreshLoadingView.swift */; };
-		EC9A959526155774A3DF7B1303CEB77A /* smile.png in Resources */ = {isa = PBXBuildFile; fileRef = 8587F7AC0509794F82F1F4C26618D40D /* smile.png */; };
+		105FB4287DE726FF4A0CD6B906DAE8A8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		18C2022DBB71A527C9EA0D9289FB67BA /* Pods-TwitterClientApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E9CADB8024F327333FFD86A5B79D0D2 /* Pods-TwitterClientApp-dummy.m */; };
+		554F3423A2C555E80451ED5018862EDF /* Pods-TwitterClientApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = ACE6A1429EAF537C48909C3CFBE19E40 /* Pods-TwitterClientApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A690D7C8C3C9ED9D2E472F494657F8B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 47D07B436D82BB983C8429FF84F919A3;
-			remoteInfo = DGElasticPullToRefresh;
-		};
-		B5082E83BE39482F515F2C9FD5671A1B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C147FB851C4B97A7B663598589B9ABA5;
-			remoteInfo = DOFavoriteButton;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		03F5EE52CAEE41145B5B1306F9A7F014 /* DOFavoriteButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DOFavoriteButton.xcconfig; sourceTree = "<group>"; };
-		045217383EC2F41C44EEFE1032884375 /* DOFavoriteButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DOFavoriteButton-umbrella.h"; sourceTree = "<group>"; };
-		0CD4BB04559DCA47436C803AF4D8ED09 /* DGElasticPullToRefresh-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DGElasticPullToRefresh-prefix.pch"; sourceTree = "<group>"; };
 		10C656585AEFAB6092ACD22039438151 /* Pods-TwitterClientApp.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-TwitterClientApp.modulemap"; sourceTree = "<group>"; };
-		13FBA76133A4160520471F4CC3767074 /* like.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = like.png; path = DOFavoriteButton/like.png; sourceTree = "<group>"; };
-		1AF945DA46766A8C8E2007EE2EDBA801 /* DGElasticPullToRefresh-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DGElasticPullToRefresh-dummy.m"; sourceTree = "<group>"; };
-		20321326F311EC1D776B4ED9FD0FED03 /* DGElasticPullToRefreshLoadingViewCircle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DGElasticPullToRefreshLoadingViewCircle.swift; path = DGElasticPullToRefresh/DGElasticPullToRefreshLoadingViewCircle.swift; sourceTree = "<group>"; };
 		35C4230F4805A2441CF9EB70D3B9139B /* Pods-TwitterClientApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TwitterClientApp-acknowledgements.markdown"; sourceTree = "<group>"; };
-		35D5CEC4D10162C5BDEA0A07B589D976 /* DOFavoriteButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DOFavoriteButton-dummy.m"; sourceTree = "<group>"; };
 		3A45B92131DB83DC3C2B3D287F129B28 /* Pods-TwitterClientApp-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TwitterClientApp-frameworks.sh"; sourceTree = "<group>"; };
 		3AFD640DC26768A9044155A459653B74 /* Pods-TwitterClientApp-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TwitterClientApp-resources.sh"; sourceTree = "<group>"; };
-		447BA8EADC00EAA71290695FDB68664A /* DGElasticPullToRefreshConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DGElasticPullToRefreshConstants.swift; path = DGElasticPullToRefresh/DGElasticPullToRefreshConstants.swift; sourceTree = "<group>"; };
 		4C99DB4074EE46EBBC97FE425B5819E7 /* Pods-TwitterClientApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TwitterClientApp.release.xcconfig"; sourceTree = "<group>"; };
-		5060655AF3971FB9FB4B268B6F9516C5 /* DGElasticPullToRefreshExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DGElasticPullToRefreshExtensions.swift; path = DGElasticPullToRefresh/DGElasticPullToRefreshExtensions.swift; sourceTree = "<group>"; };
-		602511BCE0C9769E6EBE1FE76A67CE9F /* DGElasticPullToRefresh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DGElasticPullToRefresh.framework; path = DGElasticPullToRefresh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		821E883A675F34C2B04C76AAEEC63FEB /* Pods-TwitterClientApp-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TwitterClientApp-acknowledgements.plist"; sourceTree = "<group>"; };
-		8245E85DD3B1AEB43A97D78B3013B7D4 /* DGElasticPullToRefresh.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DGElasticPullToRefresh.modulemap; sourceTree = "<group>"; };
-		8587F7AC0509794F82F1F4C26618D40D /* smile.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = smile.png; path = DOFavoriteButton/smile.png; sourceTree = "<group>"; };
-		863E312E12C88112B862B6537066B9A1 /* DOFavoriteButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DOFavoriteButton-prefix.pch"; sourceTree = "<group>"; };
-		89498E8DBD7C15887D18EAAFC40882F4 /* star.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = star.png; path = DOFavoriteButton/star.png; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9431225754455CFEC05EFB6106520137 /* Pods_TwitterClientApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TwitterClientApp.framework; path = "Pods-TwitterClientApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9815211EAD10C11F7A0BCFBB1AE7FF73 /* Pods_TwitterClientApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TwitterClientApp.framework; path = "Pods-TwitterClientApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E9CADB8024F327333FFD86A5B79D0D2 /* Pods-TwitterClientApp-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TwitterClientApp-dummy.m"; sourceTree = "<group>"; };
-		A8B795BCA08D799028119BE37648A42C /* DGElasticPullToRefreshLoadingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DGElasticPullToRefreshLoadingView.swift; path = DGElasticPullToRefresh/DGElasticPullToRefreshLoadingView.swift; sourceTree = "<group>"; };
 		ACE6A1429EAF537C48909C3CFBE19E40 /* Pods-TwitterClientApp-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TwitterClientApp-umbrella.h"; sourceTree = "<group>"; };
-		B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		C198CDAFCB186CD010922EEE45E39C4D /* DOFavoriteButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DOFavoriteButton.modulemap; sourceTree = "<group>"; };
-		C6E5CDE7E4DC6C2C4CEA2F951BACB830 /* DGElasticPullToRefresh-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DGElasticPullToRefresh-umbrella.h"; sourceTree = "<group>"; };
-		D2B789270A391CE1116B64A76BF03A75 /* DGElasticPullToRefreshView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DGElasticPullToRefreshView.swift; path = DGElasticPullToRefresh/DGElasticPullToRefreshView.swift; sourceTree = "<group>"; };
 		D4EB960F4C65C07B0A49999DBE9383EF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D89149E8766C7985826D84695A30A514 /* DOFavoriteButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DOFavoriteButton.swift; path = DOFavoriteButton/DOFavoriteButton.swift; sourceTree = "<group>"; };
-		DC18FDAA82DD33BE178CF34FD6D376C0 /* DGElasticPullToRefresh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DGElasticPullToRefresh.xcconfig; sourceTree = "<group>"; };
 		E195ACFE2CDD0AA401A6CE47846BBA5A /* Pods-TwitterClientApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TwitterClientApp.debug.xcconfig"; sourceTree = "<group>"; };
-		E210DAEB7A98B844C7E505AB6240321B /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EBEF976B31C54091995011AE44AC2AE0 /* heart.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = heart.png; path = DOFavoriteButton/heart.png; sourceTree = "<group>"; };
-		FD49804A93D0CEE7262BBA247A149752 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FDF73A7316956E2BE8F3832049A8A333 /* DOFavoriteButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DOFavoriteButton.framework; path = DOFavoriteButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8736988F24A5E68C48BDB857880BDB38 /* Frameworks */ = {
+		9ECABA77B0DB86C5AE7A93E2DDC19071 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24556AC18E33C36C0AF17209354453DC /* Foundation.framework in Frameworks */,
-				46B588342EEE013A1B9E47BADE4580BC /* UIKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A03D76723289389C7FF0A50EE81DB207 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				34F8CA351A3078D51A50BDEA5978D8A1 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		ACC58F40726B75D6008E25A6126B233A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				542EA745200BCFEFAA4C66A73CE1B0CF /* Foundation.framework in Frameworks */,
-				8A8AC5DD98A121BAD486BA9783B9C8AC /* UIKit.framework in Frameworks */,
+				105FB4287DE726FF4A0CD6B906DAE8A8 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		03BB10DC76A8482E22F7517B23FAFAE5 /* DGElasticPullToRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				447BA8EADC00EAA71290695FDB68664A /* DGElasticPullToRefreshConstants.swift */,
-				5060655AF3971FB9FB4B268B6F9516C5 /* DGElasticPullToRefreshExtensions.swift */,
-				A8B795BCA08D799028119BE37648A42C /* DGElasticPullToRefreshLoadingView.swift */,
-				20321326F311EC1D776B4ED9FD0FED03 /* DGElasticPullToRefreshLoadingViewCircle.swift */,
-				D2B789270A391CE1116B64A76BF03A75 /* DGElasticPullToRefreshView.swift */,
-				0723A510E6A8C2C18EFEFCC81182BC64 /* Support Files */,
-			);
-			name = DGElasticPullToRefresh;
-			path = DGElasticPullToRefresh;
-			sourceTree = "<group>";
-		};
-		0723A510E6A8C2C18EFEFCC81182BC64 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				8245E85DD3B1AEB43A97D78B3013B7D4 /* DGElasticPullToRefresh.modulemap */,
-				DC18FDAA82DD33BE178CF34FD6D376C0 /* DGElasticPullToRefresh.xcconfig */,
-				1AF945DA46766A8C8E2007EE2EDBA801 /* DGElasticPullToRefresh-dummy.m */,
-				0CD4BB04559DCA47436C803AF4D8ED09 /* DGElasticPullToRefresh-prefix.pch */,
-				C6E5CDE7E4DC6C2C4CEA2F951BACB830 /* DGElasticPullToRefresh-umbrella.h */,
-				FD49804A93D0CEE7262BBA247A149752 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/DGElasticPullToRefresh";
-			sourceTree = "<group>";
-		};
-		22CF8D6FC4FC62D586D4E3D5D063E84E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				602511BCE0C9769E6EBE1FE76A67CE9F /* DGElasticPullToRefresh.framework */,
-				FDF73A7316956E2BE8F3832049A8A333 /* DOFavoriteButton.framework */,
-				9431225754455CFEC05EFB6106520137 /* Pods_TwitterClientApp.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				438B396F6B4147076630CAEFE34282C1 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		438B396F6B4147076630CAEFE34282C1 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				D88AAE1F92055A60CC2FC970D7D34634 /* Foundation.framework */,
-				B63C6A64CF66340668996F78DA6BB482 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		4CAC6BE6B718B8441693F46856C491BF /* Pods-TwitterClientApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,144 +66,69 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
+		7D345CA1D88C2310FAB59E33A262CAA7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9815211EAD10C11F7A0BCFBB1AE7FF73 /* Pods_TwitterClientApp.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
-				D6176E55F1CC9EBD7C25A8117F8BAA68 /* Pods */,
-				22CF8D6FC4FC62D586D4E3D5D063E84E /* Products */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				7D345CA1D88C2310FAB59E33A262CAA7 /* Products */,
 				56057C4E2D4E2BB1638EE79F446823AC /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		7FFB276B7087A44ADEAA54AB0AA0A2E7 /* Support Files */ = {
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C198CDAFCB186CD010922EEE45E39C4D /* DOFavoriteButton.modulemap */,
-				03F5EE52CAEE41145B5B1306F9A7F014 /* DOFavoriteButton.xcconfig */,
-				35D5CEC4D10162C5BDEA0A07B589D976 /* DOFavoriteButton-dummy.m */,
-				863E312E12C88112B862B6537066B9A1 /* DOFavoriteButton-prefix.pch */,
-				045217383EC2F41C44EEFE1032884375 /* DOFavoriteButton-umbrella.h */,
-				E210DAEB7A98B844C7E505AB6240321B /* Info.plist */,
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/DOFavoriteButton";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B66ED2CCD80E373E16A4B040A764F47B /* Resources */ = {
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				EBEF976B31C54091995011AE44AC2AE0 /* heart.png */,
-				13FBA76133A4160520471F4CC3767074 /* like.png */,
-				8587F7AC0509794F82F1F4C26618D40D /* smile.png */,
-				89498E8DBD7C15887D18EAAFC40882F4 /* star.png */,
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		D6176E55F1CC9EBD7C25A8117F8BAA68 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				03BB10DC76A8482E22F7517B23FAFAE5 /* DGElasticPullToRefresh */,
-				D65E07EB98DF2BBB6277933FB0C11E47 /* DOFavoriteButton */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		D65E07EB98DF2BBB6277933FB0C11E47 /* DOFavoriteButton */ = {
-			isa = PBXGroup;
-			children = (
-				D89149E8766C7985826D84695A30A514 /* DOFavoriteButton.swift */,
-				B66ED2CCD80E373E16A4B040A764F47B /* Resources */,
-				7FFB276B7087A44ADEAA54AB0AA0A2E7 /* Support Files */,
-			);
-			name = DOFavoriteButton;
-			path = DOFavoriteButton;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3004BFBC42CC0E1FEA64E53C8B96CFBD /* Headers */ = {
+		BE7BA1E62A8889A5DF50BA6E8D7221BE /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACDF08724B7290EAC82F79B3744DFBF8 /* DOFavoriteButton-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5B00AE932639971F456FC97024EE2D44 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0683B76F4132E6F9398DD2CE5B0B2997 /* Pods-TwitterClientApp-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C41DD70ED1E86FB8DA51EF3E973C63A9 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				0B7820EEC22CE6A6EB76285119EC1622 /* DGElasticPullToRefresh-umbrella.h in Headers */,
+				554F3423A2C555E80451ED5018862EDF /* Pods-TwitterClientApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		47D07B436D82BB983C8429FF84F919A3 /* DGElasticPullToRefresh */ = {
+		6864C180D6980B58E15E46D64A3B477E /* Pods-TwitterClientApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FABD48557642D733C1DEC003DC4E71D1 /* Build configuration list for PBXNativeTarget "DGElasticPullToRefresh" */;
+			buildConfigurationList = F4E15FD8B4814EDA8B06A03866EE7643 /* Build configuration list for PBXNativeTarget "Pods-TwitterClientApp" */;
 			buildPhases = (
-				C6FA28007D62F3AD844A873ECC11DBE8 /* Sources */,
-				ACC58F40726B75D6008E25A6126B233A /* Frameworks */,
-				C41DD70ED1E86FB8DA51EF3E973C63A9 /* Headers */,
+				1E2F77A0D3145920BF9D9F51AA76ED08 /* Sources */,
+				9ECABA77B0DB86C5AE7A93E2DDC19071 /* Frameworks */,
+				BE7BA1E62A8889A5DF50BA6E8D7221BE /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-			);
-			name = DGElasticPullToRefresh;
-			productName = DGElasticPullToRefresh;
-			productReference = 602511BCE0C9769E6EBE1FE76A67CE9F /* DGElasticPullToRefresh.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C147FB851C4B97A7B663598589B9ABA5 /* DOFavoriteButton */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B16C057A7EBDF26EFADAC310FFDFBEF8 /* Build configuration list for PBXNativeTarget "DOFavoriteButton" */;
-			buildPhases = (
-				2C698D2A9B1F9DC9FF02C4AAAEC0D0C9 /* Sources */,
-				8736988F24A5E68C48BDB857880BDB38 /* Frameworks */,
-				40BB5736174C06D7663BC173B4A7AECA /* Resources */,
-				3004BFBC42CC0E1FEA64E53C8B96CFBD /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DOFavoriteButton;
-			productName = DOFavoriteButton;
-			productReference = FDF73A7316956E2BE8F3832049A8A333 /* DOFavoriteButton.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		CBED9A9921B5AE690ABDCA411830EF56 /* Pods-TwitterClientApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 40E1FDA71ABA83231885602F397D0E46 /* Build configuration list for PBXNativeTarget "Pods-TwitterClientApp" */;
-			buildPhases = (
-				5B70845B46B6CCA4CEBE7C3501B9D284 /* Sources */,
-				A03D76723289389C7FF0A50EE81DB207 /* Frameworks */,
-				5B00AE932639971F456FC97024EE2D44 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				91CF85F97338BC121C5CD519F913ADA5 /* PBXTargetDependency */,
-				1950F54961AB23F906FD4DF5706A196F /* PBXTargetDependency */,
 			);
 			name = "Pods-TwitterClientApp";
 			productName = "Pods-TwitterClientApp";
-			productReference = 9431225754455CFEC05EFB6106520137 /* Pods_TwitterClientApp.framework */;
+			productReference = 9815211EAD10C11F7A0BCFBB1AE7FF73 /* Pods_TwitterClientApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -356,224 +148,28 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 22CF8D6FC4FC62D586D4E3D5D063E84E /* Products */;
+			productRefGroup = 7D345CA1D88C2310FAB59E33A262CAA7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				47D07B436D82BB983C8429FF84F919A3 /* DGElasticPullToRefresh */,
-				C147FB851C4B97A7B663598589B9ABA5 /* DOFavoriteButton */,
-				CBED9A9921B5AE690ABDCA411830EF56 /* Pods-TwitterClientApp */,
+				6864C180D6980B58E15E46D64A3B477E /* Pods-TwitterClientApp */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		40BB5736174C06D7663BC173B4A7AECA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE6BE6265230857E33B8266EB5917297 /* heart.png in Resources */,
-				8533C8F7048164F973EC12F23AA85444 /* like.png in Resources */,
-				EC9A959526155774A3DF7B1303CEB77A /* smile.png in Resources */,
-				0A932F75F60FD22EA6A7974D900E7E54 /* star.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		2C698D2A9B1F9DC9FF02C4AAAEC0D0C9 /* Sources */ = {
+		1E2F77A0D3145920BF9D9F51AA76ED08 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2396619931C9EEA401A1BBECC2C54174 /* DOFavoriteButton-dummy.m in Sources */,
-				932506111FDFECDEE22DD9C459BC4CF6 /* DOFavoriteButton.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5B70845B46B6CCA4CEBE7C3501B9D284 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6DB8B5A771FDF7E89AC09ACC9058BD18 /* Pods-TwitterClientApp-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C6FA28007D62F3AD844A873ECC11DBE8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A27226839B74309EEEA9E486C4CBCA07 /* DGElasticPullToRefresh-dummy.m in Sources */,
-				9F074D42C938325AFF55A4C9FF8D4CFB /* DGElasticPullToRefreshConstants.swift in Sources */,
-				B4B6FFE7B4349A5BD1001E8287A21E6C /* DGElasticPullToRefreshExtensions.swift in Sources */,
-				D89DB12AB63FC0F659719705976A32DD /* DGElasticPullToRefreshLoadingView.swift in Sources */,
-				52D2DD7EE891B3719A475CE30E81CABD /* DGElasticPullToRefreshLoadingViewCircle.swift in Sources */,
-				5044C16E89474AA88B99FFFD23049451 /* DGElasticPullToRefreshView.swift in Sources */,
+				18C2022DBB71A527C9EA0D9289FB67BA /* Pods-TwitterClientApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		1950F54961AB23F906FD4DF5706A196F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DOFavoriteButton;
-			target = C147FB851C4B97A7B663598589B9ABA5 /* DOFavoriteButton */;
-			targetProxy = B5082E83BE39482F515F2C9FD5671A1B /* PBXContainerItemProxy */;
-		};
-		91CF85F97338BC121C5CD519F913ADA5 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = DGElasticPullToRefresh;
-			target = 47D07B436D82BB983C8429FF84F919A3 /* DGElasticPullToRefresh */;
-			targetProxy = A690D7C8C3C9ED9D2E472F494657F8B2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		096B51932469B2666AC13B6A7A5D686E /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03F5EE52CAEE41145B5B1306F9A7F014 /* DOFavoriteButton.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DOFavoriteButton/DOFavoriteButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DOFavoriteButton/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DOFavoriteButton/DOFavoriteButton.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = DOFavoriteButton;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		1D1E85A2CFBAED9A6E657D2CBB4E8432 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC18FDAA82DD33BE178CF34FD6D376C0 /* DGElasticPullToRefresh.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DGElasticPullToRefresh/DGElasticPullToRefresh-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DGElasticPullToRefresh/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DGElasticPullToRefresh/DGElasticPullToRefresh.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = DGElasticPullToRefresh;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		2227B29ED9D92D95D5EBD5DD5846D7EE /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4C99DB4074EE46EBBC97FE425B5819E7 /* Pods-TwitterClientApp.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-TwitterClientApp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TwitterClientApp/Pods-TwitterClientApp.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_TwitterClientApp;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		3854720D500073615601EB60CFCC9963 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03F5EE52CAEE41145B5B1306F9A7F014 /* DOFavoriteButton.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DOFavoriteButton/DOFavoriteButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DOFavoriteButton/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DOFavoriteButton/DOFavoriteButton.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = DOFavoriteButton;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		7C367D4B42A15661CB26CD6DF94996BB /* Debug */ = {
+		63133283F36ACD941627D91EF5115043 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E195ACFE2CDD0AA401A6CE47846BBA5A /* Pods-TwitterClientApp.debug.xcconfig */;
 			buildSettings = {
@@ -603,49 +199,47 @@
 				PRODUCT_NAME = Pods_TwitterClientApp;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		86A6EF246D92A4115F5FBDD19D57AC7B /* Debug */ = {
+		9203AEEBBDE88FD890CFD352DCE86169 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DC18FDAA82DD33BE178CF34FD6D376C0 /* DGElasticPullToRefresh.xcconfig */;
+			baseConfigurationReference = 4C99DB4074EE46EBBC97FE425B5819E7 /* Pods-TwitterClientApp.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/DGElasticPullToRefresh/DGElasticPullToRefresh-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/DGElasticPullToRefresh/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-TwitterClientApp/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/DGElasticPullToRefresh/DGElasticPullToRefresh.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = DGElasticPullToRefresh;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TwitterClientApp/Pods-TwitterClientApp.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_TwitterClientApp;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		AA0B5BDEB018901CD8F88AAD05F5B893 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -752,29 +346,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		40E1FDA71ABA83231885602F397D0E46 /* Build configuration list for PBXNativeTarget "Pods-TwitterClientApp" */ = {
+		F4E15FD8B4814EDA8B06A03866EE7643 /* Build configuration list for PBXNativeTarget "Pods-TwitterClientApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C367D4B42A15661CB26CD6DF94996BB /* Debug */,
-				2227B29ED9D92D95D5EBD5DD5846D7EE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B16C057A7EBDF26EFADAC310FFDFBEF8 /* Build configuration list for PBXNativeTarget "DOFavoriteButton" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3854720D500073615601EB60CFCC9963 /* Debug */,
-				096B51932469B2666AC13B6A7A5D686E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FABD48557642D733C1DEC003DC4E71D1 /* Build configuration list for PBXNativeTarget "DGElasticPullToRefresh" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				86A6EF246D92A4115F5FBDD19D57AC7B /* Debug */,
-				1D1E85A2CFBAED9A6E657D2CBB4E8432 /* Release */,
+				63133283F36ACD941627D91EF5115043 /* Debug */,
+				9203AEEBBDE88FD890CFD352DCE86169 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

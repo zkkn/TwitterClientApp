@@ -6,8 +6,6 @@ target 'TwitterClientApp' do
   use_frameworks!
 
   # Pods for TwitterClientApp
-  pod 'DGElasticPullToRefresh'
-  pod 'DOFavoriteButton'
 
 
 end
