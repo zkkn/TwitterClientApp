@@ -22,46 +22,46 @@ class TweetCell: UITableViewCell {
     
     fileprivate lazy var screenNameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.gillSans(size: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = UIColor(hex: 0x3a3a3a, alpha: 1.0)
+        label.textColor = UIColor(hex: 0x7B8B99, alpha: 1.0)
         return label
     }()
     
     fileprivate lazy var contentLabel: UILabel = {
         let contentLabel = UILabel()
-        contentLabel.font = UIFont.gillSans(size: 15)
+        contentLabel.font = UIFont.hirakakuProNW4(size: 14)
         contentLabel.lineBreakMode = .byWordWrapping
         contentLabel.numberOfLines = 0
         contentLabel.textAlignment = .left
-        contentLabel.textColor = UIColor(hex: 0x3a3a3a, alpha: 1.0)
+        contentLabel.textColor = UIColor(hex: 0xF0F1F2, alpha: 1.0)
         return contentLabel
     }()
     
     lazy var commentButton: UIButton = {
         let button = UIButton()
         button.contentMode = .scaleToFill
-        button.setImage(#imageLiteral(resourceName: "ic_balloon_blue_48.png"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "ic_message_circle"), for: .normal)
         return button
     }()
     
     lazy var likeButton: UIButton = {
         let button = UIButton()
         button.contentMode = .scaleToFill
-        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_32.png"), for: .normal)
-        button.setImage(#imageLiteral(resourceName: "ic_heart_pink_48.png"), for: .selected)
+        button.setImage(#imageLiteral(resourceName: "ic_heart"), for: .normal)
+        button.setImage(#imageLiteral(resourceName: "ic_heart_pink"), for: .selected)
         return button
     }()
     
     fileprivate lazy var likeCountLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.hirakakuProNW3(size: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.textColor = .lightGray
+        label.textColor = UIColor(hex: 0x7B8B99, alpha: 1.0)
         return label
     }()
    
@@ -95,7 +95,7 @@ class TweetCell: UITableViewCell {
 extension TweetCell {
     
     fileprivate func setViews() {
-        self.backgroundColor = UIColor(hex: 0xCECECE, alpha: 1.0)
+        self.backgroundColor = UIColor(hex: 0x1B2936, alpha: 1.0)
         
         addSubview(profileImageView)
 //        addSubview(nameLabel)
@@ -108,13 +108,15 @@ extension TweetCell {
     
     fileprivate func setConstraints() {
         profileImageView.snp.makeConstraints { make in
-            make.left.top.equalTo(self).inset(8)
-            make.width.height.equalTo(50)
+            make.left.equalTo(self).inset(16)
+            make.top.equalTo(self).inset(12)
+            make.width.height.equalTo(48)
         }
         
         screenNameLabel.snp.makeConstraints { make in
             make.left.equalTo(profileImageView.snp.right).offset(8)
-            make.top.right.equalTo(self).inset(8)
+            make.right.equalTo(self).inset(16)
+            make.top.equalTo(self).inset(12)
         }
         
 //        screenNameLabel.snp.makeConstraints { make in
@@ -125,7 +127,7 @@ extension TweetCell {
        
         contentLabel.snp.makeConstraints { make in
             make.left.equalTo(profileImageView.snp.right).offset(8)
-            make.right.equalTo(self).inset(8)
+            make.right.equalTo(self).inset(16)
             make.top.equalTo(screenNameLabel.snp.bottom).offset(8)
         }
         
@@ -133,20 +135,18 @@ extension TweetCell {
             make.left.equalTo(profileImageView.snp.right).offset(8)
             make.bottom.equalTo(self).inset(8)
             make.top.equalTo(contentLabel.snp.bottom).offset(8)
-            make.width.height.equalTo(24)
         }
         
         likeCountLabel.snp.makeConstraints { make in
-            make.left.equalTo(likeButton.snp.right).offset(8)
+            make.left.equalTo(likeButton.snp.right).offset(2)
             make.bottom.equalTo(self).inset(8)
             make.top.equalTo(contentLabel.snp.bottom).offset(8)
         }
         
         commentButton.snp.makeConstraints { make in
-            make.left.equalTo(likeCountLabel.snp.right).offset(8)
+            make.left.equalTo(likeCountLabel.snp.right).offset(48)
             make.bottom.equalTo(self).inset(8)
             make.top.equalTo(contentLabel.snp.bottom).offset(8)
-            make.width.height.equalTo(24)
         }
     }
 }

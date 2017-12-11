@@ -17,13 +17,14 @@ final class CreateTweetViewController: UIViewController {
     fileprivate lazy var headerView: HeaderView = {
         let headerView = HeaderView()
         headerView.leftButton.setImage(#imageLiteral(resourceName: "ic_cross_white_40.png"), for: .normal)
-        headerView.rightButton.setImage(#imageLiteral(resourceName: "ic_pen_white_24.png"), for: .normal)
+        headerView.rightButton.setImage(#imageLiteral(resourceName: "ic_feather"), for: .normal)
         return headerView
     }()
     
     fileprivate lazy var tweetTextView: UITextView = {
         let tweetTextView = UITextView()
-        tweetTextView.font = UIFont.hirakakuProNW3(size: 20)
+        tweetTextView.font = UIFont.hirakakuProNW4(size: 20)
+        tweetTextView.textColor = UIColor(hex: 0xF0F1F2, alpha: 1.0)
         if let replyScreenName = self.replyScreenName {
             tweetTextView.text.append("@\(replyScreenName) ")
         }
@@ -85,7 +86,7 @@ extension CreateTweetViewController {
 extension CreateTweetViewController {
     
     fileprivate func configure() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hex: 0x1B2936, alpha: 1.0)
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
@@ -97,7 +98,7 @@ extension CreateTweetViewController {
     fileprivate func setConstraints() {
         headerView.snp.makeConstraints { make in
             make.left.top.right.equalTo(view)
-            make.height.equalTo(64)
+            make.height.equalTo(66)
         }
         
         keyboardFrameChanged

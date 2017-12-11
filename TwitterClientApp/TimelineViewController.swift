@@ -17,7 +17,7 @@ final class TimelineViewController: UIViewController {
    
     fileprivate lazy var headerView: HeaderView = {
         let view = HeaderView()
-        view.rightButton.setImage(#imageLiteral(resourceName: "ic_pen_white_24.png"), for: .normal)
+        view.rightButton.setImage(#imageLiteral(resourceName: "ic_feather.pdf"), for: .normal)
         return view
     }()
     
@@ -26,7 +26,7 @@ final class TimelineViewController: UIViewController {
     
     fileprivate lazy var tweetTableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = UIColor(hex: 0xCECECE, alpha: 1.0)
+        tableView.backgroundColor = UIColor(hex: 0x1B2936, alpha: 1.0)
         tableView.dataSource = self
         tableView.estimatedRowHeight = 250
         tableView.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
@@ -95,7 +95,7 @@ extension TimelineViewController {
     fileprivate func setConstraints() {
         headerView.snp.makeConstraints { make in
             make.left.right.top.equalTo(view)
-            make.height.equalTo(64)
+            make.height.equalTo(66)
         }
         
         tweetTableView.snp.makeConstraints { make in

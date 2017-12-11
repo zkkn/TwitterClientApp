@@ -13,6 +13,10 @@ extension UIFont {
         return UIFont(name: "HirakakuProN-W3", size: size)
     }
     
+    class func hirakakuProNW4(size: CGFloat) -> UIFont? {
+        return UIFont(name: "HirakakuProN-W4", size: size)
+    }
+    
     class func hirakakuProNW6(size: CGFloat) -> UIFont {
         return UIFont(name: "HirakakuProN-W6", size: size)!
     }
