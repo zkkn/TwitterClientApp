@@ -170,7 +170,7 @@ class RealmCollectionTypeTests: TestCase {
             fatalError("Test precondition failed")
         }
         // swiftlint:disable:next line_length
-        XCTAssertEqual(collection.description, "Results<CTTStringObjectWithLink> (\n\t[0] CTTStringObjectWithLink {\n\t\tstringCol = 1;\n\t\tlinkCol = (null);\n\t},\n\t[1] CTTStringObjectWithLink {\n\t\tstringCol = 2;\n\t\tlinkCol = (null);\n\t}\n)")
+        assertMatches(collection.description, "Results<CTTStringObjectWithLink> <0x[0-9a-f]+> \\(\n\t\\[0\\] CTTStringObjectWithLink \\{\n\t\tstringCol = 1;\n\t\tlinkCol = \\(null\\);\n\t\\},\n\t\\[1\\] CTTStringObjectWithLink \\{\n\t\tstringCol = 2;\n\t\tlinkCol = \\(null\\);\n\t\\}\n\\)")
     }
 
     func testCount() {
@@ -331,7 +331,8 @@ class RealmCollectionTypeTests: TestCase {
         XCTAssertEqual("1", sorted[0].stringCol)
         XCTAssertEqual("2", sorted[1].stringCol)
 
-        assertThrows(collection.sorted(byKeyPath: "noSuchCol", ascending: true), named: "Invalid property name")
+        assertThrows(collection.sorted(byKeyPath: "noSuchCol", ascending: true),
+                     reason: "Cannot sort on key path 'noSuchCol': property 'CTTStringObjectWithLink.noSuchCol' does not exist")
     }
 
     func testSortWithDescriptor() {
@@ -353,7 +354,8 @@ class RealmCollectionTypeTests: TestCase {
         XCTAssertEqual(2, sorted[1].intCol)
         XCTAssertEqual(1.11, sorted[2].doubleCol)
 
-        assertThrows(collection.sorted(by: [SortDescriptor(keyPath: "noSuchCol")]), named: "Invalid property name")
+        assertThrows(collection.sorted(by: [SortDescriptor(keyPath: "noSuchCol")]),
+                     reason: "Cannot sort on key path 'noSuchCol': property 'CTTAggregateObject.noSuchCol' does not exist")
     }
 
     func testMin() {
@@ -414,12 +416,12 @@ class RealmCollectionTypeTests: TestCase {
         XCTAssertEqual(6, collection.sum(ofProperty: "int32Col") as Int32)
         XCTAssertEqual(6, collection.sum(ofProperty: "int64Col") as NSNumber)
         XCTAssertEqual(6, collection.sum(ofProperty: "int64Col") as Int64)
-        XCTAssertEqualWithAccuracy(5.5, (collection.sum(ofProperty: "floatCol") as NSNumber).floatValue,
+        XCTAssertEqual(5.5, (collection.sum(ofProperty: "floatCol") as NSNumber).floatValue,
                                    accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(5.5, collection.sum(ofProperty: "floatCol") as Float, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(5.55, (collection.sum(ofProperty: "doubleCol") as NSNumber).doubleValue,
+        XCTAssertEqual(5.5, collection.sum(ofProperty: "floatCol") as Float, accuracy: 0.001)
+        XCTAssertEqual(5.55, (collection.sum(ofProperty: "doubleCol") as NSNumber).doubleValue,
                                    accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(5.55, collection.sum(ofProperty: "doubleCol") as Double, accuracy: 0.001)
+        XCTAssertEqual(5.55, collection.sum(ofProperty: "doubleCol") as Double, accuracy: 0.001)
 
         assertThrows(collection.sum(ofProperty: "noSuchCol") as NSNumber, named: "Invalid property name")
         assertThrows(collection.sum(ofProperty: "noSuchCol") as Float, named: "Invalid property name")
@@ -437,12 +439,12 @@ class RealmCollectionTypeTests: TestCase {
         XCTAssertEqual(2, collection.average(ofProperty: "int32Col") as Int32!)
         XCTAssertEqual(2, collection.average(ofProperty: "int64Col") as NSNumber!)
         XCTAssertEqual(2, collection.average(ofProperty: "int64Col") as Int64!)
-        XCTAssertEqualWithAccuracy(1.8333, (collection.average(ofProperty: "floatCol") as NSNumber!).floatValue,
+        XCTAssertEqual(1.8333, (collection.average(ofProperty: "floatCol") as NSNumber!).floatValue,
                                    accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(1.8333, collection.average(ofProperty: "floatCol") as Float!, accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(1.85, (collection.average(ofProperty: "doubleCol") as NSNumber!).doubleValue,
+        XCTAssertEqual(1.8333, collection.average(ofProperty: "floatCol") as Float!, accuracy: 0.001)
+        XCTAssertEqual(1.85, (collection.average(ofProperty: "doubleCol") as NSNumber!).doubleValue,
                                    accuracy: 0.001)
-        XCTAssertEqualWithAccuracy(1.85, collection.average(ofProperty: "doubleCol") as Double!, accuracy: 0.001)
+        XCTAssertEqual(1.85, collection.average(ofProperty: "doubleCol") as Double!, accuracy: 0.001)
 
         assertThrows(collection.average(ofProperty: "noSuchCol")! as NSNumber, named: "Invalid property name")
         assertThrows(collection.average(ofProperty: "noSuchCol")! as Float, named: "Invalid property name")
@@ -794,7 +796,7 @@ class ListRealmCollectionTypeTests: RealmCollectionTypeTests {
             fatalError("Test precondition failed")
         }
         // swiftlint:disable:next line_length
-        XCTAssertEqual(collection.description, "List<CTTStringObjectWithLink> (\n\t[0] CTTStringObjectWithLink {\n\t\tstringCol = 1;\n\t\tlinkCol = (null);\n\t},\n\t[1] CTTStringObjectWithLink {\n\t\tstringCol = 2;\n\t\tlinkCol = (null);\n\t}\n)")
+        assertMatches(collection.description, "List<CTTStringObjectWithLink> <0x[0-9a-f]+> \\(\n\t\\[0\\] CTTStringObjectWithLink \\{\n\t\tstringCol = 1;\n\t\tlinkCol = \\(null\\);\n\t\\},\n\t\\[1\\] CTTStringObjectWithLink \\{\n\t\tstringCol = 2;\n\t\tlinkCol = \\(null\\);\n\t\\}\n\\)")
     }
 
     func testAddNotificationBlockDirect() {
@@ -1045,7 +1047,7 @@ class LinkingObjectsCollectionTypeTests: RealmCollectionTypeTests {
             fatalError("Test precondition failure - a property was unexpectedly nil")
         }
         // swiftlint:disable:next line_length
-        XCTAssertEqual(collection.description, "LinkingObjects<CTTStringObjectWithLink> (\n\t[0] CTTStringObjectWithLink {\n\t\tstringCol = 1;\n\t\tlinkCol = CTTLinkTarget {\n\t\t\tid = 0;\n\t\t};\n\t},\n\t[1] CTTStringObjectWithLink {\n\t\tstringCol = 2;\n\t\tlinkCol = CTTLinkTarget {\n\t\t\tid = 0;\n\t\t};\n\t}\n)")
+        assertMatches(collection.description, "LinkingObjects<CTTStringObjectWithLink> <0x[0-9a-f]+> \\(\n\t\\[0\\] CTTStringObjectWithLink \\{\n\t\tstringCol = 1;\n\t\tlinkCol = CTTLinkTarget \\{\n\t\t\tid = 0;\n\t\t\\};\n\t\\},\n\t\\[1\\] CTTStringObjectWithLink \\{\n\t\tstringCol = 2;\n\t\tlinkCol = CTTLinkTarget \\{\n\t\t\tid = 0;\n\t\t\\};\n\t\\}\n\\)")
     }
 
     override func testAssignListProperty() {

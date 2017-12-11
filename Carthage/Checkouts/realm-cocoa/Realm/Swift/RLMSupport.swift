@@ -22,9 +22,7 @@ extension RLMRealm {
     @nonobjc public class func schemaVersion(at url: URL, usingEncryptionKey key: Data? = nil) throws -> UInt64 {
         var error: NSError?
         let version = __schemaVersion(at: url, encryptionKey: key, error: &error)
-        guard version != RLMNotVersioned else {
-            throw error!
-        }
+        guard version != RLMNotVersioned else { throw error! }
         return version
     }
 
@@ -52,15 +50,15 @@ extension RLMObject {
     }
 }
 
-public final class RLMIterator: IteratorProtocol {
+public struct RLMIterator<T>: IteratorProtocol {
     private var iteratorBase: NSFastEnumerationIterator
 
     internal init(collection: RLMCollection) {
         iteratorBase = NSFastEnumerationIterator(collection)
     }
 
-    public func next() -> RLMObject? {
-        return iteratorBase.next() as! RLMObject?
+    public mutating func next() -> T? {
+        return iteratorBase.next() as! T?
     }
 }
 
@@ -71,7 +69,7 @@ extension RLMResults: Sequence {}
 
 extension RLMCollection {
     // Support Sequence-style enumeration
-    public func makeIterator() -> RLMIterator {
+    public func makeIterator() -> RLMIterator<RLMObject> {
         return RLMIterator(collection: self)
     }
 }
@@ -84,6 +82,62 @@ extension RLMCollection {
 
     public func objects(where predicateFormat: String, _ args: CVarArg...) -> RLMResults<RLMObject> {
         return objects(with: NSPredicate(format: predicateFormat, arguments: getVaList(args)))
+    }
+}
+
+// MARK: - Sync-related
+
+extension RLMSyncManager {
+    public static var shared: RLMSyncManager {
+        return __shared()
+    }
+}
+
+extension RLMSyncUser {
+    public static var current: RLMSyncUser? {
+        return __current()
+    }
+
+    public static var all: [String: RLMSyncUser] {
+        return __allUsers()
+    }
+
+    @nonobjc public var errorHandler: RLMUserErrorReportingBlock? {
+        get {
+            return __errorHandler
+        }
+        set {
+            __errorHandler = newValue
+        }
+    }
+
+    public static func logIn(with credentials: RLMSyncCredentials,
+                             server authServerURL: URL,
+                             timeout: TimeInterval = 30,
+                             onCompletion completion: @escaping RLMUserCompletionBlock) {
+        return __logIn(with: credentials,
+                       authServerURL: authServerURL,
+                       timeout: timeout,
+                       onCompletion: completion)
+    }
+
+    public func managementRealm() throws -> RLMRealm {
+        var error: NSError?
+        let realm = __managementRealmWithError(&error)
+        if let error = error {
+            throw error
+        }
+        return realm
+    }
+}
+
+extension RLMSyncSession {
+    public func addProgressNotification(for direction: RLMSyncProgressDirection,
+                                        mode: RLMSyncProgress,
+                                        block: @escaping RLMProgressNotificationBlock) -> RLMProgressNotificationToken? {
+        return __addProgressNotification(for: direction,
+                                         mode: mode,
+                                         block: block)
     }
 }
 

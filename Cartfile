@@ -10,5 +10,5 @@ github "SnapKit/SnapKit" ~> 3.2.0
 github "realm/realm-cocoa" ~> 2.5.1
 
 # utility
-github "ReactiveX/RxSwift" ~> 3.4.0
+github "ReactiveX/RxSwift" ~> 4.0.0
 github "onevcat/Kingfisher" ~> 3.0

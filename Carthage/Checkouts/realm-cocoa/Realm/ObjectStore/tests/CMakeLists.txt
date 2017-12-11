@@ -3,6 +3,7 @@ include_directories(../external/catch/single_include .)
 set(HEADERS
     util/event_loop.hpp
     util/index_helpers.hpp
+    util/templated_test_case.hpp
     util/test_file.hpp
 )
 
@@ -16,6 +17,7 @@ set(SOURCES
     object.cpp
     object_store.cpp
     parser.cpp
+    primitive_list.cpp
     realm.cpp
     results.cpp
     schema.cpp

@@ -15,6 +15,7 @@ set(SOURCES
     impl/collection_notifier.cpp
     impl/list_notifier.cpp
     impl/object_notifier.cpp
+    impl/primitive_list_notifier.cpp
     impl/realm_coordinator.cpp
     impl/results_notifier.cpp
     impl/transact_log_handler.cpp
@@ -27,7 +28,9 @@ set(SOURCES
 set(HEADERS
     binding_callback_thread_observer.hpp
     collection_notifications.hpp
+    descriptor_ordering.hpp
     execution_context_id.hpp
+    feature_checks.hpp
     index_set.hpp
     list.hpp
     object.hpp
@@ -51,6 +54,7 @@ set(HEADERS
     impl/list_notifier.hpp
     impl/object_accessor_impl.hpp
     impl/object_notifier.hpp
+    impl/primitive_list_notifier.hpp
     impl/realm_coordinator.hpp
     impl/results_notifier.hpp
     impl/transact_log_handler.hpp
@@ -70,6 +74,7 @@ set(HEADERS
     util/compiler.hpp
     util/event_loop_signal.hpp
     util/format.hpp
+    util/tagged_bool.hpp
     util/time.hpp
     util/uuid.hpp)
 
@@ -88,14 +93,9 @@ if(NOT APPLE AND NOT REALM_PLATFORM STREQUAL "Android")
 endif()
 
 set(INCLUDE_DIRS
-    ${REALM_CORE_INCLUDE_DIR}
     ${PEGTL_INCLUDE_DIR}
     ${UV_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR})
-
-if(CMAKE_SYSTEM_NAME MATCHES "^Windows")
-    list(APPEND INCLUDE_DIRS ${REALM_CORE_INCLUDE_DIR}/win32/pthread)
-endif()
 
 if(REALM_ENABLE_SYNC)
     # Add the sync files separately to reduce merge conflicts.
@@ -121,7 +121,7 @@ if(REALM_ENABLE_SYNC)
             sync/impl/apple/system_configuration.cpp)
     endif()
     find_package(ZLIB REQUIRED)
-    list(APPEND INCLUDE_DIRS ${REALM_SYNC_INCLUDE_DIR} ${ZLIB_INCLUDE_DIRS})
+    list(APPEND INCLUDE_DIRS ${ZLIB_INCLUDE_DIRS})
 endif()
 
 add_library(realm-object-store STATIC ${SOURCES} ${HEADERS})

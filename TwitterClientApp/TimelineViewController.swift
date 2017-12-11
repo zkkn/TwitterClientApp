@@ -6,7 +6,6 @@
 //  Copyright © 2017年 mycompany. All rights reserved.
 //
 
-import DGElasticPullToRefresh
 import RxCocoa
 import RxSwift
 import SnapKit
@@ -33,14 +32,6 @@ final class TimelineViewController: UIViewController {
         tableView.register(TweetCell.self, forCellReuseIdentifier: "TweetCell")
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
-        loadingView.tintColor = UIColor(hex: 0xCECECE, alpha: 1.0)
-        tableView.dg_addPullToRefreshWithActionHandler({ [weak self] () -> Void in
-            self?.viewModel.inputs.refreshRequest.onNext()
-            tableView.dg_stopLoading()
-            }, loadingView: loadingView)
-        tableView.dg_setPullToRefreshFillColor(UIColor(hex: 0x3a3a3a, alpha: 1.0))
-        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
         return tableView
     }()
     
@@ -62,10 +53,6 @@ final class TimelineViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    deinit {
-        tweetTableView.dg_removePullToRefresh()
-    }
 }
 
 
@@ -86,7 +73,7 @@ extension TimelineViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        viewModel.inputs.refreshRequest.onNext()
+        viewModel.inputs.refreshRequest.onNext(())
     }
 }
 
@@ -102,6 +89,7 @@ extension TimelineViewController {
     fileprivate func setViews() {
         view.addSubview(headerView)
         view.addSubview(tweetTableView)
+        tweetTableView.addSubview(refreshControl)
     }
     
     fileprivate func setConstraints() {
@@ -117,6 +105,12 @@ extension TimelineViewController {
     }
     
     fileprivate func subscribeView() {
+        refreshControl.rx.controlEvent(.valueChanged)
+            .subscribe({ [weak self] (_) in
+                self?.viewModel.inputs.refreshRequest.onNext(())
+            })
+            .disposed(by: disposeBag)
+        
         headerView.rightButton.rx.tap
             .subscribe(onNext: { [weak self] in
                 let createTweetViewController = CreateTweetBuilder().build()

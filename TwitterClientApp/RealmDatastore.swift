@@ -56,7 +56,7 @@ extension RealmDatastore where TargetObject: Object {
         }
         else {
             var objects = [TargetObject]()
-            try! Realm().write { (_) in
+            try! Realm().write { 
                 objects = objectsJson.flatMap { objectJson -> TargetObject? in
                     return deserialize(
                         json: objectJson,
