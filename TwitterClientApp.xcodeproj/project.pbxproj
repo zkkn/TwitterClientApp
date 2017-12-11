@@ -36,6 +36,9 @@
 		C7859CB71F14B13F00F5E80B /* ic_pen_white_24.png in Resources */ = {isa = PBXBuildFile; fileRef = C7859CB61F14B13F00F5E80B /* ic_pen_white_24.png */; };
 		C7859CBA1F14B2AC00F5E80B /* CreateTweetBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7859CB91F14B2AC00F5E80B /* CreateTweetBuilder.swift */; };
 		C7859CBC1F14B56A00F5E80B /* ic_cross_white_40.png in Resources */ = {isa = PBXBuildFile; fileRef = C7859CBB1F14B56A00F5E80B /* ic_cross_white_40.png */; };
+		C78DC8871FDEDA3800970842 /* ic_feather.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C78DC8841FDEDA3800970842 /* ic_feather.pdf */; };
+		C78DC8881FDEDA3800970842 /* ic_heart.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C78DC8851FDEDA3800970842 /* ic_heart.pdf */; };
+		C78DC8891FDEDA3800970842 /* ic_message_circle.pdf in Resources */ = {isa = PBXBuildFile; fileRef = C78DC8861FDEDA3800970842 /* ic_message_circle.pdf */; };
 		C78EC7661EF920450051C408 /* BuildOAuth1SwiftService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */; };
 		C797694D1F022D1700030B22 /* TweetRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C797694C1F022D1700030B22 /* TweetRepository.swift */; };
 		C7C8799C1EF4EC8700E69DCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C8799B1EF4EC8700E69DCD /* AppDelegate.swift */; };
@@ -119,6 +122,9 @@
 		C7859CB91F14B2AC00F5E80B /* CreateTweetBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTweetBuilder.swift; sourceTree = "<group>"; };
 		C7859CBB1F14B56A00F5E80B /* ic_cross_white_40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_cross_white_40.png; sourceTree = "<group>"; };
 		C78A911A1F867FFE0046E5C3 /* DGElasticPullToRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DGElasticPullToRefresh.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/TwitterClientApp-dkxvtqlrobvnpgdvwbovvjllyrot/Build/Products/Debug-iphonesimulator/DGElasticPullToRefresh/DGElasticPullToRefresh.framework"; sourceTree = "<group>"; };
+		C78DC8841FDEDA3800970842 /* ic_feather.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ic_feather.pdf; sourceTree = "<group>"; };
+		C78DC8851FDEDA3800970842 /* ic_heart.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ic_heart.pdf; sourceTree = "<group>"; };
+		C78DC8861FDEDA3800970842 /* ic_message_circle.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ic_message_circle.pdf; sourceTree = "<group>"; };
 		C78EC7651EF920450051C408 /* BuildOAuth1SwiftService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildOAuth1SwiftService.swift; sourceTree = "<group>"; };
 		C797694C1F022D1700030B22 /* TweetRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetRepository.swift; sourceTree = "<group>"; };
 		C7C879981EF4EC8700E69DCD /* TwitterClientApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClientApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +235,9 @@
 		C7859CB81F14B14C00F5E80B /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C78DC8841FDEDA3800970842 /* ic_feather.pdf */,
+				C78DC8851FDEDA3800970842 /* ic_heart.pdf */,
+				C78DC8861FDEDA3800970842 /* ic_message_circle.pdf */,
 				C7F95ABC1F298FE900281655 /* ic_balloon_blue_48.png */,
 				C72703CB1F1A0ADE0014D96E /* ic_heart_pink_32.png */,
 				C72703CC1F1A0ADE0014D96E /* ic_heart_pink_48.png */,
@@ -420,6 +429,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78DC8891FDEDA3800970842 /* ic_message_circle.pdf in Resources */,
+				C78DC8881FDEDA3800970842 /* ic_heart.pdf in Resources */,
+				C78DC8871FDEDA3800970842 /* ic_feather.pdf in Resources */,
 				C7F95ABD1F298FE900281655 /* ic_balloon_blue_48.png in Resources */,
 				C72703CE1F1A0ADE0014D96E /* ic_heart_pink_48.png in Resources */,
 				C72703CD1F1A0ADE0014D96E /* ic_heart_pink_32.png in Resources */,
