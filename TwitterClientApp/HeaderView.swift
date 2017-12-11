@@ -60,8 +60,8 @@ extension HeaderView {
         }
         
         rightButton.snp.makeConstraints { make in
-            make.right.bottom.equalTo(self).inset(10)
-            make.width.height.equalTo(24)
+            make.right.equalTo(self).inset(14)
+            make.bottom.equalTo(self).inset(12)
         }
     }
 }
